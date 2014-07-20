@@ -1,0 +1,9 @@
+[submodule "graywulf"]
+	path = graywulf
+	url = git@github.com:idies/graywulf.git
+[submodule "skyquery"]
+	path = skyquery
+	url = git@github.com:idies/skyquery.git
+[submodule "sharpfitsio"]
+	path = sharpfitsio
+	url = git@github.com:idies/sharpfitsio.git
