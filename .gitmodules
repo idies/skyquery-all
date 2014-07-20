@@ -7,3 +7,9 @@
 [submodule "sharpfitsio"]
 	path = sharpfitsio
 	url = git@github.com:idies/sharpfitsio.git
+[submodule "keystone-client"]
+	path = keystone-client
+	url = git@github.com:idies/keystone-client.git
+[submodule "rest-client"]
+	path = rest-client
+	url = git@github.com:idies/rest-client.git
