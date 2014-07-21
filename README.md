@@ -21,6 +21,8 @@ Or using the Switch/Checkout... menu option from TortoiseGit.
 
 Should anything in a submodule change, you will need to commit the changes to the submodule, push those changes and then commit changes to the supermodule and push those changes too. This is to track the latest commit of submodules by the supermodule. Failing to push submodule changes before pushing the supermoddule will result in an error when someone else clones the repository from remote.
 
+When commiting the supermodule, Git marks submodules as dirty when untracked files are present within submodule directories. To circumvent this, simply uncheck submodules at commit. When submodules are modified, pushing them should happen recursively when pushing the superproject.
+
 
 **A few build issues**
 
