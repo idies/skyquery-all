@@ -1,15 +1,20 @@
 [submodule "graywulf"]
 	path = graywulf
 	url = git@github.com:idies/graywulf.git
+	branch = feature/fits
 [submodule "skyquery"]
 	path = skyquery
 	url = git@github.com:idies/skyquery.git
+	branch = develop
 [submodule "sharpfitsio"]
 	path = sharpfitsio
 	url = git@github.com:idies/sharpfitsio.git
+	branch = develop
 [submodule "keystone-client"]
 	path = keystone-client
 	url = git@github.com:idies/keystone-client.git
+	branch = develop
 [submodule "rest-client"]
 	path = rest-client
 	url = git@github.com:idies/rest-client.git
+	branch = develop
