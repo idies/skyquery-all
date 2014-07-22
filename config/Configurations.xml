@@ -70,6 +70,12 @@
     <project name="Jhu.Graywulf.SqlParser.Test" path="graywulf\Test\Jhu.Graywulf.SqlParser.Test" type="console">
       <merge file="test.config" />
     </project>
+    <project name="Jhu.Graywulf.Web.Test" path="graywulf\Test\Jhu.Graywulf.Web.Test" type="console">
+      <merge file="binaries.config" />
+      <merge file="connectionStrings.config" />
+      <merge file="registry.config" />
+      <merge file="test.config" />
+    </project>
     <!-- Graywulf WEB projects -->
     <project name="Jhu.Graywulf.Web.Admin" path="graywulf\Web\Jhu.Graywulf.Web.Admin" type="web">
       <merge file="binaries.config" />
