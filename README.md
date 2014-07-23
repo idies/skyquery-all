@@ -4,11 +4,10 @@ skyquery-all
 Complete SkyQuery project tree with submodules
 
 
-
-
 Notes on submodules:
+--------------------
 
-This repository is a collection of modules (supermodule) required to build SkyQuery. To clone this repository, make sure you do the following:
+This repository is a collection of modules (supermodule or superproject) required to build SkyQuery. To clone this repository, make sure you do the following:
 
 git clone --recursive git@github.com:idies/skyquery-all.git 
 
@@ -20,4 +19,4 @@ git checkout develop
 
 Or using the Switch/Checkout... menu option from TortoiseGit.
 
-Should anything in a submodule change, you will need to commit the changes to the submodule, push those changes and then commit changes to the supermodule and push those changes too. This is to track the latest commit of submodules by the supermodule. Failing to push submodule changes before pushing the supermoddule will result in an error when someone else clones the repository from remote.
+Should anything in a submodule change, you will need to commit the changes to the submodule, push those changes and then commit changes to the supermodule and push those changes too. This is to track the latest commit of submodules by the supermodule. Failing to push submodule changes before pushing the supermoddule will result in an error when someone else clones the repository from remote. In TortoiseGit, commiting the supermodule will cause the submodules to commit too if they have changed and the branches are checked out correctly. A single push to the supermodule and setting 'recurse submodule' to 'on demand' should push all changes to the remote repository.
