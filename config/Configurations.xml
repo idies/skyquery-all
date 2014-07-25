@@ -53,6 +53,7 @@
     </project>
     <project name="Jhu.Graywulf.RemoteService.Test" path="graywulf\Test\Jhu.Graywulf.RemoteService.Test" type="console">
       <merge file="binaries.config" />
+      <merge file="connectionStrings.config" />
       <merge file="remoteService.config" />
       <merge file="test.config" />
     </project>
