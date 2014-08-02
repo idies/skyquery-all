@@ -200,7 +200,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "command-line", "command-lin
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{25C43733-9CD8-4979-B507-F8C7D2AC514B}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "pages", "skyquery\docs\pages\", "{95572CA7-FA01-4B77-AE0C-740B100CE261}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "pages", "skyquery\docs\pages", "{95572CA7-FA01-4B77-AE0C-740B100CE261}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/pages"
@@ -246,6 +246,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Keystone", "keystone-client\src\Jhu.Graywulf.Keystone\Jhu.Graywulf.Keystone.csproj", "{FB1B903B-CBA6-4E7E-8C03-C7D8C49E2471}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Keystone.Test", "keystone-client\test\Jhu.Graywulf.Keystone.Test\Jhu.Graywulf.Keystone.Test.csproj", "{22F28923-33AA-4106-9236-55068B03512F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.Api", "graywulf\dll\Jhu.Graywulf.Web.Api\Jhu.Graywulf.Web.Api.csproj", "{975EE996-A41B-4C73-8562-E2B2035E8899}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -583,6 +585,12 @@ Global
 		{22F28923-33AA-4106-9236-55068B03512F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22F28923-33AA-4106-9236-55068B03512F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{22F28923-33AA-4106-9236-55068B03512F}.Release|x86.ActiveCfg = Release|Any CPU
+		{975EE996-A41B-4C73-8562-E2B2035E8899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{975EE996-A41B-4C73-8562-E2B2035E8899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{975EE996-A41B-4C73-8562-E2B2035E8899}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{975EE996-A41B-4C73-8562-E2B2035E8899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{975EE996-A41B-4C73-8562-E2B2035E8899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{975EE996-A41B-4C73-8562-E2B2035E8899}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -614,6 +622,7 @@ Global
 		{AADA04EE-F578-4628-8AE0-D423BB94C738} = {2939F058-FEE3-4142-BF45-8672DCFD4C11}
 		{8EC7930C-CCC4-47D3-99BD-39E54EB405A9} = {2939F058-FEE3-4142-BF45-8672DCFD4C11}
 		{FB1B903B-CBA6-4E7E-8C03-C7D8C49E2471} = {2939F058-FEE3-4142-BF45-8672DCFD4C11}
+		{975EE996-A41B-4C73-8562-E2B2035E8899} = {2939F058-FEE3-4142-BF45-8672DCFD4C11}
 		{19966DF7-6E7D-454C-B4D7-54EC77E220D2} = {4F1895F8-526E-4F3B-868F-580C86D3EFAD}
 		{1844E778-F94F-4F73-A2DA-7694CE00ADC0} = {4F1895F8-526E-4F3B-868F-580C86D3EFAD}
 		{CE2D9C45-BF0A-452F-82E5-1E974DCAF046} = {4F1895F8-526E-4F3B-868F-580C86D3EFAD}
