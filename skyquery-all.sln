@@ -249,9 +249,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Keystone.Test"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.Api", "graywulf\dll\Jhu.Graywulf.Web.Api\Jhu.Graywulf.Web.Api.csproj", "{975EE996-A41B-4C73-8562-E2B2035E8899}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{66923DAB-C567-48F5-95B1-1E43823397D6}"
+	ProjectSection(SolutionItems) = preProject
+		skyquery-all.vsmdi = skyquery-all.vsmdi
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = SkyQuery.vsmdi
+		CategoryFile = skyquery-all.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
