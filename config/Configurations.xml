@@ -46,6 +46,9 @@
       <merge file="registry.config" />
       <merge file="test.config" />
     </project>
+    <project name="Jhu.Graywulf.Keystone.Test" path="keystone-client\Test\Jhu.Graywulf.Keystone.Test" type="console">
+      <merge file="test.config" />
+    </project>
     <project name="Jhu.Graywulf.Registry.Test" path="graywulf\Test\Jhu.Graywulf.Registry.Test" type="console">
       <merge file="binaries.config" />
       <merge file="connectionStrings.config" />
