@@ -46,9 +46,6 @@
       <merge file="registry.config" />
       <merge file="test.config" />
     </project>
-    <project name="Jhu.Graywulf.Keystone.Test" path="keystone-client\Test\Jhu.Graywulf.Keystone.Test" type="console">
-      <merge file="test.config" />
-    </project>
     <project name="Jhu.Graywulf.Registry.Test" path="graywulf\Test\Jhu.Graywulf.Registry.Test" type="console">
       <merge file="binaries.config" />
       <merge file="connectionStrings.config" />
@@ -97,6 +94,10 @@
       <merge file="mailSettings.config" />
       <merge file="registry.config" />
       <merge file="web.config" />
+    </project>
+    <!-- Graywulf plugins-->
+    <project name="Jhu.Graywulf.Keystone.Test" path="graywulf-plugins\Test\Jhu.Graywulf.Keystone.Test" type="console">
+      <merge file="test.config" />
     </project>
     <!-- SKYQUERY -->
     <project name="Jhu.SkyQuery.Parser.Test" path="skyquery\Test\Jhu.SkyQuery.Parser.Test" type="console">
