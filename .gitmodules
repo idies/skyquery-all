@@ -13,3 +13,6 @@
 [submodule "rest-client"]
 	path = rest-client
 	url = git@github.com:idies/rest-client.git
+[submodule "graywulf-plugins"]
+	path = graywulf-plugins
+	url = git@github.com:idies/graywulf-plugins.git
