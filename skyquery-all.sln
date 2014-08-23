@@ -244,6 +244,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SharpFitsIO.Test", "sharpfitsio\test\Jhu.SharpFitsIO.Test\Jhu.SharpFitsIO.Test.csproj", "{68566FE0-6428-4FEF-B6EE-CC56B1FFA82A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Sql", "graywulf\dll\Jhu.Graywulf.Sql\Jhu.Graywulf.Sql.csproj", "{AADA04EE-F578-4628-8AE0-D423BB94C738}"
+	ProjectSection(ProjectDependencies) = postProject
+		{77BE21A2-3AF7-478A-8279-3C741BF3BD59} = {77BE21A2-3AF7-478A-8279-3C741BF3BD59}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Sql.Test", "graywulf\test\Jhu.Graywulf.Sql.Test\Jhu.Graywulf.Sql.Test.csproj", "{C006350E-76D3-4584-8162-646566B6133C}"
 EndProject
