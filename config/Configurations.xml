@@ -87,12 +87,14 @@
       <merge file="connectionStrings.config" />
       <merge file="mailSettings.config" />
       <merge file="registry.config" />
+      <merge file="domain.config" />
       <merge file="web.config" />
     </project>
     <project name="Jhu.Graywulf.Web.UI" path="graywulf\Web\Jhu.Graywulf.Web.UI" type="web">
       <merge file="connectionStrings.config" />
       <merge file="mailSettings.config" />
       <merge file="registry.config" />
+      <merge file="domain.config" />
       <merge file="web.config" />
     </project>
     <!-- Graywulf plugins-->
