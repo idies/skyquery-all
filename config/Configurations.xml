@@ -95,6 +95,7 @@
       <merge file="mailSettings.config" />
       <merge file="registry.config" />
       <merge file="domain.config" />
+      <merge file="federation.config" />
       <merge file="web.config" />
     </project>
     <!-- Graywulf plugins-->
