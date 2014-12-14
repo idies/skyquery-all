@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<config root="Config\Default">
+<config root="Config\scitest02">
   <projects>
     <!-- Graywulf EXE projects -->
     <project name="Jhu.Graywulf.Install.CmdLineUtil" path="graywulf\Exe\Jhu.Graywulf.Install.CmdLineUtil" type="console">
@@ -17,6 +17,7 @@
     </project>
     <project name="Jhu.Graywulf.RemoteService.Server" path="graywulf\Exe\Jhu.Graywulf.RemoteService.Server" type="console">
       <merge file="binaries.config" />
+      <merge file="connectionStrings.config" />
       <merge file="remoteService.config" />
     </project>
     <project name="Jhu.Graywulf.Scheduler" path="graywulf\Exe\Jhu.Graywulf.Scheduler" type="console">
