@@ -105,6 +105,9 @@
       <merge file="test.config" />
     </project>
     <project name="Jhu.Graywulf.Plugins.Test" path="graywulf-plugins\Test\Jhu.Graywulf.Plugins.Test" type="console">
+      <merge file="connectionStrings.config" />
+      <merge file="domain.config" />
+      <merge file="registry.config" />
       <merge file="domain.config" />
       <merge file="federation.config" />
       <merge file="test.config" />
