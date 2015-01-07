@@ -58,8 +58,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{4692BF22-9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dev.voservices.net", "dev.voservices.net", "{4349441F-9512-4D9D-A045-120E8CFEE430}"
 	ProjectSection(SolutionItems) = preProject
-		config\dev.voservices.net\binaries.config = config\dev.voservices.net\binaries.config
 		config\dev.voservices.net\connectionStrings.config = config\dev.voservices.net\connectionStrings.config
+		config\dev.voservices.net\domain.config = config\dev.voservices.net\domain.config
+		config\dev.voservices.net\federation.config = config\dev.voservices.net\federation.config
 		config\dev.voservices.net\mailSettings.config = config\dev.voservices.net\mailSettings.config
 		config\dev.voservices.net\registry.config = config\dev.voservices.net\registry.config
 		config\dev.voservices.net\remoteService.config = config\dev.voservices.net\remoteService.config
