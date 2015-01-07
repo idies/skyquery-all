@@ -3,44 +3,56 @@
   <projects>
     <!-- Graywulf EXE projects -->
     <project name="Jhu.Graywulf.Install.CmdLineUtil" path="graywulf\Exe\Jhu.Graywulf.Install.CmdLineUtil" type="console">
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="registry.config" />
     </project>
     <project name="Jhu.Graywulf.Jobs.CmdLineUtil" path="graywulf\Exe\Jhu.Graywulf.Jobs.CmdLineUtil" type="console">
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="remoteService.config" />
       <merge file="registry.config" />
     </project>
     <project name="Jhu.Graywulf.Metadata.CmdLineUtil" path="graywulf\Exe\Jhu.Graywulf.Metadata.CmdLineUtil" type="console">
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="registry.config" />
     </project>
     <project name="Jhu.Graywulf.RemoteService.Server" path="graywulf\Exe\Jhu.Graywulf.RemoteService.Server" type="console">
-      <merge file="binaries.config" />
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="remoteService.config" />
     </project>
     <project name="Jhu.Graywulf.Scheduler" path="graywulf\Exe\Jhu.Graywulf.Scheduler" type="console">
-      <merge file="binaries.config" />
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="registry.config" />
       <merge file="scheduler.config" />
       <merge file="remoteService.config" />
     </project>
     <project name="Jhu.Graywulf.SqlParser.UI" path="graywulf\Exe\Jhu.Graywulf.SqlParser.UI" type="console">
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="registry.config" />
     </project>
     <!-- Graywulf TEST projects-->
     <project name="Jhu.Graywulf.IO.Test" path="graywulf\Test\Jhu.Graywulf.IO.Test" type="console">
-      <merge file="binaries.config" />
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="remoteService.config" />
       <merge file="registry.config" />
       <merge file="test.config" />
     </project>
     <project name="Jhu.Graywulf.Jobs.Test" path="graywulf\Test\Jhu.Graywulf.Jobs.Test" type="console">
-      <merge file="binaries.config" />
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="scheduler.config" />
       <merge file="remoteService.config" />
@@ -48,18 +60,21 @@
       <merge file="test.config" />
     </project>
     <project name="Jhu.Graywulf.Registry.Test" path="graywulf\Test\Jhu.Graywulf.Registry.Test" type="console">
-      <merge file="binaries.config" />
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="test.config" />
     </project>
     <project name="Jhu.Graywulf.RemoteService.Test" path="graywulf\Test\Jhu.Graywulf.RemoteService.Test" type="console">
-      <merge file="binaries.config" />
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="remoteService.config" />
       <merge file="test.config" />
     </project>
     <project name="Jhu.Graywulf.Scheduler.Test" path="graywulf\Test\Jhu.Graywulf.Scheduler.Test" type="console">
-      <merge file="binaries.config" />
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="scheduler.config" />
       <merge file="remoteService.config" />
@@ -67,24 +82,32 @@
       <merge file="test.config" />
     </project>
     <project name="Jhu.Graywulf.Sql.Test" path="graywulf\Test\Jhu.Graywulf.Sql.Test" type="console">
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="test.config" />
     </project>
     <project name="Jhu.Graywulf.SqlParser.Test" path="graywulf\Test\Jhu.Graywulf.SqlParser.Test" type="console">
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="test.config" />
     </project>
     <project name="Jhu.Graywulf.Web.Test" path="graywulf\Test\Jhu.Graywulf.Web.Test" type="console">
-      <merge file="binaries.config" />
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="registry.config" />
       <merge file="test.config" />
     </project>
     <!-- Graywulf WEB projects -->
     <project name="Jhu.Graywulf.Web.Admin" path="graywulf\Web\Jhu.Graywulf.Web.Admin" type="web">
-      <merge file="binaries.config" />
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="remoteService.config" />
     </project>
     <project name="Jhu.Graywulf.Web.Auth" path="graywulf\Web\Jhu.Graywulf.Web.Auth" type="web">
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="mailSettings.config" />
       <merge file="registry.config" />
@@ -92,6 +115,8 @@
       <merge file="web.config" />
     </project>
     <project name="Jhu.Graywulf.Web.UI" path="graywulf\Web\Jhu.Graywulf.Web.UI" type="web">
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="mailSettings.config" />
       <merge file="registry.config" />
@@ -101,10 +126,14 @@
     </project>
     <!-- Graywulf plugins-->
     <project name="Jhu.Graywulf.Keystone.Test" path="graywulf-plugins\Test\Jhu.Graywulf.Keystone.Test" type="console">
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="domain.config" />
       <merge file="test.config" />
     </project>
     <project name="Jhu.Graywulf.Plugins.Test" path="graywulf-plugins\Test\Jhu.Graywulf.Plugins.Test" type="console">
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="domain.config" />
       <merge file="registry.config" />
@@ -114,13 +143,19 @@
     </project>
     <!-- SKYQUERY -->
     <project name="Jhu.SkyQuery.Parser.Test" path="skyquery\Test\Jhu.SkyQuery.Parser.Test" type="console">
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="test.config" />
     </project>
     <project name="Jhu.SkyQuery.IO.Test" path="skyquery\Test\Jhu.SkyQuery.IO.Test" type="console">
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="registry.config" />
       <merge file="test.config" />
     </project>
     <project name="Jhu.SkyQuery.Test" path="skyquery\Test\Jhu.SkyQuery.Test" type="console">
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
       <merge file="scheduler.config" />
       <merge file="remoteService.config" />
@@ -128,9 +163,13 @@
       <merge file="test.config" />
     </project>
     <project name="Jhu.SkyQuery.CmdLineUtil" path="skyquery\Exe\Jhu.SkyQuery.CmdLineUtil" type="console">
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
     </project>
     <project name="Jhu.SkyQuery.Install.CmdLineUtil" path="skyquery\Exe\Jhu.SkyQuery.Install.CmdLineUtil" type="console">
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
     </project>
   </projects>

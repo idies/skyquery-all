@@ -280,6 +280,29 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Plugins.Test",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Build", "skyquery\build\Jhu.SkyQuery.Build\Jhu.SkyQuery.Build.csproj", "{2C5632F8-0C1F-4F83-91BE-80522BDE5549}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test.voservices.net", "test.voservices.net", "{69CBE883-2F23-4753-9040-C594E6836E46}"
+	ProjectSection(SolutionItems) = preProject
+		config\test.voservices.net\connectionStrings.config = config\test.voservices.net\connectionStrings.config
+		config\test.voservices.net\domain.config = config\test.voservices.net\domain.config
+		config\test.voservices.net\federation.config = config\test.voservices.net\federation.config
+		config\test.voservices.net\mailSettings.config = config\test.voservices.net\mailSettings.config
+		config\test.voservices.net\registry.config = config\test.voservices.net\registry.config
+		config\test.voservices.net\remoteService.config = config\test.voservices.net\remoteService.config
+		config\test.voservices.net\scheduler.config = config\test.voservices.net\scheduler.config
+		config\test.voservices.net\test.config = config\test.voservices.net\test.config
+		config\test.voservices.net\web.config = config\test.voservices.net\web.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{792FFD0B-8D7B-463A-AF52-BB4B75F2C44C}"
+	ProjectSection(SolutionItems) = preProject
+		graywulf\config\sections.config = graywulf\config\sections.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{12242A6B-95FF-4FFC-9EA7-2FDA235F1CD8}"
+	ProjectSection(SolutionItems) = preProject
+		graywulf-plugins\config\sections.config = graywulf-plugins\config\sections.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -736,6 +759,9 @@ Global
 		{22F28923-33AA-4106-9236-55068B03512F} = {1CFB71E3-01FB-4D6B-947B-EEDF1A52B116}
 		{2FC14E50-1F26-4BE2-8B95-0BB82F13DEF3} = {1CFB71E3-01FB-4D6B-947B-EEDF1A52B116}
 		{2C5632F8-0C1F-4F83-91BE-80522BDE5549} = {A345CE3F-DDE3-40E4-9F53-9ACF32490191}
+		{69CBE883-2F23-4753-9040-C594E6836E46} = {C1B23ACA-3EF8-4EEF-9192-938632124F27}
+		{792FFD0B-8D7B-463A-AF52-BB4B75F2C44C} = {2C0C403F-4604-4DA8-8A2E-C593288D5D57}
+		{12242A6B-95FF-4FFC-9EA7-2FDA235F1CD8} = {1034450D-76D5-4EBA-A1B9-46325C2F6E05}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = skyquery-all.vsmdi
