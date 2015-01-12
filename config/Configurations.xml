@@ -6,7 +6,6 @@
       <merge file="..\..\graywulf\config\sections.config" />
       <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
-      <merge file="registry.config" />
     </project>
     <project name="Jhu.Graywulf.Jobs.CmdLineUtil" path="graywulf\Exe\Jhu.Graywulf.Jobs.CmdLineUtil" type="console">
       <merge file="..\..\graywulf\config\sections.config" />
