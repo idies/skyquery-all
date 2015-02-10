@@ -306,6 +306,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Jhu.SkyQuery.SqlClrLib", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Metadata.Test", "graywulf\test\Jhu.Graywulf.Metadata.Test\Jhu.Graywulf.Metadata.Test.csproj", "{AB11A9B9-D05F-4877-B245-5E9595EF61DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.IO.CmdLineUtil", "graywulf\exe\Jhu.Graywulf.IO.CmdLineUtil\Jhu.Graywulf.IO.CmdLineUtil.csproj", "{77071C20-D4B9-4953-84F8-D50AA75A229D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -688,6 +690,12 @@ Global
 		{AB11A9B9-D05F-4877-B245-5E9595EF61DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB11A9B9-D05F-4877-B245-5E9595EF61DE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB11A9B9-D05F-4877-B245-5E9595EF61DE}.Release|x86.ActiveCfg = Release|Any CPU
+		{77071C20-D4B9-4953-84F8-D50AA75A229D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77071C20-D4B9-4953-84F8-D50AA75A229D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77071C20-D4B9-4953-84F8-D50AA75A229D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{77071C20-D4B9-4953-84F8-D50AA75A229D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77071C20-D4B9-4953-84F8-D50AA75A229D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77071C20-D4B9-4953-84F8-D50AA75A229D}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -773,6 +781,7 @@ Global
 		{12242A6B-95FF-4FFC-9EA7-2FDA235F1CD8} = {1034450D-76D5-4EBA-A1B9-46325C2F6E05}
 		{92919FF0-A3CA-4133-A806-0BF41F17F2B4} = {66A6B425-4D46-4BF6-A6A2-E71D7E5B0502}
 		{AB11A9B9-D05F-4877-B245-5E9595EF61DE} = {31A32854-8930-499D-9DC1-969C3B2CCE36}
+		{77071C20-D4B9-4953-84F8-D50AA75A229D} = {4F1895F8-526E-4F3B-868F-580C86D3EFAD}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = skyquery-all.vsmdi
