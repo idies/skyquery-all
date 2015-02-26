@@ -10,3 +10,6 @@
 [submodule "graywulf-plugins"]
 	path = graywulf-plugins
 	url = git@github.com:idies/graywulf-plugins.git
+[submodule "graywulf-tools"]
+	path = graywulf-tools
+	url = git@github.com:idies/graywulf-tools.git
