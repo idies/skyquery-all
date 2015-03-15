@@ -94,6 +94,7 @@
       <merge file="..\..\graywulf\config\sections.config" />
       <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
+      <merge file="remoteService.config" />
       <merge file="registry.config" />
       <merge file="test.config" />
     </project>
@@ -134,11 +135,11 @@
       <merge file="..\..\graywulf\config\sections.config" />
       <merge file="..\..\graywulf-plugins\config\sections.config" />
       <merge file="connectionStrings.config" />
-      <merge file="domain.config" />
       <merge file="registry.config" />
       <merge file="domain.config" />
       <merge file="federation.config" />
       <merge file="test.config" />
+      <merge file="remoteService.config" />
     </project>
     <!-- SKYQUERY -->
     <project name="Jhu.SkyQuery.Parser.Test" path="skyquery\Test\Jhu.SkyQuery.Parser.Test" type="console">
