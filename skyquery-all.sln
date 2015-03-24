@@ -323,6 +323,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.DBSubset.CmdLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.DBSubset.UI", "graywulf-tools\exe\Jhu.Graywulf.DBSubset.UI\Jhu.Graywulf.DBSubset.UI.csproj", "{363A2C02-E654-47A7-A8A9-0D6A5CC7798A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "preprod.voservices.net", "preprod.voservices.net", "{95905772-3D03-4229-BDAD-EF6E8FCE3D1A}"
+	ProjectSection(SolutionItems) = preProject
+		config\preprod.voservices.net\connectionStrings.config = config\preprod.voservices.net\connectionStrings.config
+		config\preprod.voservices.net\domain.config = config\preprod.voservices.net\domain.config
+		config\preprod.voservices.net\federation.config = config\preprod.voservices.net\federation.config
+		config\preprod.voservices.net\mailSettings.config = config\preprod.voservices.net\mailSettings.config
+		config\preprod.voservices.net\registry.config = config\preprod.voservices.net\registry.config
+		config\preprod.voservices.net\remoteService.config = config\preprod.voservices.net\remoteService.config
+		config\preprod.voservices.net\scheduler.config = config\preprod.voservices.net\scheduler.config
+		config\preprod.voservices.net\test.config = config\preprod.voservices.net\test.config
+		config\preprod.voservices.net\web.config = config\preprod.voservices.net\web.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -829,6 +842,7 @@ Global
 		{B373A2C3-D556-45FC-8F24-DAFFE895B9F7} = {B6B010EB-78BB-45A2-B75B-D80E76E89B6B}
 		{37B0B7E9-A1A8-4333-8E3D-B10A2301BCA0} = {75D17BBB-A4C3-4BC3-B84A-163D4DCB98C9}
 		{363A2C02-E654-47A7-A8A9-0D6A5CC7798A} = {75D17BBB-A4C3-4BC3-B84A-163D4DCB98C9}
+		{95905772-3D03-4229-BDAD-EF6E8FCE3D1A} = {C1B23ACA-3EF8-4EEF-9192-938632124F27}
 	EndGlobalSection
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true
