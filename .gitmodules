@@ -4,6 +4,9 @@
 [submodule "skyquery"]
 	path = skyquery
 	url = git@github.com:idies/skyquery.git
+[submodule "skyquery-config"]
+	path = skyquery-config
+	url = //sciserver03/data/data1/git/skyquery-config
 [submodule "sharpfitsio"]
 	path = sharpfitsio
 	url = git@github.com:idies/sharpfitsio.git

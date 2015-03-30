@@ -336,6 +336,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "preprod.voservices.net", "p
 		config\preprod.voservices.net\web.config = config\preprod.voservices.net\web.config
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.IO.Test", "skyquery\test\Jhu.SkyQuery.IO.Test\Jhu.SkyQuery.IO.Test.csproj", "{20858FCC-4BD6-4E89-9D3F-BCEB7ABA9A92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -750,6 +752,12 @@ Global
 		{363A2C02-E654-47A7-A8A9-0D6A5CC7798A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{363A2C02-E654-47A7-A8A9-0D6A5CC7798A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{363A2C02-E654-47A7-A8A9-0D6A5CC7798A}.Release|x86.ActiveCfg = Release|Any CPU
+		{20858FCC-4BD6-4E89-9D3F-BCEB7ABA9A92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20858FCC-4BD6-4E89-9D3F-BCEB7ABA9A92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20858FCC-4BD6-4E89-9D3F-BCEB7ABA9A92}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{20858FCC-4BD6-4E89-9D3F-BCEB7ABA9A92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20858FCC-4BD6-4E89-9D3F-BCEB7ABA9A92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20858FCC-4BD6-4E89-9D3F-BCEB7ABA9A92}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -843,6 +851,7 @@ Global
 		{37B0B7E9-A1A8-4333-8E3D-B10A2301BCA0} = {75D17BBB-A4C3-4BC3-B84A-163D4DCB98C9}
 		{363A2C02-E654-47A7-A8A9-0D6A5CC7798A} = {75D17BBB-A4C3-4BC3-B84A-163D4DCB98C9}
 		{95905772-3D03-4229-BDAD-EF6E8FCE3D1A} = {C1B23ACA-3EF8-4EEF-9192-938632124F27}
+		{20858FCC-4BD6-4E89-9D3F-BCEB7ABA9A92} = {4692BF22-9181-4F47-993B-94E5F4EC604B}
 	EndGlobalSection
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true
