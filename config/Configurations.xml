@@ -162,6 +162,15 @@
       <merge file="registry.config" />
       <merge file="test.config" />
     </project>
+    <project name="Jhu.SkyQuery.IO.Test" path="skyquery\Test\Jhu.SkyQuery.IO.Test" type="console">
+      <merge file="..\..\graywulf\config\sections.config" />
+      <merge file="..\..\graywulf-plugins\config\sections.config" />
+      <merge file="connectionStrings.config" />
+      <merge file="scheduler.config" />
+      <merge file="remoteService.config" />
+      <merge file="registry.config" />
+      <merge file="test.config" />
+    </project>
     <project name="Jhu.SkyQuery.CmdLineUtil" path="skyquery\Exe\Jhu.SkyQuery.CmdLineUtil" type="console">
       <merge file="..\..\graywulf\config\sections.config" />
       <merge file="..\..\graywulf-plugins\config\sections.config" />
