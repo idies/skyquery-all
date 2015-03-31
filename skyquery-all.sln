@@ -14,37 +14,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{2939F058-FEE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graywulf", "Graywulf", "{2C0C403F-4604-4DA8-8A2E-C593288D5D57}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Default", "Default", "{30859602-EBCE-4886-BE45-444EA42EEB76}"
-	ProjectSection(SolutionItems) = preProject
-		config\default\binaries.config = config\default\binaries.config
-		config\default\connectionStrings.config = config\default\connectionStrings.config
-		config\default\domain.config = config\default\domain.config
-		config\default\federation.config = config\default\federation.config
-		config\default\mailSettings.config = config\default\mailSettings.config
-		config\default\registry.config = config\default\registry.config
-		config\default\remoteService.config = config\default\remoteService.config
-		config\default\scheduler.config = config\default\scheduler.config
-		config\default\test.config = config\default\test.config
-		config\default\web.config = config\default\web.config
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exe", "Exe", "{4F1895F8-526E-4F3B-868F-580C86D3EFAD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{08B75CEE-73A4-4EB5-8C79-2EB3A1DF628C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{31A32854-8930-499D-9DC1-969C3B2CCE36}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "voservices.net", "voservices.net", "{078A5A50-2832-4A6E-BDB2-866E750E7817}"
-	ProjectSection(SolutionItems) = preProject
-		config\voservices.net\binaries.config = config\voservices.net\binaries.config
-		config\voservices.net\connectionStrings.config = config\voservices.net\connectionStrings.config
-		config\voservices.net\mailSettings.config = config\voservices.net\mailSettings.config
-		config\voservices.net\registry.config = config\voservices.net\registry.config
-		config\voservices.net\remoteService.config = config\voservices.net\remoteService.config
-		config\voservices.net\scheduler.config = config\voservices.net\scheduler.config
-		config\voservices.net\test.config = config\voservices.net\test.config
-		config\voservices.net\web.config = config\voservices.net\web.config
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SkyQuery", "SkyQuery", "{D3BA5B7E-66A6-4881-8BE5-50909394F85D}"
 EndProject
@@ -55,31 +29,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{A345CE3F-DDE3-40E4-9F53-9ACF32490191}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{4692BF22-9181-4F47-993B-94E5F4EC604B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dev.voservices.net", "dev.voservices.net", "{4349441F-9512-4D9D-A045-120E8CFEE430}"
-	ProjectSection(SolutionItems) = preProject
-		config\dev.voservices.net\connectionStrings.config = config\dev.voservices.net\connectionStrings.config
-		config\dev.voservices.net\domain.config = config\dev.voservices.net\domain.config
-		config\dev.voservices.net\federation.config = config\dev.voservices.net\federation.config
-		config\dev.voservices.net\mailSettings.config = config\dev.voservices.net\mailSettings.config
-		config\dev.voservices.net\registry.config = config\dev.voservices.net\registry.config
-		config\dev.voservices.net\remoteService.config = config\dev.voservices.net\remoteService.config
-		config\dev.voservices.net\scheduler.config = config\dev.voservices.net\scheduler.config
-		config\dev.voservices.net\test.config = config\dev.voservices.net\test.config
-		config\dev.voservices.net\web.config = config\dev.voservices.net\web.config
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "command-line", "command-line", "{96CABD47-1762-479B-860D-1821319B9A9E}"
-	ProjectSection(SolutionItems) = preProject
-		config\command-line\binaries.config = config\command-line\binaries.config
-		config\command-line\connectionStrings.config = config\command-line\connectionStrings.config
-		config\command-line\mailSettings.config = config\command-line\mailSettings.config
-		config\command-line\registry.config = config\command-line\registry.config
-		config\command-line\remoteService.config = config\command-line\remoteService.config
-		config\command-line\scheduler.config = config\command-line\scheduler.config
-		config\command-line\test.config = config\command-line\test.config
-		config\command-line\web.config = config\command-line\web.config
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{25C43733-9CD8-4979-B507-F8C7D2AC514B}"
 EndProject
@@ -280,19 +229,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Plugins.Test",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Build", "skyquery\build\Jhu.SkyQuery.Build\Jhu.SkyQuery.Build.csproj", "{2C5632F8-0C1F-4F83-91BE-80522BDE5549}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test.voservices.net", "test.voservices.net", "{69CBE883-2F23-4753-9040-C594E6836E46}"
-	ProjectSection(SolutionItems) = preProject
-		config\test.voservices.net\connectionStrings.config = config\test.voservices.net\connectionStrings.config
-		config\test.voservices.net\domain.config = config\test.voservices.net\domain.config
-		config\test.voservices.net\federation.config = config\test.voservices.net\federation.config
-		config\test.voservices.net\mailSettings.config = config\test.voservices.net\mailSettings.config
-		config\test.voservices.net\registry.config = config\test.voservices.net\registry.config
-		config\test.voservices.net\remoteService.config = config\test.voservices.net\remoteService.config
-		config\test.voservices.net\scheduler.config = config\test.voservices.net\scheduler.config
-		config\test.voservices.net\test.config = config\test.voservices.net\test.config
-		config\test.voservices.net\web.config = config\test.voservices.net\web.config
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{792FFD0B-8D7B-463A-AF52-BB4B75F2C44C}"
 	ProjectSection(SolutionItems) = preProject
 		graywulf\config\sections.config = graywulf\config\sections.config
@@ -322,19 +258,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.DBSubset.CmdLineUtil", "graywulf-tools\exe\Jhu.Graywulf.DBSubset.CmdLineUtil\Jhu.Graywulf.DBSubset.CmdLineUtil.csproj", "{37B0B7E9-A1A8-4333-8E3D-B10A2301BCA0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.DBSubset.UI", "graywulf-tools\exe\Jhu.Graywulf.DBSubset.UI\Jhu.Graywulf.DBSubset.UI.csproj", "{363A2C02-E654-47A7-A8A9-0D6A5CC7798A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "preprod.voservices.net", "preprod.voservices.net", "{95905772-3D03-4229-BDAD-EF6E8FCE3D1A}"
-	ProjectSection(SolutionItems) = preProject
-		config\preprod.voservices.net\connectionStrings.config = config\preprod.voservices.net\connectionStrings.config
-		config\preprod.voservices.net\domain.config = config\preprod.voservices.net\domain.config
-		config\preprod.voservices.net\federation.config = config\preprod.voservices.net\federation.config
-		config\preprod.voservices.net\mailSettings.config = config\preprod.voservices.net\mailSettings.config
-		config\preprod.voservices.net\registry.config = config\preprod.voservices.net\registry.config
-		config\preprod.voservices.net\remoteService.config = config\preprod.voservices.net\remoteService.config
-		config\preprod.voservices.net\scheduler.config = config\preprod.voservices.net\scheduler.config
-		config\preprod.voservices.net\test.config = config\preprod.voservices.net\test.config
-		config\preprod.voservices.net\web.config = config\preprod.voservices.net\web.config
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.IO.Test", "skyquery\test\Jhu.SkyQuery.IO.Test\Jhu.SkyQuery.IO.Test.csproj", "{20858FCC-4BD6-4E89-9D3F-BCEB7ABA9A92}"
 EndProject
@@ -765,17 +688,13 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8FA54973-7055-4E53-9BE2-9326DB062BEE} = {2C0C403F-4604-4DA8-8A2E-C593288D5D57}
 		{2939F058-FEE3-4142-BF45-8672DCFD4C11} = {2C0C403F-4604-4DA8-8A2E-C593288D5D57}
-		{30859602-EBCE-4886-BE45-444EA42EEB76} = {C1B23ACA-3EF8-4EEF-9192-938632124F27}
 		{4F1895F8-526E-4F3B-868F-580C86D3EFAD} = {2C0C403F-4604-4DA8-8A2E-C593288D5D57}
 		{08B75CEE-73A4-4EB5-8C79-2EB3A1DF628C} = {2C0C403F-4604-4DA8-8A2E-C593288D5D57}
 		{31A32854-8930-499D-9DC1-969C3B2CCE36} = {2C0C403F-4604-4DA8-8A2E-C593288D5D57}
-		{078A5A50-2832-4A6E-BDB2-866E750E7817} = {C1B23ACA-3EF8-4EEF-9192-938632124F27}
 		{66A6B425-4D46-4BF6-A6A2-E71D7E5B0502} = {D3BA5B7E-66A6-4881-8BE5-50909394F85D}
 		{562D8297-CE76-4791-B697-761CC8AF2622} = {D3BA5B7E-66A6-4881-8BE5-50909394F85D}
 		{A345CE3F-DDE3-40E4-9F53-9ACF32490191} = {D3BA5B7E-66A6-4881-8BE5-50909394F85D}
 		{4692BF22-9181-4F47-993B-94E5F4EC604B} = {D3BA5B7E-66A6-4881-8BE5-50909394F85D}
-		{4349441F-9512-4D9D-A045-120E8CFEE430} = {C1B23ACA-3EF8-4EEF-9192-938632124F27}
-		{96CABD47-1762-479B-860D-1821319B9A9E} = {C1B23ACA-3EF8-4EEF-9192-938632124F27}
 		{25C43733-9CD8-4979-B507-F8C7D2AC514B} = {D3BA5B7E-66A6-4881-8BE5-50909394F85D}
 		{0F7A3033-0385-493B-8DDD-CD70DF048987} = {A868B388-B6B5-4678-9D5B-C479C0D7444F}
 		{3FB297F7-C4DD-4458-8550-6AA123E14315} = {A868B388-B6B5-4678-9D5B-C479C0D7444F}
@@ -838,7 +757,6 @@ Global
 		{22F28923-33AA-4106-9236-55068B03512F} = {1CFB71E3-01FB-4D6B-947B-EEDF1A52B116}
 		{2FC14E50-1F26-4BE2-8B95-0BB82F13DEF3} = {1CFB71E3-01FB-4D6B-947B-EEDF1A52B116}
 		{2C5632F8-0C1F-4F83-91BE-80522BDE5549} = {A345CE3F-DDE3-40E4-9F53-9ACF32490191}
-		{69CBE883-2F23-4753-9040-C594E6836E46} = {C1B23ACA-3EF8-4EEF-9192-938632124F27}
 		{792FFD0B-8D7B-463A-AF52-BB4B75F2C44C} = {2C0C403F-4604-4DA8-8A2E-C593288D5D57}
 		{12242A6B-95FF-4FFC-9EA7-2FDA235F1CD8} = {1034450D-76D5-4EBA-A1B9-46325C2F6E05}
 		{92919FF0-A3CA-4133-A806-0BF41F17F2B4} = {66A6B425-4D46-4BF6-A6A2-E71D7E5B0502}
@@ -850,7 +768,6 @@ Global
 		{B373A2C3-D556-45FC-8F24-DAFFE895B9F7} = {B6B010EB-78BB-45A2-B75B-D80E76E89B6B}
 		{37B0B7E9-A1A8-4333-8E3D-B10A2301BCA0} = {75D17BBB-A4C3-4BC3-B84A-163D4DCB98C9}
 		{363A2C02-E654-47A7-A8A9-0D6A5CC7798A} = {75D17BBB-A4C3-4BC3-B84A-163D4DCB98C9}
-		{95905772-3D03-4229-BDAD-EF6E8FCE3D1A} = {C1B23ACA-3EF8-4EEF-9192-938632124F27}
 		{20858FCC-4BD6-4E89-9D3F-BCEB7ABA9A92} = {4692BF22-9181-4F47-993B-94E5F4EC604B}
 	EndGlobalSection
 	GlobalSection(Performance) = preSolution
