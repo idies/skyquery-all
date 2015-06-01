@@ -27,3 +27,7 @@ When commiting the supermodule, Git marks submodules as dirty when untracked fil
 **A few build issues**
 
 Many projects in the solution are configured to use NuGet. NuGet packages are not always automatically restored (downloaded) on build. To force package restore, right click on the solution and enable package restore. Certain packages required by REST WCF are tricky to restore (Microsoft.Bcl is an especially picky one). If these don't restore automatically, try restarting Visual Studio.
+
+--
+
+This research project is supported by the following Hungarian grants: OTKA NN 103244, OTKA NN 114560
