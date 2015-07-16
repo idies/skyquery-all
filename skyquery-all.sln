@@ -770,9 +770,6 @@ Global
 		{363A2C02-E654-47A7-A8A9-0D6A5CC7798A} = {75D17BBB-A4C3-4BC3-B84A-163D4DCB98C9}
 		{20858FCC-4BD6-4E89-9D3F-BCEB7ABA9A92} = {4692BF22-9181-4F47-993B-94E5F4EC604B}
 	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
-	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = skyquery-all.vsmdi
 	EndGlobalSection
