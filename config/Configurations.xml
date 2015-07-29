@@ -174,7 +174,7 @@
     <project name="Jhu.SkyQuery.CmdLineUtil" path="skyquery\Exe\Jhu.SkyQuery.CmdLineUtil" type="console">
       <merge file="..\..\graywulf\config\sections.config" />
       <merge file="..\..\graywulf-plugins\config\sections.config" />
-      <merge file="connectionStrings.config" />
+      <merge file="commandLine.config" />
     </project>
     <project name="Jhu.SkyQuery.Install.CmdLineUtil" path="skyquery\Exe\Jhu.SkyQuery.Install.CmdLineUtil" type="console">
       <merge file="..\..\graywulf\config\sections.config" />
