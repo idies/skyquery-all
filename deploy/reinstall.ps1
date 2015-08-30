@@ -35,6 +35,20 @@ if ($skyquery_deploywww)
 	foreach ( $s in $controller ) { cp .\bin\$skyquery_config\* \\$s\$skyquery_www -recurse -force }
 }
 
+# Deoploy code database scripts
+if ($skyquery_deploycodedb)
+{
+	echo "Deploying CODE DB scripts"
+	foreach ( $s  in $nodes ) 
+	{ 
+		echo $s
+		sqlcmd -S $s -E -d $skyquery_codedb -i .\bin\$skyquery_config\Jhu.SkyQuery.SqlClrLib.Drop.sql 
+		sqlcmd -S $s -E -d $skyquery_codedb -i .\bin\$skyquery_config\Jhu.Spherical.Sql.Drop.sql
+		sqlcmd -S $s -E -d $skyquery_codedb -i .\bin\$skyquery_config\Jhu.Spherical.Sql.Create.sql
+		sqlcmd -S $s -E -d $skyquery_codedb -i .\bin\$skyquery_config\Jhu.SkyQuery.SqlClrLib.Create.sql
+	}
+}
+
 # Restart remoting service
 if ($skyquery_deployremoteservice)
 {
