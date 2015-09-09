@@ -32,7 +32,7 @@ if ($skyquery_deployscheduler -or $skyquery_deployremoteservice)
 if ($skyquery_deploywww)
 {
 	echo "Deploying web site to controller"
-	foreach ( $s in $controller ) { cp .\bin\$skyquery_config\* \\$s\$skyquery_www -recurse -force }
+	foreach ( $s in $controller ) { cp .\www\* \\$s\$skyquery_www -recurse -force }
 }
 
 # Deoploy code database scripts
