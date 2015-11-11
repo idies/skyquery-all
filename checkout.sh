@@ -16,4 +16,7 @@ git checkout -b v1.1/develop remotes/origin/v1.1/develop --
 cd ../skyquery-config
 git checkout -b v1.1/develop remotes/origin/v1.1/develop --
 
+cd ../skyquery-skynodes
+git checkout -b v1.1/develop remotes/origin/v1.1/develop --
+
 cd ..
