@@ -16,3 +16,6 @@
 [submodule "graywulf-tools"]
 	path = graywulf-tools
 	url = git@github.com:idies/graywulf-tools.git
+[submodule "skyquery-skynodes"]
+	path = skyquery-skynodes
+	url = git@github.com:sciserver/skyquery-skynodes.git
