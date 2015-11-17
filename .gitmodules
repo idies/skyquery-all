@@ -1,24 +1,24 @@
 [submodule "graywulf"]
 	path = graywulf
-	url = ../graywulf.git
+	url = git@github.com:sciserver/graywulf.git
 [submodule "skyquery"]
 	path = skyquery
-	url = ../skyquery.git
+	url = git@github.com:sciserver/skyquery.git
 [submodule "sharpfitsio"]
 	path = sharpfitsio
-	url = ../sharpfitsio.git
+	url = git@github.com:sciserver/sharpfitsio.git
 [submodule "graywulf-plugins"]
 	path = graywulf-plugins
-	url = ../graywulf-plugins.git
+	url = git@github.com:sciserver/graywulf-plugins.git
 [submodule "graywulf-tools"]
 	path = graywulf-tools
-	url = ../graywulf-tools.git
+	url = git@github.com:sciserver/graywulf-tools.git
 [submodule "spherical"]
 	path = spherical
-	url = ../spherical.git
+	url = git@github.com:sciserver/spherical.git
 [submodule "skyquery-config"]
 	path = skyquery-config
-	url = ../skyquery-config.git
+	url = git@github.com:sciserver/skyquery-config.git
 [submodule "skyquery-skynodes"]
 	path = skyquery-skynodes
-	url = ../skyquery-skynodes.git
+	url = git@github.com:sciserver/skyquery-skynodes.git
