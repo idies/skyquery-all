@@ -4,9 +4,6 @@
 [submodule "skyquery"]
 	path = skyquery
 	url = ../skyquery.git
-[submodule "skyquery-config"]
-	path = skyquery-config
-	url = ../skyquery-config
 [submodule "sharpfitsio"]
 	path = sharpfitsio
 	url = ../sharpfitsio.git
@@ -19,3 +16,9 @@
 [submodule "spherical"]
 	path = spherical
 	url = ../spherical.git
+[submodule "skyquery-config"]
+	path = skyquery-config
+	url = ../skyquery-config.git
+[submodule "skyquery-skynodes"]
+	path = skyquery-skynodes
+	url = ../skyquery-skynodes.git
