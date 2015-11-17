@@ -22,4 +22,7 @@ git checkout -B v1.1/develop remotes/origin/v1.1/develop --
 cd ../skyquery-skynodes
 git checkout -B v1.1/develop remotes/origin/v1.1/develop --
 
+cd ../spherical
+git checkout -B develop remotes/origin/develop --
+
 cd ..
