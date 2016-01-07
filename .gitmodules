@@ -22,3 +22,6 @@
 [submodule "skyquery-skynodes"]
 	path = skyquery-skynodes
 	url = git@github.com:sciserver/skyquery-skynodes.git
+[submodule "footprint"]
+	path = footprint
+	url = git@github.com:sciserver/footprint.git

@@ -25,4 +25,7 @@ git checkout -B v1.1/develop remotes/origin/v1.1/develop --
 cd ../spherical
 git checkout -B develop remotes/origin/develop --
 
+cd ../footprint
+git checkout -B v2.0/develop remotes/origin/v2.0/develop --
+
 cd ..
