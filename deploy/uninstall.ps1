@@ -3,8 +3,6 @@
 # . .\skyquery-config\scidev01\configure.ps1
 # .\deploy\uninstall.ps1
 
-$controller = $skyquery_controller
-
 $fwpath = [System.Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()
 
 # Stop the scheduler

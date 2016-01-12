@@ -3,10 +3,6 @@
 # . .\skyquery-config\scidev01\configure.ps1
 # .\deploy\reinstall.ps1
 
-$controller = $skyquery_controller
-$nodes = $skyquery_nodes
-$servers = $controller + $nodes
-
 $fwpath = [System.Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()
 
 # Prompt for user account to be used for service install
