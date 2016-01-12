@@ -305,6 +305,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.ScriptGenerat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.SqlClrUtil", "graywulf\build\Jhu.Graywulf.SqlClrUtil\Jhu.Graywulf.SqlClrUtil.csproj", "{CC75D904-89FB-40CD-9EA3-55359FFE1540}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{99798FF2-1023-499E-8160-B7779BEA287B}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\install.ps1 = deploy\install.ps1
+		deploy\reinstall.ps1 = deploy\reinstall.ps1
+		deploy\uninstall.ps1 = deploy\uninstall.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

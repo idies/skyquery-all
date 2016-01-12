@@ -19,34 +19,41 @@ if ($skyquery_deployscheduler -or $skyquery_deployremoteservice) {
 # Copy binaries
 if ($skyquery_deployscheduler -or $skyquery_deployremoteservice) {
 	echo "Copying binaries to all servers..."
-	foreach ( $s in $servers ) {
+	foreach ( $s in ($skyquery_scheduler_nodes + $skyquery_remoteservice_nodes)) {
 		if (-Not (Test-Path \\$s\$skyquery_gwbin)) {
 			mkdir \\$s\$skyquery_gwbin
 		}
 		rm -force -recurse \\$s\$skyquery_gwbin\*
-		cp .\bin\$skyquery_config\* \\$s\$skyquery_gwbin -recurse -force 
+		cp .\bin\$skyquery_target\* \\$s\$skyquery_gwbin -recurse -force 
 	}
 }
 
-# Install remoting service (need to run manually because asks for password
+# Install remoting service
 if ($skyquery_deployremoteservice) {
 	echo "Installing remoting service"
-	icm $servers -Script {
-		param($un, $pw, $gw, $fw) 
-		& $fw\InstallUtil.exe /username=$un /password=$pw /unattended C:\$gw\gwrsvr.exe
-	} -Args $user, $pass, $skyquery_gwbin, $fwpath
-#& 'C:\windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe' C:\data\data0\graywulf\bin\debug\gwrsvr.exe
+	icm $skyquery_remoteservice_nodes -Script {
+		param($un, $pw, $gw, $fw, $sn) 
+		& $fw\InstallUtil.exe /username=$un /password=$pw /unattended /svcname=$sn C:\$gw\gwrsvr.exe
+	} -Args $user, $pass, $skyquery_gwbin, $fwpath, $skyquery_remoteservice
 }
 
-# Install scheduler (need to run manually because asks for password
-#& 'C:\windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe' C:\data\data0\graywulf\bin\debug\gwscheduler.exe
+# Install scheduler
+# TODO
 
+# Start remote service
+if ($skyquery_deployremoteservice) {
+	echo "Starting remoting service '$skyquery_remoteservice' on all servers..."
+	icm $skyquery_remoteservice_nodes -Script { 
+		param($sn) 
+		net start $sn 
+	} -Args $skyquery_remoteservice
+}
 
-# Start services
-#icm $servers { net start GWRSvr }
-#icm $controller { net start SchedulerService }
+# Start scheduler
+# TODO
 
 
 # Copy web site
+# TODO
 #cp C:\Data\dobos\project\skyquery-all\bin \\scitest02\data\dobos\project\skyquery-all -Force -Recurse
 #cp C:\Data\dobos\project\skyquery-all\www \\scitest02\data\dobos\project\skyquery-all -Force -Recurse

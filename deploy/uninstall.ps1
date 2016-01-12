@@ -35,7 +35,7 @@ if ($skyquery_deployremoteservice)
 	echo "Uninstalling remoting service '$skyquery_remoteservice' on all servers..."
 	icm $skyquery_remoteservice_nodes -Script { 
 		param($gw, $fw, $sn) 
-		& $fw\InstallUtil.exe /u /scvname=$sn C:\$gw\gwrsvr.exe
+		& $fw\InstallUtil.exe /u /svcname=$sn C:\$gw\gwrsvr.exe
 	} -Args $skyquery_gwbin, $fwpath, $skyquery_remoteservice
 }
 
