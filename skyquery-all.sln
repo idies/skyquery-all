@@ -237,8 +237,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{12242A
 		graywulf-plugins\config\sections.config = graywulf-plugins\config\sections.config
 	EndProjectSection
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Jhu.SkyQuery.SqlClrLib", "skyquery\dll\Jhu.SkyQuery.SqlClrLib\Jhu.SkyQuery.SqlClrLib.sqlproj", "{92919FF0-A3CA-4133-A806-0BF41F17F2B4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Metadata.Test", "graywulf\test\Jhu.Graywulf.Metadata.Test\Jhu.Graywulf.Metadata.Test.csproj", "{AB11A9B9-D05F-4877-B245-5E9595EF61DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.IO.CmdLineUtil", "graywulf\exe\Jhu.Graywulf.IO.CmdLineUtil\Jhu.Graywulf.IO.CmdLineUtil.csproj", "{77071C20-D4B9-4953-84F8-D50AA75A229D}"
@@ -321,6 +319,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Entities.Test", "graywulf\test\Jhu.Graywulf.Entities.Test\Jhu.Graywulf.Entities.Test.csproj", "{160F090C-EAD7-4C6D-AA3C-54FDA7082088}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Entities.Build", "graywulf\build\Jhu.Graywulf.Entities.Build\Jhu.Graywulf.Entities.Build.csproj", "{B25AD38F-0515-481F-A7CB-2A252B9257FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.SqlClrLib", "skyquery\dll\Jhu.SkyQuery.SqlClrLib\Jhu.SkyQuery.SqlClrLib.csproj", "{95BF44FB-0D5E-4E2A-AAF6-C4B43F9F68DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sql", "Sql", "{B68CA56A-EEEA-475D-AA13-9C1021AA9574}"
+	ProjectSection(SolutionItems) = preProject
+		graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Create.sql = graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Create.sql
+		graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Drop.sql = graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Drop.sql
+		graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Test.sql = graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Test.sql
+		graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Test.sql = graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Test.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -681,14 +689,6 @@ Global
 		{2C5632F8-0C1F-4F83-91BE-80522BDE5549}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C5632F8-0C1F-4F83-91BE-80522BDE5549}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2C5632F8-0C1F-4F83-91BE-80522BDE5549}.Release|x86.ActiveCfg = Release|Any CPU
-		{92919FF0-A3CA-4133-A806-0BF41F17F2B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92919FF0-A3CA-4133-A806-0BF41F17F2B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{92919FF0-A3CA-4133-A806-0BF41F17F2B4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{92919FF0-A3CA-4133-A806-0BF41F17F2B4}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{92919FF0-A3CA-4133-A806-0BF41F17F2B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{92919FF0-A3CA-4133-A806-0BF41F17F2B4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{92919FF0-A3CA-4133-A806-0BF41F17F2B4}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{92919FF0-A3CA-4133-A806-0BF41F17F2B4}.Release|x86.ActiveCfg = Release|Any CPU
 		{AB11A9B9-D05F-4877-B245-5E9595EF61DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AB11A9B9-D05F-4877-B245-5E9595EF61DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB11A9B9-D05F-4877-B245-5E9595EF61DE}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -885,6 +885,14 @@ Global
 		{B25AD38F-0515-481F-A7CB-2A252B9257FA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B25AD38F-0515-481F-A7CB-2A252B9257FA}.Release|x86.ActiveCfg = Release|Any CPU
 		{B25AD38F-0515-481F-A7CB-2A252B9257FA}.Release|x86.Build.0 = Release|Any CPU
+		{95BF44FB-0D5E-4E2A-AAF6-C4B43F9F68DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95BF44FB-0D5E-4E2A-AAF6-C4B43F9F68DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95BF44FB-0D5E-4E2A-AAF6-C4B43F9F68DB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{95BF44FB-0D5E-4E2A-AAF6-C4B43F9F68DB}.Debug|x86.Build.0 = Debug|Any CPU
+		{95BF44FB-0D5E-4E2A-AAF6-C4B43F9F68DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95BF44FB-0D5E-4E2A-AAF6-C4B43F9F68DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95BF44FB-0D5E-4E2A-AAF6-C4B43F9F68DB}.Release|x86.ActiveCfg = Release|Any CPU
+		{95BF44FB-0D5E-4E2A-AAF6-C4B43F9F68DB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -962,7 +970,6 @@ Global
 		{2C5632F8-0C1F-4F83-91BE-80522BDE5549} = {A345CE3F-DDE3-40E4-9F53-9ACF32490191}
 		{792FFD0B-8D7B-463A-AF52-BB4B75F2C44C} = {2C0C403F-4604-4DA8-8A2E-C593288D5D57}
 		{12242A6B-95FF-4FFC-9EA7-2FDA235F1CD8} = {1034450D-76D5-4EBA-A1B9-46325C2F6E05}
-		{92919FF0-A3CA-4133-A806-0BF41F17F2B4} = {66A6B425-4D46-4BF6-A6A2-E71D7E5B0502}
 		{AB11A9B9-D05F-4877-B245-5E9595EF61DE} = {31A32854-8930-499D-9DC1-969C3B2CCE36}
 		{77071C20-D4B9-4953-84F8-D50AA75A229D} = {4F1895F8-526E-4F3B-868F-580C86D3EFAD}
 		{B6B010EB-78BB-45A2-B75B-D80E76E89B6B} = {7B5D4C8B-C554-446D-BCF2-3DEC3A4D87DB}
@@ -999,6 +1006,8 @@ Global
 		{96B78C89-3E68-450B-B08B-48A7E8073759} = {31A32854-8930-499D-9DC1-969C3B2CCE36}
 		{160F090C-EAD7-4C6D-AA3C-54FDA7082088} = {31A32854-8930-499D-9DC1-969C3B2CCE36}
 		{B25AD38F-0515-481F-A7CB-2A252B9257FA} = {8FA54973-7055-4E53-9BE2-9326DB062BEE}
+		{95BF44FB-0D5E-4E2A-AAF6-C4B43F9F68DB} = {66A6B425-4D46-4BF6-A6A2-E71D7E5B0502}
+		{B68CA56A-EEEA-475D-AA13-9C1021AA9574} = {2C0C403F-4604-4DA8-8A2E-C593288D5D57}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = skyquery-all.vsmdi
