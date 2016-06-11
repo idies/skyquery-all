@@ -154,8 +154,12 @@
     <project name="Jhu.SkyQuery.IO.Test" path="skyquery\Test\Jhu.SkyQuery.IO.Test" type="console">
       <merge file="..\..\graywulf\config\sections.config" />
       <merge file="..\..\graywulf-plugins\config\sections.config" />
+      <merge file="connectionStrings.config" />
       <merge file="registry.config" />
+      <merge file="domain.config" />
+      <merge file="federation.config" />
       <merge file="test.config" />
+      <merge file="remoteService.config" />
     </project>
     <project name="Jhu.SkyQuery.Test" path="skyquery\Test\Jhu.SkyQuery.Test" type="console">
       <merge file="..\..\graywulf\config\sections.config" />
