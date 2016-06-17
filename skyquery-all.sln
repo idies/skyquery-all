@@ -328,6 +328,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sql", "Sql", "{B68CA56A-EEE
 		graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Drop.sql = graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Drop.sql
 		graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Test.sql = graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Test.sql
 		graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Test.sql = graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Test.sql
+		graywulf\sql\Jhu.Graywulf.Registry.Logic.sql = graywulf\sql\Jhu.Graywulf.Registry.Logic.sql
+		graywulf\sql\Jhu.Graywulf.Registry.Tables.sql = graywulf\sql\Jhu.Graywulf.Registry.Tables.sql
 	EndProjectSection
 EndProject
 Global
