@@ -39,10 +39,13 @@ if ($skyquery_deploycodedb)
 	foreach ( $s  in $skyquery_database_nodes ) 
 	{ 
 		echo $s
+		sqlcmd -S $s -E -d $skyquery_codedb -i .\bin\$skyquery_target\Jhu.Graywulf.DBSubset.SqlClrLib.Drop.sql
 		sqlcmd -S $s -E -d $skyquery_codedb -i .\bin\$skyquery_target\Jhu.SkyQuery.SqlClrLib.Drop.sql 
 		sqlcmd -S $s -E -d $skyquery_codedb -i .\bin\$skyquery_target\Jhu.Spherical.Sql.Drop.sql
+		
 		sqlcmd -S $s -E -d $skyquery_codedb -i .\bin\$skyquery_target\Jhu.Spherical.Sql.Create.sql
 		sqlcmd -S $s -E -d $skyquery_codedb -i .\bin\$skyquery_target\Jhu.SkyQuery.SqlClrLib.Create.sql
+		sqlcmd -S $s -E -d $skyquery_codedb -i .\bin\$skyquery_target\Jhu.Graywulf.DBSubset.SqlClrLib.Create.sql
 	}
 }
 
