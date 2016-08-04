@@ -332,6 +332,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sql", "Sql", "{B68CA56A-EEE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.DBSubset.SqlClrLib", "graywulf-tools\dll\Jhu.Graywulf.DBSubset.SqlClrLib\Jhu.Graywulf.DBSubset.SqlClrLib.csproj", "{01A2F334-D2BF-4796-964B-0422F7ABB5F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Install.Test", "graywulf\test\Jhu.Graywulf.Install.Test\Jhu.Graywulf.Install.Test.csproj", "{80D215D3-A1FB-434A-B491-1B9F6F3F64AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -895,6 +897,14 @@ Global
 		{01A2F334-D2BF-4796-964B-0422F7ABB5F0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{01A2F334-D2BF-4796-964B-0422F7ABB5F0}.Release|x86.ActiveCfg = Release|Any CPU
 		{01A2F334-D2BF-4796-964B-0422F7ABB5F0}.Release|x86.Build.0 = Release|Any CPU
+		{80D215D3-A1FB-434A-B491-1B9F6F3F64AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80D215D3-A1FB-434A-B491-1B9F6F3F64AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80D215D3-A1FB-434A-B491-1B9F6F3F64AD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{80D215D3-A1FB-434A-B491-1B9F6F3F64AD}.Debug|x86.Build.0 = Debug|Any CPU
+		{80D215D3-A1FB-434A-B491-1B9F6F3F64AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80D215D3-A1FB-434A-B491-1B9F6F3F64AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80D215D3-A1FB-434A-B491-1B9F6F3F64AD}.Release|x86.ActiveCfg = Release|Any CPU
+		{80D215D3-A1FB-434A-B491-1B9F6F3F64AD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1010,6 +1020,7 @@ Global
 		{95BF44FB-0D5E-4E2A-AAF6-C4B43F9F68DB} = {66A6B425-4D46-4BF6-A6A2-E71D7E5B0502}
 		{B68CA56A-EEEA-475D-AA13-9C1021AA9574} = {2C0C403F-4604-4DA8-8A2E-C593288D5D57}
 		{01A2F334-D2BF-4796-964B-0422F7ABB5F0} = {B6B010EB-78BB-45A2-B75B-D80E76E89B6B}
+		{80D215D3-A1FB-434A-B491-1B9F6F3F64AD} = {31A32854-8930-499D-9DC1-969C3B2CCE36}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = skyquery-all.vsmdi
