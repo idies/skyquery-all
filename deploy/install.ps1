@@ -1,34 +1,6 @@
 ﻿# Installs SkyQuery binary components and web sites for the first time
 # .\deploy\install.ps1 [config]
 
-function ExitOnError() {
-	if ($LastExitCode -gt 0) { 
-		exit 
-	}
-}
-
-function FindMachines($role) {
-	$csb = New-Object System.Data.SqlClient.SqlConnectionStringBuilder
-	$csb["Data Source"] = $skyquery_registrysql
-	$csb["Initial Catalog"] = $skyquery_registrydb
-	$csb["MultipleActiveResultsets"] = $TRUE
-	$csb["Integrated Security"] = $TRUE
-	[Jhu.Graywulf.Registry.ContextManager]::Instance.ConnectionString = $csb.ConnectionString
-	$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
-	$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
-
-	$mr = $ef.LoadEntity($role)
-	$mr.LoadMachines($TRUE)
-	$mm = $mr.Machines.Values | select -ExpandProperty HostName | select -ExpandProperty ResolvedValue
-	
-	$context.Dispose()
-	
-	return $mm
-}
-
-# Import references
-Add-Type -Path ".\bin\Debug\Jhu.Graywulf.Registry.dll"
-
 # Stop on any error
 $ErrorActionPreference = "Stop"
 $fwpath = [System.Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()
@@ -36,6 +8,11 @@ $fwpath = [System.Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirecto
 # Load config
 $config = $args[0] 
 . .\$config\configure.ps1
+. .\deploy\instlib.ps1
+
+# Initialize registry
+Add-Type -Path ".\bin\$skyquery_target\Jhu.Graywulf.Registry.dll"
+LoadRegistryConnectionString
 
 # Prompt for user account to be used for service install
 if ($FALSE) { # ($skyquery_deployscheduler -or $skyquery_deployremoteservice) {
@@ -80,18 +57,21 @@ if ($FALSE) { #($skyquery_deployregistry) {
 }
 
 # Find servers
-echo "Find servers..."
+echo "Finding servers..."
 $skyquery_controller = FindMachines("MachineRole:Graywulf\Controller")
-$skyquery_controller
+Write-Host $skyquery_controller
 $skyquery_skynode = FindMachines("MachineRole:Graywulf\SkyNode")
-$skyquery_skynode
+Write-Host $skyquery_skynode
+$skyquery_skynode_sql = FindServerInstances("MachineRole:Graywulf\SkyNode")
+Write-Host $skyquery_skynode_sql
 
-exit
+# TODO: find web servers
+# TODO: add mydb hosts
 
 # Copy binaries
 if ($skyquery_deployscheduler -or $skyquery_deployremoteservice) {
 	echo "Copying binaries to all servers..."
-	foreach ( $s in ($skyquery_scheduler_nodes + $skyquery_remoteservice_nodes)) {
+	foreach ( $s in ($skyquery_controller + $skyquery_skynode)) {
 		if (-Not (Test-Path \\$s\$skyquery_gwbin)) {
 			mkdir \\$s\$skyquery_gwbin
 		}
@@ -103,7 +83,8 @@ if ($skyquery_deployscheduler -or $skyquery_deployremoteservice) {
 # Install remoting service
 if ($skyquery_deployremoteservice) {
 	echo "Installing remoting service"
-	icm $skyquery_remoteservice_nodes -Script {
+	$ss = $skyquery_controller + $skyquery_skynode
+	icm $ss -Script {
 		param($un, $pw, $gw, $fw, $sn) 
 		& $fw\InstallUtil.exe /username=$un /password=$pw /unattended /svcname=$sn C:\$gw\gwrsvr.exe
 	} -Args $user, $pass, $skyquery_gwbin, $fwpath, $skyquery_remoteservice
@@ -121,7 +102,7 @@ if ($skyquery_deployremoteservice) {
 # Install scheduler
 if ($skyquery_deployscheduler) {
 	echo "Installing scheduler"
-	icm $skyquery_scheduler_nodes -Script {
+	icm $skyquery_controller -Script {
 		param($un, $pw, $gw, $fw, $sn) 
 		& $fw\InstallUtil.exe /username=$un /password=$pw /unattended /svcname=$sn C:\$gw\gwscheduler.exe
 	} -Args $user, $pass, $skyquery_gwbin, $fwpath, $skyquery_schedulerservice
@@ -130,11 +111,13 @@ if ($skyquery_deployscheduler) {
 # Start scheduler
 if ($skyquery_deployscheduler) {
 	echo "Starting scheduler service '$skyquery_schedulerservice' on the controllers..."
-	icm $skyquery_scheduler_nodes -Script { 
+	icm $skyquery_controller -Script { 
 		param($sn) 
 		net start $sn 
 	} -Args $skyquery_schedulerservice
 }
+
+exit
 
 # Copy web site
 if ($skyquery_deploywww) {
