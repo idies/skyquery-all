@@ -1,41 +1,31 @@
 # Uninstalls SkyQuery binary components and web sites.
-# Before execution, make sure to dot source an appropriate config file:
-# . .\skyquery-config\scidev01\configure.ps1
-# .\deploy\uninstall.ps1
+# .\deploy\uninstall.ps1 [config]
 
-$fwpath = [System.Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()
+# Stop on any error
+$ErrorActionPreference = "Continue"
 
-# Stop the scheduler
-#if ($skyquery_deployscheduler) {
-#	echo "Stopping scheduler on the controller..."
-# TODO
-#}
+# Load config
+$config = $args[0]
+. .\$config\configure.ps1
+Write-Host "Configured for $skyquery_config"
 
-# Uninstall the scheduler service
-#if ($skyquery_deployscheduler) {
-#	echo "Uninstalling scheduler..."
-# TODO
-#}
+# Initialize install library
+. .\deploy\instlib.ps1
+Init
 
-# Stop the remoting service
-if ($skyquery_deployremoteservice)
-{
-	echo "Stopping remoting service '$skyquery_remoteservice' on all servers..."
-	icm $skyquery_remoteservice_nodes -Script { 
-		param($sn) 
-		net stop $sn 
-	} -Args $skyquery_remoteservice
-}
+# Find servers
+FindServers
+PrintServers
 
-# Uninstall the remoting service
-if ($skyquery_deployremoteservice)
-{
-	echo "Uninstalling remoting service '$skyquery_remoteservice' on all servers..."
-	icm $skyquery_remoteservice_nodes -Script { 
-		param($gw, $fw, $sn) 
-		& $fw\InstallUtil.exe /u /svcname=$sn C:\$gw\gwrsvr.exe
-	} -Args $skyquery_gwbin, $fwpath, $skyquery_remoteservice
-}
 
-# Delete binaries
-# TODO
+# Uninstall the scheduler
+StopScheduler
+RemoveScheduler
+
+# Uninstall the remoting services
+StopRemotingService
+RemoveRemotingService
+
+# TODO: remove web sites
+
+RemoveBinaries
