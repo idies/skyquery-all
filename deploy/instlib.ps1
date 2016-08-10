@@ -1,27 +1,33 @@
-function Init($config) {
-	# Framework path
-	$global:fwpath = [System.Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()
-		
-	# Initialize registry
-	InitRegistry
-}
+#region Logging
 
-function ExitOnError() {
-	if ($global:LastExitCode -gt 0) { 
-		exit 
+function InstallLogging() {
+	if ($skyquery_deployregistry) {
+		Write-Host "Creating database for logging..."
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateLog -Q -Username "$skyquery_user" -Role "db_owner"
 	}
 }
 
-function AskPassword() {
-	$cred = Get-Credential $skyquery_serviceaccount
-	$cred.UserName
-	$cred.GetNetworkCredential().Password
+#endregion
+# -------------------------------------------------------------
+#region Job persistence
+
+function InstallJobPersistence() {
+	if ($skyquery_deployregistry) {
+		Write-Host "Creating database for job persistence store..."
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateJobPersistence -Q -Username "$skyquery_user" -Role "db_owner"
+	}
 }
+
+#endregion
+# -------------------------------------------------------------
+#region Registry
 
 function InitRegistry() {
 	Add-Type -Path ".\bin\$skyquery_target\Jhu.Graywulf.Registry.dll"
 	Add-Type -Path ".\bin\$skyquery_target\Jhu.Graywulf.Registry.Enum.dll"
 	LoadRegistryConnectionString
+	$cstr =[Jhu.Graywulf.Registry.ContextManager]::Instance.ConnectionString
+	Write-Host $cstr
 }
 
 function LoadRegistryConnectionString() {
@@ -31,78 +37,31 @@ function LoadRegistryConnectionString() {
 	[Jhu.Graywulf.Registry.ContextManager]::Instance.ConnectionString = $cstr
 }
 
-function InstallLogging() {
-	Write-Host "Creating database for logging..."
-	& .\bin\$skyquery_target\gwregutil.exe CreateLog -Q -Username "$skyquery_user" -Role "db_owner"
-	ExitOnError
-}
-
-function InstalleJobPersistence() {
-	Write-Host "Creating database for job persistence store..."
-	& .\bin\$skyquery_target\gwregutil.exe CreateJobPersistence -Q -Username "$skyquery_user" -Role "db_owner"
-	ExitOnError
-}
-
 function InstallRegistry() {
-	Write-Host "Creating database for registry..."
-	& .\bin\$skyquery_target\gwregutil.exe CreateRegistry -Q -Username "$skyquery_user" -Role "db_owner"
-	ExitOnError
-	& .\bin\$skyquery_target\gwregutil.exe AddCluster -Q -cluster "Graywulf" -User admin -Email admin@graywulf.org -Password alma
-	ExitOnError
-	& .\bin\$skyquery_target\gwregutil.exe AddDomain -Q -cluster "Cluster:Graywulf" -Domain "SciServer"
-	ExitOnError
-}
-
-function InstallSkyQuery() {
-	Write-Host "Installing SkyQuery..."
-	& .\bin\$skyquery_target\sqregutil.exe install -Domain "Domain:Graywulf\SciServer"
-	ExitOnError
+	if ($skyquery_deployregistry) {
+		Write-Host "Creating database for registry..."
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateRegistry -Q -Username "$skyquery_user" -Role "db_owner"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddCluster -Q -cluster "Graywulf" -User admin -Email admin@graywulf.org -Password alma
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddDomain -Q -cluster "Cluster:Graywulf" -Domain "SciServer"
+	}
 }
 
 function ImportRegistry() {
-	Write-Host "Importing registry: cluster..."
-	& .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\SkyQuery_Cluster.xml -Duplicates Update
-	ExitOnError
-	Write-Host "Importing registry: federation..."
-	& .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\SkyQuery_Federation.xml -Duplicates Update
-	ExitOnError
-	Write-Host "Importing registry: layout..."
-	& .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\SkyQuery_Layout.xml -Duplicates Update
-	ExitOnError
+	if ($skyquery_deployregistry) {
+		Write-Host "Importing registry: cluster..."
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\SkyQuery_Cluster.xml -Duplicates Update
+		Write-Host "Importing registry: federation..."
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\SkyQuery_Federation.xml -Duplicates Update
+		Write-Host "Importing registry: layout..."
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\SkyQuery_Layout.xml -Duplicates Update
+	}
 }
 
-function FindMachines($role) {
-	$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
-	
-		$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
-		$mr = $ef.LoadEntity($role)
-		$mr.LoadMachines($TRUE)
-		$mm = $mr.Machines.Values | 
-			where-object {$_.DeploymentState -eq [Jhu.Graywulf.Registry.DeploymentState]::Deployed} |
-			foreach { "$($_.Hostname.ResolvedValue)" }
-	
-	$context.Dispose()
-	
-	$mm
-}
-
-function FindServerInstances($role) {
-	$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
-	
-		$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
-		$mr = $ef.LoadEntity($role)
-		$mr.LoadMachines($TRUE)
-		$mm = $mr.Machines.Values
-		$ss = @()
-		
-		foreach ($m in $mm) {
-			$m.LoadServerInstances($TRUE)
-			$ss += $m.ServerInstances.Values | foreach { $_.GetCompositeName() }
-		}
-	
-	$context.Dispose()
-	
-	$ss
+function InstallSkyQuery() {
+	if ($skyquery_deployregistry) {
+		Write-Host "Installing SkyQuery..."
+		ExecLocal .\bin\$skyquery_target\sqregutil.exe install -Domain "Domain:Graywulf\SciServer"
+	}
 }
 
 function FindServers() {
@@ -114,6 +73,7 @@ function FindServers() {
 	$global:skyquery_web = FindMachines("MachineRole:Graywulf\Web")
 	$global:skyquery_mydb = FindMachines("MachineRole:Graywulf\MyDBHost")
 	$global:skyquery_mydb_sql = FindServerInstances("MachineRole:Graywulf\MyDBHost")
+	$global:skyquery_codedb = FindDatabaseInstances("DatabaseDefinition:Graywulf\SciServer\SkyQuery\CODE")
 }
 
 function PrintServers() {
@@ -136,159 +96,229 @@ function PrintServers() {
 	
 	Write-Host "MyDB SQL instances:"
 	Write-Host $skyquery_mydb_sql
+	
+	Write-Host "CodeDB database instances:"
+	foreach ($s in $skyquery_codedb) {
+		Write-Host $s["Server"] $s["Database"]
+	}
 }
 
-## ------------------------------------
+#endregion
+# -------------------------------------------------------------
+#region Binaries
 
 function GetBinariesServers() {
-	$skyquery_controller + $skyquery_skynode + $skyquery_mydb
+	$servers = @()
+	if ($skyquery_deployscheduler -or $skyquery_deployremoteservice) {
+		$servers += $skyquery_controller
+	}
+	if ($skyquery_deployremoteservice) {
+		$servers += $skyquery_skynode
+		$servers += $skyquery_mydb
+	}
+	$servers
 }
 
 function CopyBinaries() {
-	$servers = GetBinariesServers
-	Write-Host "Copying binaries to:"
-	Write-Host $servers
-	foreach ($s in $servers) {
-		Write-Host "... ${s}:"
-		if (-Not (Test-Path \\$s\$skyquery_gwbin)) {
-			mkdir \\$s\$skyquery_gwbin
-		}
-		rm -force -recurse \\$s\$skyquery_gwbin\*
-		cp .\bin\$skyquery_target\* \\$s\$skyquery_gwbin -recurse -force 
-		Write-Host "... ... OK"
+	if ($skyquery_deployscheduler -or $skyquery_deployremoteservice) {
+		$servers = GetBinariesServers
+		Write-Host "Copying binaries to:"
+		CopyDir $servers ".\bin\$skyquery_target\*" "$skyquery_gwbin"
 	}
 }
 
 function RemoveBinaries() {
-	$servers = GetBinariesServers
-	Write-Host "Removing binaries from:"
-	Write-Host $servers
-	foreach ($s in $servers) {
-		Write-Host "... ${s}:"
-		rm -force -recurse \\$s\$skyquery_gwbin
-		Write-Host "... ... OK"
+	if ($skyquery_deployscheduler -or $skyquery_deployremoteservice) {
+		$servers = GetBinariesServers
+		Write-Host "Removing binaries from:"
+		RemoveDir $servers "$skyquery_gwbin"
 	}
 }
 
-## ------------------------------------
-
-function InstallService([string] $name, [string] $exe, [string[]] $servers) {
-	Write-Host "Installing service $name on:"
-	foreach ($s in $servers) {
-		Write-Host "... $s"
-		icm $s `
-			-Args $skyquery_user, $skyquery_pass, $exe, $fwpath, $name `
-			-Script {
-				param($un, $pw, $xe, $fw, $sn) 
-				& $fw\InstallUtil.exe /username=$un /password=$pw /unattended /svcname=$sn $xe
-			}
-		Write-Host "... ... OK"
-	}
-}
-
-function StartService([string] $name, [string[]] $servers) {
-	Write-Host "Starting service $name on:"
-	foreach ($s in $servers) {
-		Write-Host "... $s"
-		icm $s -Script { 
-			param($sn) 
-			net start $sn 
-		} -Args $name
-		Write-Host "... ... OK"
-	}
-}
-
-function StopService([string] $name, [string[]] $servers) {
-	Write-Host "Stopping service $name on:"
-	foreach ($s in $servers) {
-		Write-Host "... $s"
-		icm $s ` -Script { 
-			param($sn) 
-			net stop $sn 
-		} -Args $name
-		Write-Host "... ... OK"
-	}
-}
-
-function RemoveService([string] $name, [string] $exe, [string[]] $servers) {
-	Write-Host "Removing service $name from:"
-	foreach ($s in $servers) {
-		Write-Host "... $s"
-		icm $s `
-			-Args $skyquery_gwbin, $exe, $fwpath, $name `
-			-Script { 
-				param($gw, $xe, $fw, $sn) 
-				& $fw\InstallUtil.exe /u /svcname=$sn $xe
-			} 
-		Write-Host "... ... OK"
-	}
-}
-
-## ------------------------------------
+#endregion
+# -------------------------------------------------------------
+#region Remoting service
 
 function GetRemotingServiceServers() {
 	$skyquery_skynode + $skyquery_mydb
 }
 
 function InstallRemotingService() {
-	$servers = GetRemotingServiceServers
-	InstallService $skyquery_remoteservice "C:\$skyquery_gwbin\gwrsvr.exe" $servers
+	if ($skyquery_deployremoteservice) {
+		$servers = GetRemotingServiceServers
+		InstallService $skyquery_remoteservice "C:\$skyquery_gwbin\gwrsvr.exe" $servers
+	}
 }
 
 function StartRemotingService() {
-	$servers = GetRemotingServiceServers
-	StartService $skyquery_remoteservice $servers
+	if ($skyquery_deployremoteservice) {
+		$servers = GetRemotingServiceServers
+		StartService $servers $skyquery_remoteservice
+	}
 }
 
 function StopRemotingService() {
-	$servers = GetRemotingServiceServers
-	StopService $skyquery_remoteservice $servers
+	if ($skyquery_deployremoteservice) {
+		$servers = GetRemotingServiceServers
+		StopService $servers $skyquery_remoteservice
+	}
 }
 
 function RemoveRemotingService() {
-	$servers = GetRemotingServiceServers
-	RemoveService $skyquery_remoteservice "C:\$skyquery_gwbin\gwrsvr.exe" $servers
+	if ($skyquery_deployremoteservice) {
+		$servers = GetRemotingServiceServers
+		RemoveService $skyquery_remoteservice "C:\$skyquery_gwbin\gwrsvr.exe" $servers
+	}
 }
 
-## ------------------------------------
+#endregion
+# -------------------------------------------------------------
+#region Scheduler
 
 function GetSchedulerServers() {
 	$skyquery_controller
 }
 
 function InstallScheduler() {
-	$servers = GetSchedulerServers
-	InstallService $skyquery_schedulerservice "C:\$skyquery_gwbin\gwscheduler.exe" $servers
+	if ($skyquery_deployscheduler) {
+		$servers = GetSchedulerServers
+		InstallService $skyquery_schedulerservice "C:\$skyquery_gwbin\gwscheduler.exe" $servers
+	}
 }
 
 function StartScheduler([string[]] $servers) {
-	$servers = GetSchedulerServers
-	StartService $skyquery_schedulerservice $servers
+	if ($skyquery_deployscheduler) {
+		$servers = GetSchedulerServers
+		StartService $servers $skyquery_schedulerservice
+	}
 }
 
 function StopScheduler([string[]] $servers) {
-	$servers = GetSchedulerServers
-	StopService $skyquery_schedulerservice $servers
+	if ($skyquery_deployscheduler) {
+		$servers = GetSchedulerServers
+		StopService $servers $skyquery_schedulerservice
+	}
 }
 
 function RemoveScheduler() {
-	$servers = GetSchedulerServers
-	RemoveService $skyquery_schedulerservice "C:\$skyquery_gwbin\gwscheduler.exe" $servers
-}
-
-## ------------------------------------
-
-function CopyWebAdmin([string[]] $servers) {
-}
-
-function CopyWebUI([string[]] $servers) {
-	Write-Host "Copying web UI to:"
-	Write-Host $servers
-	foreach ( $s in $server) {
-		if (-Not (Test-Path \\$s\$skyquery_www)) {
-			mkdir \\$s\$skyquery_www
-		}
-		rm -force -recurse \\$s\$skyquery_www\*
-		cp .\www\* \\$s\$skyquery_www -recurse -force 
+	if ($skyquery_deployscheduler) {
+		$servers = GetSchedulerServers
+		RemoveService $skyquery_schedulerservice "C:\$skyquery_gwbin\gwscheduler.exe" $servers
 	}
 }
+
+#endregion
+# -------------------------------------------------------------
+#region Web admin
+
+function InstallWebAdmin() {
+	if ($skyquery_deployadmin) {
+		$servers = $skyquery_controller
+		Write-Host "Copying web admin to:"
+		CopyDir $servers ".\graywulf\web\Jhu.Graywulf.Web.Admin\*" "$skyquery_admin"
+		Write-Host "Creating app pool for web admin on:"
+		CreateAppPool $servers "Graywulf" $skyquery_user $skyquery_password
+		Write-Host "Creating web app for web admin on:"
+		CreateWebApp $servers "Default Web Site" "gwadmin" "C:\$skyquery_admin" "Graywulf"
+	}
+}
+
+function RemoveWebAdmin() {
+	if ($skyquery_deployadmin) {
+		$servers = $skyquery_controller
+		Write-Host "Removing web admin from:"
+		RemoveWebApp $servers "Default Web Site" "gwadmin"
+		RemoveAppPool $servers "Graywulf"
+		RemoveDir $servers "$skyquery_admin"
+	}
+}
+
+#endregion
+# -------------------------------------------------------------
+#region Web UI
+
+function InstallWebUI() {
+	if ($skyquery_deploywww) {
+		$servers = $skyquery_web
+		Write-Host "Copying web UI to:"
+		CopyDir $servers ".\www\*" "$skyquery_www"
+		Write-Host "Creating app pool for web UI on:"
+		CreateAppPool $servers "Graywulf" $skyquery_user $skyquery_password
+		Write-Host "Creating web app for web UI on:"
+		CreateWebApp $servers "???" "skyquery" "C:\$skyquery_www" "Graywulf"
+	}
+}
+
+function RemoveWebUI() {
+	if ($skyquery_deploywww) {
+		$servers = $skyquery_web
+		Write-Host "Removing web UI from:"
+		RemoveWebApp $servers "???" "skyquery"
+		RemoveAppPool $servers "Graywulf"
+		RemoveDir $servers "$skyquery_www"
+	}
+}
+
+#endregion
+# -------------------------------------------------------------
+#region CodeDB
+
+function CreateCodeDb() {
+	if ($skyquery_deploycodedb) {
+		$databases = $skyquery_codedb
+		$name = $databases[0]["Database"]
+		Write-Host "CodeDB name is $name"
+		Write-Host "Deploying CodeDB to:"
+		foreach ($db in $databases) {
+			Write-Host "... " $db["Server"]
+			DeployDatabaseInstance $db["Name"]
+			Write-Host "... ... OK"
+		}
+	}
+}
+
+function DropCodeDb() {
+	if ($skyquery_deploycodedb) {
+		$databases = $skyquery_codedb
+		$name = $databases[0]["Database"]
+		Write-Host "CodeDB name is $name"
+		Write-Host "Removing CodeDB from:"
+		foreach ($db in $databases) {
+			Write-Host "... " $db["Server"]
+			DropDatabaseInstance $db["Name"]
+			Write-Host "... ... OK"
+		}
+	}
+}
+
+function InstallCodeDbScripts() {
+	if ($skyquery_deploycodedb) {
+		$databases = $skyquery_codedb
+		Write-Host "Installing CodeDB scripts to:"
+		foreach ($db in $databases) {
+			Write-Host "... " $db["Server"] $db["Database"]
+			$s = $db["Server"]
+			$d = $db["Database"]
+			ExecSqlScript "$s" "$d" ".\bin\$skyquery_target\Jhu.Spherical.Sql.Create.sql"
+			ExecSqlScript "$s" "$d" ".\bin\$skyquery_target\Jhu.SkyQuery.SqlClrLib.Create.sql"
+			Write-Host "... ... OK"
+		}
+	}
+}
+
+function RemoveCodeDbScripts() {
+	if ($skyquery_deploycodedb) {
+		$databases = $skyquery_codedb
+		Write-Host "Removing CodeDB scripts from:"
+		foreach ($db in $databases) {
+			Write-Host "... " $db["Server"] $db["Database"]
+			$s = $db["Server"]
+			$d = $db["Database"]
+			ExecSqlScript "$s" "$d" ".\bin\$skyquery_target\Jhu.SkyQuery.SqlClrLib.Drop.sql"
+			ExecSqlScript "$s" "$d" ".\bin\$skyquery_target\Jhu.Spherical.Sql.Drop.sql"
+			Write-Host "... ... OK"
+		}
+	}
+}
+
+#endregion
