@@ -7,6 +7,13 @@ function InstallLogging() {
 	}
 }
 
+function RemoveLogging() {
+	if ($skyquery_deployregistry) {
+		Write-Host "Removing database for logging..."
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe DropLog -Q
+	}
+}
+
 #endregion
 # -------------------------------------------------------------
 #region Job persistence
@@ -15,6 +22,13 @@ function InstallJobPersistence() {
 	if ($skyquery_deployregistry) {
 		Write-Host "Creating database for job persistence store..."
 		ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateJobPersistence -Q -Username "$skyquery_user" -Role "db_owner"
+	}
+}
+
+function RemoveJobPersistence() {
+	if ($skyquery_deployregistry) {
+		Write-Host "Removing database for job persistence store..."
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe DropJobPersistence -Q
 	}
 }
 
@@ -44,6 +58,13 @@ function InstallRegistry() {
 		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddCluster -Q -cluster "Graywulf" -User admin -Email admin@graywulf.org -Password alma
 		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddDomain -Q -cluster "Cluster:Graywulf" -Domain "SciServer"
 	}
+}
+
+function RemoveRegistry() {
+	if ($skyquery_deployregistry) {
+		Write-Host "Deleting database for registry..."
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe DropRegistry -Q
+	}	
 }
 
 function ImportRegistry() {

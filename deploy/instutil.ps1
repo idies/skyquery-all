@@ -221,8 +221,7 @@ function RemoveAppPool($servers, $name) {
 			-Script {
 				param($nm)
 				Import-Module WebAdministration
-				cd IIS:\AppPools
-				rm -recurse -force '$nm'
+				rm -Recurse -Force "IIS:\AppPools\$nm"
 			}
 		Write-Host "... ... OK"
 	}

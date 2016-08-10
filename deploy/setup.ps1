@@ -76,7 +76,7 @@ if ($verb -match "install") {
 	StopRemotingService
 
 	echo "Services stopped."
-} elseif ($verb -match "purge") {
+} elseif ($verb -match "remove") {
 	FindServers
 
 	StopScheduler
@@ -92,7 +92,11 @@ if ($verb -match "install") {
 
 	RemoveBinaries
 
-	#TODO: purge registry, etc.
+	echo "Remove complete. Run 'setup purge $config' to delete registry."
+} elseif ($verb -match "purge") {
+	RemoveRegistry
+	RemoveJobPersistence
+	RemoveLogging
 
 	echo "Configuration purged."
 } else {
