@@ -16,6 +16,20 @@ function AskPassword($account) {
 	$cred.GetNetworkCredential().Password
 }
 
+function GetConnectionString($name) {
+	$path = ".\bin\$skyquery_target\gwregutil.exe.config"
+	$xpath = "//connectionStrings/add[@name=`"$name`"]"
+	$cstr = Select-Xml -XPath $xpath -Path $path | foreach { $_.node.connectionString } | Select-Object -first 1
+	$cstr
+}
+
+function GetServerAndDatabase($cstr) {
+	$csb = New-Object System.Data.SqlClient.SqlConnectionStringBuilder;
+	$csb.psbase.ConnectionString = $cstr
+	$csb["Data Source"]
+	$csb["Initial Catalog"]
+}
+
 function RenderArgument($a) {
 	if ($a.GetType().Name -match 'ScriptBlock') {
 		$r = "{ $a }"
@@ -82,6 +96,21 @@ function RemoveDir($servers, $target) {
 		}
 }
 
+function CreateShare($servers, $path, $share) {
+	ForEachServer $servers icm `
+		-Args "$path", "$share" `
+		-Script {
+			param($path, $share)
+			if (!(Test-Path "$path")) {
+				mkdir "$path"
+			}
+			$Shares=[WmiClass]"WIN32_Share"
+			if (!(Get-WmiObject Win32_Share -filter "name=`"$share`"")) { 
+                $Shares.Create($path ,$share, 0) 
+			} 
+		}
+}
+
 #endregion
 # -------------------------------------------------------------
 #region Registry
@@ -134,7 +163,6 @@ function FindDatabaseInstances($databaseDefinition) {
 		} }
 	
 	$context.Dispose()
-	
 	$di
 }
 
@@ -142,12 +170,12 @@ function FindDatabaseInstances($databaseDefinition) {
 # -------------------------------------------------------------
 #region Services
 
-function InstallService([string] $name, [string] $exe, [string[]] $servers) {
+function InstallService([string[]] $servers, [string] $name, [string] $exe, [string] $user, [string] $pass) {
 	Write-Host "Installing service $name on:"
 	foreach ($s in $servers) {
 		Write-Host "... $s"
 		icm $s `
-			-Args $skyquery_user, $skyquery_pass, $exe, $fwpath, $name `
+			-Args $user, $pass, $exe, $fwpath, $name `
 			-Script {
 				param($un, $pw, $xe, $fw, $sn) 
 				& $fw\InstallUtil.exe /username=$un /password=$pw /unattended /svcname=$sn $xe
@@ -196,18 +224,19 @@ function RemoveService([string] $name, [string] $exe, [string[]] $servers) {
 
 function CreateAppPool($servers, $name, $user, $pass) {
 	ForEachServer $servers icm '$s' `
-		-Args "$name", "$user", "$pass" `
+		-Args '$name', '$user', '$pass' `
 		-Script {
 			param($nm, $un, $pw)
 			Import-Module WebAdministration
 			cd IIS:\AppPools
 			if (!(Test-Path $nm -pathType container))
 			{
-				$ap = New-Item $nm
+				$ap = New-Item "$nm"
 				$ap.managedRuntimeVersion = "v4.0"
 				$ap.processModel.userName = "$un"
 				$ap.processModel.password = "$pw"
-				$ap.processmodel.identityType = "SpecificUser"
+				$ap.processModel.identityType = "SpecificUser"
+				$ap.processModel.loadUserProfile = $true
 				$ap | Set-Item
 			}
 		}
@@ -253,6 +282,24 @@ function RemoveWebApp($servers, $site, $name) {
 		}
 }
 
+function InstallWebSite($servers, $source, $target, $apppool, $account, $passwd, $site, $app) {
+	Write-Host "Copying web `'$app`' to:"
+	CopyDir $servers "$source" "$target"
+	Write-Host "Creating app pool `'$apppool`' on:"
+	CreateAppPool $servers "$apppool" "$account" "$passwd"
+	Write-Host "Creating web app `'$app`' under site `'$site`' on:"
+	CreateWebApp $servers "$site" "$app" "C:\$target" "$apppool"
+}
+
+function RemoveWebSite($servers, $target, $apppool, $site, $app) {
+	Write-Host "Removing web app `'$app`' from:"
+	RemoveWebApp $servers "$site" "$app"
+	Write-Host "Removing app pool `'$apppool`' from:"
+	RemoveAppPool $servers "$apppool"
+	Write-Host "Removing web `'$app`' from:"
+	RemoveDir $servers "$target"
+}
+
 #endregion
 # -------------------------------------------------------------
 #region Database and SQL scripts
@@ -277,6 +324,16 @@ function DropDatabaseInstance($databaseInstance) {
 
 function ExecSqlScript($server, $database, $script) {
 	sqlcmd -S "$server" -E -d "$database" -i "$script"
+}
+
+function AddDatabaseUser($server, $database, $user) {
+	$sql = "CREATE USER [$user] FOR LOGIN [$user]"
+	sqlcmd -S "$server" -E -d "$database" -Q "$sql"
+}
+
+function AddDatabaseUserRole($server, $database, $user, $role) {
+	$sql = "ALTER ROLE [$role] ADD MEMBER [$user]"
+	sqlcmd -S "$server" -E -d "$database" -Q "$sql"
 }
 
 #endregion

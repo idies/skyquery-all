@@ -16,27 +16,38 @@ Write-Host "Configured for $skyquery_config"
 Init
 InitRegistry
 
-if ($verb -match "install") {
+if ($verb -match "^help") {
+	# TODO
+	echo "This will display the help some day."
+}
+if ($verb -match "^initdb") {
 	$ErrorActionPreference = "Stop"
-	
-	# Prompt for user account to be used for service install
-	Write-Host "Please enter service account password."
-	$skyquery_user, $skyquery_pass = AskPassword "$skyquery_serviceaccount"
-	
+
 	# Create and configure registry
 	InstallLogging
 	InstallJobPersistence
 	InstallRegistry
+} elseif ($verb -match "^initreg") {
 	InstallSkyQuery
 	ImportRegistry
+} elseif ($verb -match "^servers") {
+	FindServers
+	PrintServers
+} elseif ($verb -match "^install") {
+	$ErrorActionPreference = "Stop"
+	
+	AskPasswords
 
 	# Find servers
 	FindServers
 	PrintServers
 
+	CreateBinariesDir
 	CopyBinaries
+
 	InstallWebAdmin
 	InstallWebUI
+
 	InstallRemotingService
 	InstallScheduler
 
@@ -44,7 +55,16 @@ if ($verb -match "install") {
 	InstallCodeDbScripts
 	
 	echo "Install complete. Run 'setup start $config' to finish installation."
-} elseif ($verb -match "reinstall") {
+} elseif ($verb -match "^export") {
+	Write-Host "Exporting cluster settings..."
+	ExecLocal .\bin\$skyquery_target\gwregutil.exe export -root "Cluster:Graywulf" -Output "SkyQuery_Cluster.xml" -Cluster -ExcludeUserCreated
+
+	Write-Host "Exporting SkyQuery federation..."
+	ExecLocal .\bin\$skyquery_target\gwregutil.exe export -root "Federation:Graywulf\SciServer\SkyQuery" -Output "SkyQuery_Federation.xml" -Federation -ExcludeUserCreated
+
+	Write-Host "Exporting SkyQuery layout..."
+	ExecLocal .\bin\$skyquery_target\gwregutil.exe export -root "Federation:Graywulf\SciServer\SkyQuery" -Output "SkyQuery_Layout.xml" -Layout -ExcludeUserCreated
+} elseif ($verb -match "^reinstall") {
 	FindServers
 
 	StopScheduler
@@ -62,21 +82,21 @@ if ($verb -match "install") {
 	StartScheduler
 
 	echo "Reinstall complete."
-} elseif ($verb -match "start") {
+} elseif ($verb -match "^start") {
 	FindServers
 
 	StartRemotingService
 	StartScheduler
 
 	echo "Services started."
-} elseif ($verb -match "stop") {
+} elseif ($verb -match "^stop") {
 	FindServers
 
 	StopScheduler
 	StopRemotingService
 
 	echo "Services stopped."
-} elseif ($verb -match "remove") {
+} elseif ($verb -match "^remove") {
 	FindServers
 
 	StopScheduler
@@ -93,7 +113,7 @@ if ($verb -match "install") {
 	RemoveBinaries
 
 	echo "Remove complete. Run 'setup purge $config' to delete registry."
-} elseif ($verb -match "purge") {
+} elseif ($verb -match "^purge") {
 	RemoveRegistry
 	RemoveJobPersistence
 	RemoveLogging

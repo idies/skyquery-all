@@ -1,9 +1,41 @@
+#region Passwords
+
+function AskPasswords() {
+	if ($skyquery_admin_passwd -eq $NULL) {		
+		Write-Host "Please enter admin account password."
+		$skyquery_admin_account, $skyquery_admin_passwd = AskPassword "$skyquery_admin_account"
+	} else {
+		Write-Host "Admin account password found in config file"	
+	}
+
+	if ($skyquery_service_passwd -eq $NULL) {		
+		Write-Host "Please enter service account password."
+		$skyquery_service_account, $skyquery_service_passwd = AskPassword "$skyquery_service_account"
+	} else {
+		Write-Host "Service account password found in config file"	
+	}
+
+	if ($skyquery_user_passwd -eq $NULL) {		
+		Write-Host "Please enter user account password."
+		$skyquery_user_account, $skyquery_user_passwd = AskPassword "$skyquery_user_account"
+	} else {
+		Write-Host "User account password found in config file"	
+	}
+}
+
+#endregion
+# -------------------------------------------------------------
 #region Logging
 
 function InstallLogging() {
 	if ($skyquery_deployregistry) {
 		Write-Host "Creating database for logging..."
-		ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateLog -Q -Username "$skyquery_user" -Role "db_owner"
+		$cstr = GetConnectionString "Jhu.Graywulf.Logging"
+		$srv, $db = GetServerAndDatabase "$cstr"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateLog -Q -Server "$srv" -Database "$db"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_admin" -Role "db_owner"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_service" -Role "db_owner"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_user" -Role "db_owner"
 	}
 }
 
@@ -21,7 +53,12 @@ function RemoveLogging() {
 function InstallJobPersistence() {
 	if ($skyquery_deployregistry) {
 		Write-Host "Creating database for job persistence store..."
-		ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateJobPersistence -Q -Username "$skyquery_user" -Role "db_owner"
+		$cstr = GetConnectionString "Jhu.Graywulf.Activities.Persistence"
+		$srv, $db = GetServerAndDatabase "$cstr"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateJobPersistence -Q -Server "$srv" -Database "$db"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_admin" -Role "db_owner"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_service" -Role "db_owner"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_user" -Role "db_owner"
 	}
 }
 
@@ -40,21 +77,24 @@ function InitRegistry() {
 	Add-Type -Path ".\bin\$skyquery_target\Jhu.Graywulf.Registry.dll"
 	Add-Type -Path ".\bin\$skyquery_target\Jhu.Graywulf.Registry.Enum.dll"
 	LoadRegistryConnectionString
-	$cstr =[Jhu.Graywulf.Registry.ContextManager]::Instance.ConnectionString
-	Write-Host $cstr
+	Write-Host "Registry connection string is"
+	Write-Host $([Jhu.Graywulf.Registry.ContextManager]::Instance.ConnectionString)
 }
 
 function LoadRegistryConnectionString() {
-	$path = ".\bin\$skyquery_target\gwregutil.exe.config"
-	$xpath = '//connectionStrings/add[@name="Jhu.Graywulf.Registry"]'
-	$cstr = Select-Xml -XPath $xpath -Path $path | foreach { $_.node.connectionString } | Select-Object -first 1
+	$cstr = GetConnectionString "Jhu.Graywulf.Registry"
 	[Jhu.Graywulf.Registry.ContextManager]::Instance.ConnectionString = $cstr
 }
 
 function InstallRegistry() {
 	if ($skyquery_deployregistry) {
 		Write-Host "Creating database for registry..."
-		ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateRegistry -Q -Username "$skyquery_user" -Role "db_owner"
+		$cstr = [Jhu.Graywulf.Registry.ContextManager]::Instance.ConnectionString
+		$srv, $db = GetServerAndDatabase "$cstr"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateRegistry -Q
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_admin" -Role "db_owner"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_service" -Role "db_owner"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_user" -Role "db_owner"
 		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddCluster -Q -cluster "Graywulf" -User admin -Email admin@graywulf.org -Password alma
 		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddDomain -Q -cluster "Cluster:Graywulf" -Domain "SciServer"
 	}
@@ -140,6 +180,14 @@ function GetBinariesServers() {
 	$servers
 }
 
+function CreateBinariesDir() {
+	if ($skyquery_deployscheduler -or $skyquery_deployremoteservice) {
+		$servers = GetBinariesServers
+		Write-Host "Creating directory and share on:"
+		CreateShare $servers "C:\Graywulf" "Graywulf"
+	}
+}
+
 function CopyBinaries() {
 	if ($skyquery_deployscheduler -or $skyquery_deployremoteservice) {
 		$servers = GetBinariesServers
@@ -161,13 +209,16 @@ function RemoveBinaries() {
 #region Remoting service
 
 function GetRemotingServiceServers() {
-	$skyquery_skynode + $skyquery_mydb
+	$servers = @()
+	$servers += $skyquery_skynode 
+	$servers += $skyquery_mydb
+	$servers
 }
 
 function InstallRemotingService() {
 	if ($skyquery_deployremoteservice) {
 		$servers = GetRemotingServiceServers
-		InstallService $skyquery_remoteservice "C:\$skyquery_gwbin\gwrsvr.exe" $servers
+		InstallService $servers "$skyquery_remoteservice" "C:\$skyquery_gwbin\gwrsvr.exe" "$skyquery_service_account" "$skyquery_service_passwd"
 	}
 }
 
@@ -197,13 +248,15 @@ function RemoveRemotingService() {
 #region Scheduler
 
 function GetSchedulerServers() {
-	$skyquery_controller
+	$servers = @()
+	$servers += $skyquery_controller
+	$servers
 }
 
 function InstallScheduler() {
 	if ($skyquery_deployscheduler) {
 		$servers = GetSchedulerServers
-		InstallService $skyquery_schedulerservice "C:\$skyquery_gwbin\gwscheduler.exe" $servers
+		InstallService $servers $skyquery_schedulerservice "C:\$skyquery_gwbin\gwscheduler.exe" "$skyquery_service_account" "$skyquery_service_passwd"
 	}
 }
 
@@ -234,23 +287,19 @@ function RemoveScheduler() {
 
 function InstallWebAdmin() {
 	if ($skyquery_deployadmin) {
-		$servers = $skyquery_controller
-		Write-Host "Copying web admin to:"
-		CopyDir $servers ".\graywulf\web\Jhu.Graywulf.Web.Admin\*" "$skyquery_admin"
-		Write-Host "Creating app pool for web admin on:"
-		CreateAppPool $servers "Graywulf" $skyquery_user $skyquery_password
-		Write-Host "Creating web app for web admin on:"
-		CreateWebApp $servers "Default Web Site" "gwadmin" "C:\$skyquery_admin" "Graywulf"
+		InstallWebSite $skyquery_controller `
+			".\graywulf\web\Jhu.Graywulf.Web.Admin\*" "$skyquery_admin_web_path" `
+			"$skyquery_admin_web_apppool" "$skyquery_admin_account" "$skyquery_admin_passwd" `
+			"$skyquery_admin_web_site" "gwadmin"
 	}
 }
 
 function RemoveWebAdmin() {
 	if ($skyquery_deployadmin) {
-		$servers = $skyquery_controller
-		Write-Host "Removing web admin from:"
-		RemoveWebApp $servers "Default Web Site" "gwadmin"
-		RemoveAppPool $servers "Graywulf"
-		RemoveDir $servers "$skyquery_admin"
+		RemoveWebSite $skyquery_controller `
+			"$skyquery_admin_web_path" `
+			"$skyquery_admin_web_apppool" `
+			"$skyquery_admin_web_site" "gwadmin"
 	}
 }
 
@@ -262,11 +311,11 @@ function InstallWebUI() {
 	if ($skyquery_deploywww) {
 		$servers = $skyquery_web
 		Write-Host "Copying web UI to:"
-		CopyDir $servers ".\www\*" "$skyquery_www"
+		CopyDir $servers ".\www\skyquery\*" "$skyquery_user_web_path"
 		Write-Host "Creating app pool for web UI on:"
-		CreateAppPool $servers "Graywulf" $skyquery_user $skyquery_password
+		CreateAppPool $servers "$skyquery_user_web_apppool" $skyquery_user_account $skyquery_user_passwd
 		Write-Host "Creating web app for web UI on:"
-		CreateWebApp $servers "???" "skyquery" "C:\$skyquery_www" "Graywulf"
+		CreateWebApp $servers "$skyquery_user_web_site" "skyquery" "C:\$skyquery_user_web_path" "$skyquery_user_web_apppool"
 	}
 }
 
@@ -274,9 +323,11 @@ function RemoveWebUI() {
 	if ($skyquery_deploywww) {
 		$servers = $skyquery_web
 		Write-Host "Removing web UI from:"
-		RemoveWebApp $servers "???" "skyquery"
-		RemoveAppPool $servers "Graywulf"
-		RemoveDir $servers "$skyquery_www"
+		RemoveWebApp $servers "$skyquery_user_web_site" "skyquery"
+		Write-Host "Removing app pool for web UI from:"
+		RemoveAppPool $servers "$skyquery_user_web_apppool"
+		Write-Host "Removing dir for web UI from:"
+		RemoveDir $servers "$skyquery_user_web_path"
 	}
 }
 
@@ -292,7 +343,7 @@ function CreateCodeDb() {
 		Write-Host "Deploying CodeDB to:"
 		foreach ($db in $databases) {
 			Write-Host "... " $db["Server"]
-			DeployDatabaseInstance $db["Name"]
+			DeployDatabaseInstance $db["Name"]			
 			Write-Host "... ... OK"
 		}
 	}
@@ -322,6 +373,12 @@ function InstallCodeDbScripts() {
 			$d = $db["Database"]
 			ExecSqlScript "$s" "$d" ".\bin\$skyquery_target\Jhu.Spherical.Sql.Create.sql"
 			ExecSqlScript "$s" "$d" ".\bin\$skyquery_target\Jhu.SkyQuery.SqlClrLib.Create.sql"
+			AddDatabaseUser "$s" "$d" "$skyquery_admin_account"
+			AddDatabaseUserRole "$s" "$d" "$skyquery_admin_account" "db_owner"
+			AddDatabaseUser "$s" "$d" "$skyquery_service_account"
+			AddDatabaseUserRole "$s" "$d" "$skyquery_service_account" "db_owner"
+			AddDatabaseUser "$s" "$d" "$skyquery_user_account"
+			AddDatabaseUserRole "$s" "$d" "$skyquery_user_account" "db_owner"
 			Write-Host "... ... OK"
 		}
 	}
