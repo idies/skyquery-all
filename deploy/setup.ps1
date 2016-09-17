@@ -71,14 +71,7 @@ if ($verb -match "^initdb") {
 	
 	echo "Install complete. Run 'setup start $config' to finish installation."
 } elseif ($verb -match "^export") {
-	Write-Host "Exporting cluster settings..."
-	ExecLocal .\bin\$skyquery_target\gwregutil.exe export -root "Cluster:Graywulf" -Output "SkyQuery_Cluster.xml" -Cluster -ExcludeUserCreated
-
-	Write-Host "Exporting SkyQuery federation..."
-	ExecLocal .\bin\$skyquery_target\gwregutil.exe export -root "Federation:Graywulf\SciServer\SkyQuery" -Output "SkyQuery_Federation.xml" -Federation -ExcludeUserCreated
-
-	Write-Host "Exporting SkyQuery layout..."
-	ExecLocal .\bin\$skyquery_target\gwregutil.exe export -root "Federation:Graywulf\SciServer\SkyQuery" -Output "SkyQuery_Layout.xml" -Layout -ExcludeUserCreated
+	ExportRegistry
 } elseif ($verb -match "^reinstall") {
 	FindServers
 

@@ -308,6 +308,7 @@ function DeployDatabaseInstance($databaseInstance) {
 	$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
 	$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
 	$di = $ef.LoadEntity($databaseInstance)
+	$di.Discover()
 	if ($di.DeploymentState -ne [Jhu.Graywulf.Registry.DeploymentState]::Deployed) {
 		$di.Deploy()
 	}
