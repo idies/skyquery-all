@@ -328,7 +328,7 @@ function InstallWebUI() {
 	if ($skyquery_deploywww) {
 		$servers = $skyquery_web
 		Write-Host "Copying web UI to:"
-		CopyDir $servers ".\www\skyquery\*" "$skyquery_user_web_path"
+		CopyDir $servers ".\skyquery\web\Jhu.SkyQuery.Web.UI\*" "$skyquery_user_web_path"
 		Write-Host "Creating app pool for web UI on:"
 		CreateAppPool $servers "$skyquery_user_web_apppool" $skyquery_user_account $skyquery_user_passwd
 		Write-Host "Creating web app for web UI on:"
