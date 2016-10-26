@@ -22,3 +22,6 @@
 [submodule "skyquery-skynodes"]
 	path = skyquery-skynodes
 	url = git@github.com:sciserver/skyquery-skynodes.git
+[submodule "graywulf-sciserver-init"]
+	path = graywulf-sciserver-init
+	url = git@github.com:sciserver/graywulf-sciserver-init.git
