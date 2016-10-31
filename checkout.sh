@@ -4,6 +4,9 @@
 cd graywulf
 git checkout -B v1.2/develop remotes/origin/v1.2/develop --
 
+cd ../graywulf-build
+git checkout -B v1.2/develop remotes/origin/v1.2/develop --
+
 cd ../graywulf-plugins
 git checkout -B v1.2/develop remotes/origin/v1.2/develop --
 

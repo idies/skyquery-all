@@ -25,3 +25,6 @@
 [submodule "graywulf-sciserver-init"]
 	path = graywulf-sciserver-init
 	url = git@github.com:sciserver/graywulf-sciserver-init.git
+[submodule "graywulf-build"]
+	path = graywulf-build
+	url = git@github.com:sciserver/graywulf-build.git
