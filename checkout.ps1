@@ -1,10 +1,7 @@
-#!/bin/bash
-#git clone --recursive --branch v1.1/develop git@github.com:idies/skyquery-all.git
-
-GRAYWULF="v1.2/develop"
-SKYQUERY="v1.2/develop"
-SHARPFITSIO="develop"
-SPHERICAL="develop"
+$GRAYWULF="v1.2/develop"
+$SKYQUERY="v1.2/develop"
+$SHARPFITSIO="develop"
+$SPHERICAL="develop"
 
 cd graywulf
 git checkout -B $GRAYWULF remotes/origin/$GRAYWULF --
