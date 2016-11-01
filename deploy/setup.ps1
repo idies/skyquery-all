@@ -34,8 +34,7 @@ InitRegistry
 if ($verb -match "^help") {
 	# TODO
 	echo "This will display the help some day."
-}
-if ($verb -match "^initdb") {
+} elseif ($verb -match "^initdb") {
 	$ErrorActionPreference = "Stop"
 
 	# Create and configure registry
