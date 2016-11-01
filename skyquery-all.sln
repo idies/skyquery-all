@@ -5,7 +5,6 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{C1B23ACA-3EF8-4EEF-9192-938632124F27}"
 	ProjectSection(SolutionItems) = preProject
-		config\Configurations.xml = config\Configurations.xml
 		gwconfig.xml = gwconfig.xml
 	EndProjectSection
 EndProject
@@ -254,6 +253,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{99798F
 		deploy\instlib.ps1 = deploy\instlib.ps1
 		deploy\instutil.ps1 = deploy\instutil.ps1
 		deploy\setup.ps1 = deploy\setup.ps1
+		deploy\tag.ps1 = deploy\tag.ps1
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.AccessControl", "graywulf\dll\Jhu.Graywulf.AccessControl\Jhu.Graywulf.AccessControl.csproj", "{DA689D40-EDCD-433D-8D9B-4E96829F8C6A}"
