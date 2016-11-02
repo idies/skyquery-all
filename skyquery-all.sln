@@ -127,6 +127,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery", "skyquery\dll\Jhu.SkyQuery\Jhu.SkyQuery.csproj", "{2887F181-7F61-4DF5-BD89-2800503D5F84}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Parser", "skyquery\dll\Jhu.SkyQuery.Parser\Jhu.SkyQuery.Parser.csproj", "{8D422C6A-5E21-48A0-9B05-1BCA4C71C6D5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB} = {9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Xmd", "skyquery\dll\Jhu.SkyQuery.Xmd\Jhu.SkyQuery.Xmd.csproj", "{79AFC0EA-9465-45F8-A315-3FD2996B493D}"
 EndProject
@@ -250,6 +253,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.SqlClrUtil", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{99798FF2-1023-499E-8160-B7779BEA287B}"
 	ProjectSection(SolutionItems) = preProject
+		deploy\build.ps1 = deploy\build.ps1
 		deploy\instlib.ps1 = deploy\instlib.ps1
 		deploy\instutil.ps1 = deploy\instutil.ps1
 		deploy\setup.ps1 = deploy\setup.ps1
