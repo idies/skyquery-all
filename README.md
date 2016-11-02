@@ -3,6 +3,27 @@ skyquery-all
 
 Complete SkyQuery project tree with submodules
 
+**Building SkyQuery**
+
+To build SkyQuery you need 
+* MSBuild 14.0 which, I think, comes with Visual Studio 2014, 
+* git >2.0, and 
+* putty installed using the installer for SSH connections.
+
+You also need a valid SSH key to github that’s already added to peagent and configured in the global git config. The best to have TortoiseSVN.
+
+Here’s a gist that clones everything from git:
+https://gist.github.com/dobos/566b580ee910d1fd0b5f623d35f25035
+
+The build steps are the following:
+
+1.	Save the gist to Init-SkyQuery.ps1 in your project root
+2.	Open an *admin* power shell console
+3.	PS> Init-SkyQuery.ps1
+4.	PS> cd skyquery-all
+5.	PS> .\deploy\build.ps1 skyquery-config\{config}
+
+The {config} fields determines the configuration you’re building for. There’s currently three of them: scidev01, scitest02 and preprod. Scitest02 and Preprod should be able to be installed from scratch, dev requires some manual configuration. The solution should compile in about a minute or two without errors (with some warnings).
 
 **Notes on submodules:**
 --------------------
