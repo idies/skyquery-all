@@ -13,6 +13,11 @@ $xml.Save($configfile.FullName)
 $SolutionDir=pwd
 
 echo "Starting build for config '$root' with target '$skyquery_target'"
+
+echo "Restoring nuget packages..."
+
+.\.nuget\nuget.exe restore skyquery-all.sln
+
 echo "Building config tool..."
 
 & "C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe" `
