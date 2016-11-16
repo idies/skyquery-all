@@ -232,13 +232,16 @@ function CreateAppPool($servers, $name, $user, $pass) {
 			if (!(Test-Path $nm -pathType container))
 			{
 				$ap = New-Item "$nm"
-				$ap.managedRuntimeVersion = "v4.0"
-				$ap.processModel.userName = "$un"
-				$ap.processModel.password = "$pw"
-				$ap.processModel.identityType = "SpecificUser"
-				$ap.processModel.loadUserProfile = $true
-				$ap | Set-Item
+			} else {
+				$ap = Get-Item "$nm"
 			}
+
+			$ap.managedRuntimeVersion = "v4.0"
+			$ap.processModel.userName = "$un"
+			$ap.processModel.password = "$pw"
+			$ap.processModel.identityType = "SpecificUser"
+			$ap.processModel.loadUserProfile = $true
+			$ap | Set-Item
 		}
 }
 
