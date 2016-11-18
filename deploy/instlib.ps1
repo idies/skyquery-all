@@ -348,6 +348,12 @@ function RemoveWebUI() {
 	}
 }
 
+function RecycleWebUI() {
+	$servers = $skyquery_web
+	Write-Host "Recycling web UI app pool $skyquery_user_web_apppool on:"
+	RecycleAppPool $servers "$skyquery_user_web_apppool"
+}
+
 #endregion
 # -------------------------------------------------------------
 #region CodeDB
@@ -414,6 +420,16 @@ function RemoveCodeDbScripts() {
 			Write-Host "... ... OK"
 		}
 	}
+}
+
+#endregion
+# -------------------------------------------------------------
+#region Management utils
+
+function FlushSchema() {
+	$servers = $skyquery_web
+	Write-Host "Flushing schema cache on:"
+	GetUrl $servers "$skyquery_user_host" "$skyquery_user_url/api/v1/manage.svc/schema/flush"
 }
 
 #endregion

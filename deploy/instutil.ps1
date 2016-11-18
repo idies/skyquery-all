@@ -259,6 +259,20 @@ function RemoveAppPool($servers, $name) {
 	}
 }
 
+function RecycleAppPool($servers, $name) {
+	foreach ($s in $servers) {
+		Write-Host "... $s"
+		icm $s `
+			-Args $name `
+			-Script {
+				param($nm)
+				Import-Module WebAdministration
+				Restart-WebAppPool "$nm"
+			}
+		Write-Host "... ... OK"
+	}
+}
+
 function CreateWebApp($servers, $site, $name, $path, $apppool) {
 	ForEachServer $servers icm '$s' `
 		-Args "$site", "$name", "$path", "$apppool" `
@@ -342,3 +356,18 @@ function AddDatabaseUserRole($server, $database, $user, $role) {
 
 #endregion
 # -------------------------------------------------------------
+#region Web requests
+
+function GetUrl($servers, $hostname, $url) {
+	foreach ($s in $servers) {
+		Write-Host "... $s"
+		$wc = New-Object net.webclient
+		$wc.Headers.Add("Host", $host)
+		$res = $wc.DownloadString($url.replace('$server', $s))
+		Write-Host "... ... OK"
+	}
+}
+
+#endregion
+
+#endregion
