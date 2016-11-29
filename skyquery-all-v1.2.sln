@@ -254,6 +254,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{99798F
 		deploy\build.ps1 = deploy\build.ps1
 		deploy\instlib.ps1 = deploy\instlib.ps1
 		deploy\instutil.ps1 = deploy\instutil.ps1
+		deploy\manage.ps1 = deploy\manage.ps1
 		deploy\setup.ps1 = deploy\setup.ps1
 		deploy\tag.ps1 = deploy\tag.ps1
 	EndProjectSection
