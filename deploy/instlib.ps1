@@ -149,8 +149,8 @@ function FindServers() {
 	$global:skyquery_skynode = FindMachines("MachineRole:Graywulf\SkyNode")
 	$global:skyquery_skynode_sql = FindServerInstances("MachineRole:Graywulf\SkyNode")
 	$global:skyquery_web = FindMachines("MachineRole:Graywulf\Web")
-	$global:skyquery_mydb = FindMachines("MachineRole:Graywulf\MyDBHost")
-	$global:skyquery_mydb_sql = FindServerInstances("MachineRole:Graywulf\MyDBHost")
+	$global:skyquery_mydb = FindMachines("MachineRole:Graywulf\UserDBHost")
+	$global:skyquery_mydb_sql = FindServerInstances("MachineRole:Graywulf\UserDBHost")
 	$global:skyquery_codedb = FindDatabaseInstances("DatabaseDefinition:Graywulf\SciServer\SkyQuery\CODE")
 }
 
