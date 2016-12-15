@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!-- This is the solution level config file, modify this only for reconfiguration -->
-<config root="skyquery-config\scidev01" version="1.2.6148.3">
+<config root="skyquery-config\scitest02" version="1.2.6148.3">
   <includes>
     <include path="graywulf\config\sections.config" />
     <include path="graywulf-plugins\config\sections.config" />
