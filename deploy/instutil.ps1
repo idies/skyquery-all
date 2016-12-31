@@ -74,6 +74,16 @@ function ForEachServer($servers) {
 	}
 }
 
+#endregion
+# -------------------------------------------------------------
+#region File utilities
+
+function FindFiles($dir, $pattern) {
+	$files = ls "$dir" | 
+		where {$_.Name -match "$pattern" } | sort "Name"
+	$files
+}
+
 function CopyDir($servers, $source, $target) {
 	ForEachServer $servers icm `
 		-Args "$source", "\\`$s\$target" `
@@ -149,9 +159,9 @@ function FindServerInstances($role) {
 	$ss
 }
 
-function FindDatabaseInstances($databaseDefinition) {
+function FindDatabaseInstances($databaseDefinition, $databaseVersion) {
 	$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
-	
+
 	$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
 	$dd = $ef.LoadEntity($databaseDefinition)
 	$dd.LoadDatabaseInstances($TRUE)
@@ -159,8 +169,12 @@ function FindDatabaseInstances($databaseDefinition) {
 		foreach { @{
 			"Name" = $_.GetFullyQualifiedName();
 			"Server" = $_.ServerInstance.GetCompositeName();
-			"Database" = $_.DatabaseName
+			"Database" = $_.DatabaseName;
+			"Version" = $_.DatabaseVersion.Name;
 		} }
+	if ($databaseVersion) {
+		$di = $di | where {$_["Version"] -eq "$databaseVersion"}
+	}
 	
 	$context.Dispose()
 	$di
@@ -362,7 +376,7 @@ function GetUrl($servers, $hostname, $url) {
 	foreach ($s in $servers) {
 		Write-Host "... $s"
 		$wc = New-Object net.webclient
-		$wc.Headers.Add("Host", $host)
+		$wc.Headers.Add("Host", $hostname)
 		$res = $wc.DownloadString($url.replace('$server', $s))
 		Write-Host "... ... OK"
 	}
