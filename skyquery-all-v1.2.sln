@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{C1B23ACA-3EF8-4EEF-9192-938632124F27}"
 	ProjectSection(SolutionItems) = preProject
-		gwconfig.xml = gwconfig.xml
+		build.config = build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{8FA54973-7055-4E53-9BE2-9326DB062BEE}"
@@ -14,25 +14,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{2939F058-FEE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graywulf", "Graywulf", "{2C0C403F-4604-4DA8-8A2E-C593288D5D57}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf\gwconfig.xml = graywulf\gwconfig.xml
+		graywulf\build.config = graywulf\build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exe", "Exe", "{4F1895F8-526E-4F3B-868F-580C86D3EFAD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{08B75CEE-73A4-4EB5-8C79-2EB3A1DF628C}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf\web\gwconfig.xml = graywulf\web\gwconfig.xml
+		graywulf\web\build.config = graywulf\web\build.config
 		graywulf\web\web-build.ps1 = graywulf\web\web-build.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{31A32854-8930-499D-9DC1-969C3B2CCE36}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf\test\gwconfig.xml = graywulf\test\gwconfig.xml
+		graywulf\test\build.config = graywulf\test\build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SkyQuery", "SkyQuery", "{D3BA5B7E-66A6-4881-8BE5-50909394F85D}"
 	ProjectSection(SolutionItems) = preProject
-		skyquery\gwconfig.xml = skyquery\gwconfig.xml
+		skyquery\build.config = skyquery\build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{66A6B425-4D46-4BF6-A6A2-E71D7E5B0502}"
@@ -43,7 +43,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{A345CE3F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{4692BF22-9181-4F47-993B-94E5F4EC604B}"
 	ProjectSection(SolutionItems) = preProject
-		skyquery\test\gwconfig.xml = skyquery\test\gwconfig.xml
+		skyquery\test\build.config = skyquery\test\build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharpFitsIO", "SharpFitsIO", "{A868B388-B6B5-4678-9D5B-C479C0D7444F}"
@@ -165,14 +165,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.Controls",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graywulf-Plugins", "Graywulf-Plugins", "{1034450D-76D5-4EBA-A1B9-46325C2F6E05}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf-plugins\gwconfig.xml = graywulf-plugins\gwconfig.xml
+		graywulf-plugins\build.config = graywulf-plugins\build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{EC97EC44-BAF0-440F-8C3F-37DDB4C2FF0B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{1CFB71E3-01FB-4D6B-947B-EEDF1A52B116}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf-plugins\test\gwconfig.xml = graywulf-plugins\test\gwconfig.xml
+		graywulf-plugins\test\build.config = graywulf-plugins\test\build.config
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.SimpleRestClient", "graywulf-plugins\src\Jhu.Graywulf.SimpleRestClient\Jhu.Graywulf.SimpleRestClient.csproj", "{8EC7930C-CCC4-47D3-99BD-39E54EB405A9}"
@@ -201,7 +201,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.IO.CmdLineUtil
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graywulf-Tools", "Graywulf-Tools", "{7B5D4C8B-C554-446D-BCF2-3DEC3A4D87DB}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf-tools\gwconfig.xml = graywulf-tools\gwconfig.xml
+		graywulf-tools\build.config = graywulf-tools\build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{B6B010EB-78BB-45A2-B75B-D80E76E89B6B}"
@@ -308,14 +308,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.Auth", "gr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graywulf-Build", "Graywulf-Build", "{032EF111-AF58-44EC-BC88-87263D234DB5}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf-build\gwconfig.xml = graywulf-build\gwconfig.xml
+		graywulf-build\build.config = graywulf-build\build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{E9C52877-B936-42D7-89C5-80CB394E459B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E3998FE7-8E69-427E-86A7-B2C69458FA85}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf-build\test\gwconfig.xml = graywulf-build\test\gwconfig.xml
+		graywulf-build\test\build.config = graywulf-build\test\build.config
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Build.ConfigUtil", "graywulf-build\src\Jhu.Graywulf.Build.ConfigUtil\Jhu.Graywulf.Build.ConfigUtil.csproj", "{8C76A628-C4CD-4641-BD91-2CB7A1137A02}"

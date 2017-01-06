@@ -3,7 +3,7 @@ param (
 )
 
 # Set config root
-$configfile = Get-Item gwconfig.xml
+$configfile = Get-Item build.config
 [xml]$xml = Get-Content $configfile
 $xml.config.root = $root
 $xml.Save($configfile.FullName)

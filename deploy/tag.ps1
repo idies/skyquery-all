@@ -1,5 +1,5 @@
 $verb = $args[0]
-$configfile = Get-Item gwconfig.xml
+$configfile = Get-Item build.config
 [xml]$config = Get-Content $configfile
 [string]$version = $config.config.version
 
