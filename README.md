@@ -6,14 +6,14 @@ Complete SkyQuery project tree with submodules
 **Building SkyQuery**
 
 To build SkyQuery you need 
-* MSBuild 14.0 which, I think, comes with Visual Studio 2014, 
+* MSBuild 14.0 which, I think, comes with Visual Studio 2015, 
 * git >2.0, and 
 * putty installed using the installer for SSH connections.
 
-You also need a valid SSH key to github that’s already added to peagent and configured in the global git config. The best to have TortoiseSVN.
+You also need a valid SSH key to github that’s already added to peagent and configured in the global git config. The best to have TortoiseGit.
 
 Here’s a gist that clones everything from git:
-https://gist.github.com/dobos/566b580ee910d1fd0b5f623d35f25035
+https://gist.github.com/dobos/00de6d4e72bcff231359ac3459f5eea2
 
 The build steps are the following:
 
@@ -48,6 +48,15 @@ When commiting the supermodule, Git marks submodules as dirty when untracked fil
 **A few build issues**
 
 Many projects in the solution are configured to use NuGet. NuGet packages are not always automatically restored (downloaded) on build. To force package restore, right click on the solution and enable package restore. Certain packages required by REST WCF are tricky to restore (Microsoft.Bcl is an especially picky one). If these don't restore automatically, try restarting Visual Studio.
+
+**Updating version number and tagging*
+
+To update version numbers run
+
+    PS> .\deploy\version.ps1 update
+    PS> .\deploy\version.ps1 tag
+    
+Follow instruction to commit before tagging.
 
 --
 
