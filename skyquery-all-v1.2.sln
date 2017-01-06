@@ -261,13 +261,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{99798FF2-1023-499E-8160-B7779BEA287B}"
 	ProjectSection(SolutionItems) = preProject
 		deploy\build.ps1 = deploy\build.ps1
+		deploy\checkout.ps1 = deploy\checkout.ps1
 		deploy\export.ps1 = deploy\export.ps1
 		deploy\instlib.ps1 = deploy\instlib.ps1
 		deploy\instutil.ps1 = deploy\instutil.ps1
 		deploy\manage.ps1 = deploy\manage.ps1
 		deploy\setup.ps1 = deploy\setup.ps1
 		deploy\skynode.ps1 = deploy\skynode.ps1
-		deploy\tag.ps1 = deploy\tag.ps1
+		deploy\version.ps1 = deploy\version.ps1
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.AccessControl", "graywulf\dll\Jhu.Graywulf.AccessControl\Jhu.Graywulf.AccessControl.csproj", "{DA689D40-EDCD-433D-8D9B-4E96829F8C6A}"
