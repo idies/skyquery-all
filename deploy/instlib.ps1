@@ -24,6 +24,70 @@ function Configure($config) {
 	Write-Host "Build target is $skyquery_target"
 }
 
+function GetSubmodules() {
+	git config --file .gitmodules --name-only --get-regexp path | %{"$($_.Split('.')[1])"}
+}
+
+function GetConfigVersion($module) {
+	$filename = "$module\build.config"
+	$configfile = GetConfigFile "$filename"
+	$config = GetConfig $configfile
+	$version = GetVersion $config
+	$version
+}
+
+function PrintConfigVersion($modules) {
+	Write-Host "Printing version number for module:"
+	foreach ($m in $modules) {
+		$version = GetConfigVersion $m
+		Write-Host $(" ... {0,-20} : {1}" -f $m, $version)
+	}
+}
+
+function UpdateConfigVersion($modules, $now) {
+	Write-Host "Updating version number for module:"
+	foreach ($m in $modules) {
+		$filename = "$m\build.config"
+		$configfile = GetConfigFile "$filename"
+		$config = GetConfig $configfile
+		$version = GetVersion $config
+
+		$version = IncrementVersion $version $now
+		UpdateVersion $config $version
+		$config.Save($configfile.FullName)
+	
+		Write-Host $(" ... {0,-20} : {1}" -f $m, $version)
+	}
+}
+
+function SetConfigVersion($modules, $version) {
+	Write-Host "Setting version number for module:"
+	foreach ($m in $modules) {
+		$filename = "$m\build.config"
+		$configfile = GetConfigFile "$filename"
+		$config = GetConfig $configfile
+
+		UpdateVersion $config $version
+		$config.Save($configfile.FullName)
+	
+		Write-Host $(" ... {0,-20} : {1}" -f $m, $version)
+	}
+}
+
+function CreateTag($modules) {
+	$version = GetConfigVersion "."
+	$tag = "skyquery-v$version"
+	Write-Host "Using version number of root module: $version"
+	Write-Host "Tagging module with $tag :"
+	foreach ($m in $modules) {
+		pushd
+		cd $m
+		git tag "$tag"
+		popd
+		Write-Host " ... $m"
+	}
+}
+
 #endregion
 # -------------------------------------------------------------
 #region Passwords

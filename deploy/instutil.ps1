@@ -123,6 +123,48 @@ function CreateShare($servers, $path, $share) {
 
 #endregion
 # -------------------------------------------------------------
+#region Version tagging
+
+function GetConfigFile($filename) {
+	$configfile = Get-Item "$filename"
+	$configfile
+}
+
+function GetConfig($configfile) {
+	[xml]$config = Get-Content $configfile
+	$config
+}
+
+function GetVersion($config) {
+	[string]$version = $config.config.assemblySettings.version
+	$version
+}
+
+function IncrementVersion($version, $now) {
+	# Build number is the number of days since January 1, 2000
+	[datetime]$start='01/01/2000'
+		
+	# Update version number.
+	$parts = $version.Split('.')
+	[string]$major = $parts[0]
+	[string]$minor = $parts[1]
+	[string]$build = ($now - $start).Days
+	if ($build -match $parts[2]) {
+		[string]$revision = $([int]$parts[3]) + 1
+	} else {
+		[string]$revision = "0"
+	}
+	[string]$version = "$major.$minor.$build.$revision"
+
+	$version
+}
+
+function UpdateVersion($config, $version) {
+	$config.config.assemblySettings.version = $version
+}
+
+#endregion
+# -------------------------------------------------------------
 #region Registry
 
 function FindMachines($role) {
