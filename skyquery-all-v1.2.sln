@@ -390,6 +390,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Htm", "spherical\src\Jhu.Spherical.Htm\Jhu.Spherical.Htm.csproj", "{8C128E59-14E3-4E84-824E-AF5FB58C5D58}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Jhu.Spherical.Sql", "spherical\src\Jhu.Spherical.Sql\Jhu.Spherical.Sql.sqlproj", "{53F384AE-B0F1-4E52-A067-6F1EE4C46588}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1C361D81-ABFD-4DAF-8274-E1BBC149C7A9} = {1C361D81-ABFD-4DAF-8274-E1BBC149C7A9}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Sql.Cmd", "spherical\src\Jhu.Spherical.Sql.Cmd\Jhu.Spherical.Sql.Cmd.csproj", "{7DA194E0-76EA-440A-8E08-D53C630D450D}"
 EndProject
