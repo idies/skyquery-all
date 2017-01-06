@@ -31,6 +31,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{31A32854-8
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SkyQuery", "SkyQuery", "{D3BA5B7E-66A6-4881-8BE5-50909394F85D}"
+	ProjectSection(SolutionItems) = preProject
+		skyquery\gwconfig.xml = skyquery\gwconfig.xml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{66A6B425-4D46-4BF6-A6A2-E71D7E5B0502}"
 EndProject
@@ -161,6 +164,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.Controls", "graywulf\dll\Jhu.Graywulf.Web.Controls\Jhu.Graywulf.Web.Controls.csproj", "{3ADB72A9-4417-4454-AA10-1AF3B2750A94}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graywulf-Plugins", "Graywulf-Plugins", "{1034450D-76D5-4EBA-A1B9-46325C2F6E05}"
+	ProjectSection(SolutionItems) = preProject
+		graywulf-plugins\gwconfig.xml = graywulf-plugins\gwconfig.xml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{EC97EC44-BAF0-440F-8C3F-37DDB4C2FF0B}"
 EndProject
@@ -194,6 +200,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.IO.CmdLineUtil", "graywulf\exe\Jhu.Graywulf.IO.CmdLineUtil\Jhu.Graywulf.IO.CmdLineUtil.csproj", "{77071C20-D4B9-4953-84F8-D50AA75A229D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graywulf-Tools", "Graywulf-Tools", "{7B5D4C8B-C554-446D-BCF2-3DEC3A4D87DB}"
+	ProjectSection(SolutionItems) = preProject
+		graywulf-tools\gwconfig.xml = graywulf-tools\gwconfig.xml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{B6B010EB-78BB-45A2-B75B-D80E76E89B6B}"
 EndProject
@@ -298,6 +307,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.Auth", "graywulf\web\Jhu.Graywulf.Web.Auth\Jhu.Graywulf.Web.Auth.csproj", "{7CB2799F-5B60-4CE9-A71F-1B3C8C868EDC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graywulf-Build", "Graywulf-Build", "{032EF111-AF58-44EC-BC88-87263D234DB5}"
+	ProjectSection(SolutionItems) = preProject
+		graywulf-build\gwconfig.xml = graywulf-build\gwconfig.xml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{E9C52877-B936-42D7-89C5-80CB394E459B}"
 EndProject
