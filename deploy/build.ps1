@@ -11,12 +11,13 @@ $xml.Save($configfile.FullName)
 . $root\configure.ps1
 
 $SolutionDir=pwd
+$SolutionName = "skyquery-all-v1.2"
 
 echo "Starting build for config '$root' with target '$skyquery_target'"
 
 echo "Restoring nuget packages..."
 
-.\.nuget\nuget.exe restore skyquery-all.sln
+.\.nuget\nuget.exe restore "$SolutionName.sln"
 
 echo "Building config tool..."
 
@@ -24,7 +25,7 @@ echo "Building config tool..."
 	/target:rebuild `
 	/maxcpucount:16 `
 	/P:SolutionDir="$SolutionDir\" `
-	/P:SolutionName="skyquery-all" `
+	/P:SolutionName="$SolutionName" `
 	/p:Configuration="$skyquery_target" `
 	/clp:Summary `
 	/verbosity:normal `
@@ -36,7 +37,7 @@ echo "Building SQL CLR scripting tool..."
 	/target:rebuild `
 	/maxcpucount:16 `
 	/P:SolutionDir="$SolutionDir\" `
-	/P:SolutionName="skyquery-all" `
+	/P:SolutionName="$SolutionName" `
 	/p:Configuration="$skyquery_target" `
 	/clp:Summary `
 	/verbosity:normal `
@@ -51,4 +52,4 @@ echo "Building SkyQuery..."
 	/clp:"Summary;EnableMPLogging" `
 	/fileLogger /fileloggerparameters:ForceNoAlign `
 	/p:Configuration="$skyquery_target" `
-	"skyquery-all.sln"
+	"$SolutionName.sln"
