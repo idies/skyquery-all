@@ -135,17 +135,21 @@ function RemoveRegistry() {
 	}	
 }
 
+function ExportSubtree($entity, $output, $options) {
+	ExecLocal .\bin\$skyquery_target\gwregutil.exe export -root "$entity" -Output "$config\$output" $options -ExcludeUserCreated
+}
+
 function ExportRegistry() {
 	Write-Host "Exporting cluster settings..."
-	ExecLocal .\bin\$skyquery_target\gwregutil.exe export -root "Cluster:Graywulf" -Output "SkyQuery_Cluster.xml" -Cluster -ExcludeUserCreated
+	ExportSubtree "Cluster:Graywulf" "SkyQuery_Cluster.xml" "-Cluster"
 	Write-Host "Exporting system federation settings..."
-	ExecLocal .\bin\$skyquery_target\gwregutil.exe export -root "Federation:Graywulf\System\System" -Output "SkyQuery_System.xml" -Layout -ExcludeUserCreated
+	ExportSubtree "Federation:Graywulf\System\System" "SkyQuery_System.xml" "-Layout"
 	Write-Host "Exporting SciServer domain..."
-	ExecLocal .\bin\$skyquery_target\gwregutil.exe export -root "Domain:Graywulf\SciServer" -Output "SkyQuery_Domain.xml" -Domain -ExcludeUserCreated
+	ExportSubtree "Domain:Graywulf\SciServer" "SkyQuery_Domain.xml" "-Domain"
 	Write-Host "Exporting SkyQuery federation..."
-	ExecLocal .\bin\$skyquery_target\gwregutil.exe export -root "Federation:Graywulf\SciServer\SkyQuery" -Output "SkyQuery_Federation.xml" -Federation -ExcludeUserCreated
+	ExportSubtree "Federation:Graywulf\SciServer\SkyQuery" "SkyQuery_Federation.xml" "-Federation"
 	Write-Host "Exporting SkyQuery layout..."
-	ExecLocal .\bin\$skyquery_target\gwregutil.exe export -root "Federation:Graywulf\SciServer\SkyQuery" -Output "SkyQuery_Layout.xml" -Layout -ExcludeUserCreated
+	ExportSubtree "Federation:Graywulf\SciServer\SkyQuery" "SkyQuery_Layout.xml" "-Layout"
 }
 
 function ImportRegistry() {
