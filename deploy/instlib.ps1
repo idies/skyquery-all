@@ -588,3 +588,38 @@ function FlushSchema() {
 }
 
 #endregion
+# -------------------------------------------------------------
+#region Unit tests
+
+function FindTests($pattern) {
+	Get-ChildItem -Recurse . | where { $_.PSIsContainer -and $_.Name -match ".*$pattern.*\.Test" }
+}
+
+function PrintTests($tests) {
+	Write-Host "Tests found:"
+	foreach ($t in $tests) {
+		Write-Host " ... $($t.Name)"
+	}
+}
+
+function RunTest($test, $outdir) {
+	$name = "$($test.Name)"
+	$dll = "$($test.FullName)\bin\$skyquery_target\$($test.Name).dll"
+	$res = "$outdir\$name.trx"
+	$err = "$outdir\$name.err"
+	& 'C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\mstest.exe' /testcontainer:$dll /resultsfile:$res
+}
+
+function RunTests($tests) {
+	$now = Get-Date
+	$outdir = [string]::Format("{0:yyyyMMdd-hhmmss}", $now)
+	$outdir = "TestResults\$outdir"
+	mkdir -Path "$outdir"
+	Write-Host "Executing tests in:"
+	foreach ($t in $tests) {
+		Write-Host " ... $($t.Name)"
+		RunTest $t "$outdir"
+	}
+}
+
+#endregion

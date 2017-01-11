@@ -432,6 +432,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{99798F
 		deploy\manage.ps1 = deploy\manage.ps1
 		deploy\setup.ps1 = deploy\setup.ps1
 		deploy\skynode.ps1 = deploy\skynode.ps1
+		deploy\test.ps1 = deploy\test.ps1
 		deploy\version.ps1 = deploy\version.ps1
 	EndProjectSection
 EndProject
