@@ -424,6 +424,7 @@ function RemoveWebAdmin() {
 function InstallWebUI() {
 	if ($skyquery_deploywww) {
 		$servers = $skyquery_web
+		RecycleAppPool $servers "$skyquery_user_web_apppool"
 		Write-Host "Copying web UI to:"
 		CopyDir $servers ".\skyquery\web\Jhu.SkyQuery.Web.UI\*" "$skyquery_user_web_path"
 		Write-Host "Creating app pool for web UI on:"
