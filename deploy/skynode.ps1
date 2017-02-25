@@ -21,7 +21,7 @@ if ($verb -match "^help") {
 	DeploySkyNodeScripts "$dbname" "$dbversion" "create|index"
 } elseif ($verb -match "^addmeta") {
 	# Add metadata extended properties to skynode database ($dbversion is usually SCHEMA)
-	ImportSkyNodeMetadata "$dbname" "$dbversion" "create|index"
+	ImportSkyNodeMetadata "$dbname" "$dbversion"
 } elseif ($verb -match "^fixuser") {
 	# Fix users in database
 	FixSkyNodeUsers "$dbname" "$dbversion"
