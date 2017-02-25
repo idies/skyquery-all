@@ -74,9 +74,7 @@ function SetConfigVersion($modules, $version) {
 	}
 }
 
-function CreateTag($modules) {
-	$version = GetConfigVersion "."
-	$tag = "skyquery-v$version"
+function CreateTag($modules, $tag) {
 	Write-Host "Using version number of root module: $version"
 	Write-Host "Tagging module with $tag :"
 	foreach ($m in $modules) {
