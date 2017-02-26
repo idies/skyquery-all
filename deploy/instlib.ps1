@@ -44,7 +44,7 @@ function PrintConfigVersion($modules) {
 	}
 }
 
-function UpdateConfigVersion($modules, $now) {
+function UpdateConfigVersion($modules) {
 	Write-Host "Updating version number for module:"
 	foreach ($m in $modules) {
 		$filename = "$m\build.config"
@@ -52,7 +52,7 @@ function UpdateConfigVersion($modules, $now) {
 		$config = GetConfig $configfile
 		$version = GetVersion $config
 
-		$version = IncrementVersion $version $now
+		$version = IncrementVersion $version
 		UpdateVersion $config $version
 		$config.Save($configfile.FullName)
 	

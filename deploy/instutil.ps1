@@ -140,7 +140,18 @@ function GetVersion($config) {
 	$version
 }
 
-function IncrementVersion($version, $now) {
+function IncrementVersion($version) {
+	$parts = $version.Split('.')
+	[int]$major = $parts[0]
+	[int]$minor = $parts[1]
+	[int]$build = $parts[2]
+	$build = $build + 1
+	[string]$version = "$major.$minor.$build"
+
+	$version
+}
+
+function IncrementVersionFromDate($version, $now) {
 	# Build number is the number of days since January 1, 2000
 	[datetime]$start='01/01/2000'
 		

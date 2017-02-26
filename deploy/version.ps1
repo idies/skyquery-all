@@ -49,8 +49,7 @@ Typical usage:
 } elseif ($verb -match "^print") {
 	PrintConfigVersion $modules
 } elseif ($verb -match "^update") {
-	[datetime]$now = Get-Date
-	UpdateConfigVersion $modules $now
+	UpdateConfigVersion $modules
 	echo "Don't forget to commit before tagging!"
 } elseif ($verb -match "^set") {
 	SetConfigVersion $modules $version
