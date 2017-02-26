@@ -140,14 +140,21 @@ function GetVersion($config) {
 	$version
 }
 
+function GetPrefix($config) {
+	[string]$prefix = $config.config.assemblySettings.prefix
+	$prefix
+}
+
 function IncrementVersion($version) {
 	$parts = $version.Split('.')
-	[int]$major = $parts[0]
-	[int]$minor = $parts[1]
-	[int]$build = $parts[2]
-	$build = $build + 1
-	[string]$version = "$major.$minor.$build"
-
+	$version = ""
+	for($i = 0; $i -lt $parts.Count - 1; $i++) {
+		[int]$v = $parts[$i]
+		$version = "$version$v."
+	}
+	[int]$v = $parts[$parts.Count - 1]
+	$v = $v + 1
+	$version = "$version$v"
 	$version
 }
 

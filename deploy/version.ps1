@@ -31,14 +31,12 @@ Verbs:
 		set version number to exact value
 	tag <module_list> <tag>
 		create git tag
-	autotag [module_list]
-		create git tag based on current version number
 
 Parameters:
 	module_list
 		comma separated list or * for all
 	version
-		number in major.minor.build.revision format
+		number in major.minor.revision format
 
 Typical usage:
 	1. Update version: .\version.ps1 update
@@ -47,20 +45,14 @@ Typical usage:
 	4. Push
 "
 } elseif ($verb -match "^print") {
-	PrintConfigVersion $modules
+	PrintGitVersion $modules
 } elseif ($verb -match "^update") {
-	UpdateConfigVersion $modules
-	echo "Don't forget to commit before tagging!"
-} elseif ($verb -match "^set") {
-	SetConfigVersion $modules $version
-	echo "Don't forget to commit before tagging!"
-} elseif ($verb -match "^tag") {
-	CreateTag $modules $tag
+	UpdateGitVersion $modules
 	echo "Don't forget to push tags!"
-} elseif ($verb -match "^autotag") {
-	# Create tag based on current version
-	$version = GetConfigVersion "."
-	$tag = "skyquery-v$version"
+} elseif ($verb -match "^set") {
+	SetGitVersion $modules $version
+	echo "Don't forget to push tags!"
+} elseif ($verb -match "^tag") {
 	CreateTag $modules $tag
 	echo "Don't forget to push tags!"
 } else {

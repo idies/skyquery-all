@@ -28,49 +28,71 @@ function GetSubmodules() {
 	git config --file .gitmodules --name-only --get-regexp path | %{"$($_.Split('.')[1])"}
 }
 
-function GetConfigVersion($module) {
+function GetConfigPrefix($module) {
 	$filename = "$module\build.config"
 	$configfile = GetConfigFile "$filename"
 	$config = GetConfig $configfile
-	$version = GetVersion $config
-	$version
+	$prefix = GetPrefix $config
+	$prefix
 }
 
-function PrintConfigVersion($modules) {
+function GetGitTag($module, $prefix) {
+	pushd $module
+	$res = (git describe --long --match $prefix-v*)
+	popd
+	$res
+}
+
+function SetGitTag($module, $tag) {
+	pushd $module
+	#git tag -a "$tag" -m "$tag"
+	popd
+}
+
+function VerifyGitStatus($module) {
+	pushd $module
+	$pending = git status -s
+	if ($pending -ne $null) {
+		Write-Host "Pending changes in module $module :"
+		Write-Host $pending
+		Write-Host "Commit or stash changes, exiting."
+		exit
+	}
+	popd
+}
+
+function PrintGitVersion($modules) {
 	Write-Host "Printing version number for module:"
 	foreach ($m in $modules) {
-		$version = GetConfigVersion $m
-		Write-Host $(" ... {0,-20} : {1}" -f $m, $version)
+		$prefix = GetConfigPrefix $m
+		$tag = GetGitTag $m $prefix
+		Write-Host $(" ... {0,-20} : {1}" -f $m, $tag)
 	}
 }
 
-function UpdateConfigVersion($modules) {
-	Write-Host "Updating version number for module:"
-	foreach ($m in $modules) {
-		$filename = "$m\build.config"
-		$configfile = GetConfigFile "$filename"
-		$config = GetConfig $configfile
-		$version = GetVersion $config
-
-		$version = IncrementVersion $version
-		UpdateVersion $config $version
-		$config.Save($configfile.FullName)
-	
-		Write-Host $(" ... {0,-20} : {1}" -f $m, $version)
-	}
-}
-
-function SetConfigVersion($modules, $version) {
+function SetGitVersion($modules, $version) {
 	Write-Host "Setting version number for module:"
 	foreach ($m in $modules) {
-		$filename = "$m\build.config"
-		$configfile = GetConfigFile "$filename"
-		$config = GetConfig $configfile
+		$prefix = GetConfigPrefix $m
+		$tag = "$prefix-v$version"
+		VerifyGitStatus $m
+		SetGitTag $m $tag
+		Write-Host $(" ... {0,-20} : {1}" -f $m, $tag)
+	}
+}
 
-		UpdateVersion $config $version
-		$config.Save($configfile.FullName)
-	
-		Write-Host $(" ... {0,-20} : {1}" -f $m, $version)
+function UpdateGitVersion($modules) {
+	Write-Host "Updating version number for module:"
+	foreach ($m in $modules) {
+		$prefix = GetConfigPrefix $m
+		$tag = GetGitTag $m $prefix
+		$match = $tag -imatch "(?<tag>[a-z]+)-v(?<version>[0-9]+(?:\.[0-9]+)*)-(?<revision>[0-9]+)-g[0-9a-f]+"
+		$version = $matches["version"]
+		$version = IncrementVersion $version
+		$tag = "$prefix-v$version"
+		VerifyGitStatus $m
+		SetGitTag $m $tag
+		Write-Host $(" ... {0,-20} : {1}" -f $m, $tag)
 	}
 }
 
@@ -78,11 +100,9 @@ function CreateTag($modules, $tag) {
 	Write-Host "Using version number of root module: $version"
 	Write-Host "Tagging module with $tag :"
 	foreach ($m in $modules) {
-		pushd
-		cd $m
-		git tag "$tag"
-		popd
-		Write-Host " ... $m"
+		VerifyGitStatus $m
+		SetGitTag $m $tag
+		Write-Host $(" ... {0,-20} : {1}" -f $m, $tag)
 	}
 }
 
