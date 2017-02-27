@@ -1,5 +1,5 @@
-$GRAYWULF="v1.2/develop"
-$SKYQUERY="v1.2/develop"
+$GRAYWULF="v1.3/develop"
+$SKYQUERY="v1.3/develop"
 $SHARPFITSIO="develop"
 $SPHERICAL="develop"
 
