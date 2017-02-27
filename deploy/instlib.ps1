@@ -45,7 +45,7 @@ function GetGitTag($module, $prefix) {
 
 function SetGitTag($module, $tag) {
 	pushd $module
-	#git tag -a "$tag" -m "$tag"
+	git tag -a "$tag" -m "Automatically annotated tag $tag"
 	popd
 }
 
