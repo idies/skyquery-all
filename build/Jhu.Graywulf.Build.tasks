@@ -1,0 +1,5 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<UsingTask TaskName="Jhu.Graywulf.Build.Tasks.InvokePS" AssemblyFile="$(SolutionDir)\build\Jhu.Graywulf.Build.dll"/>
+  <UsingTask TaskName="Jhu.Graywulf.Build.Tasks.Configure" AssemblyFile="$(SolutionDir)\build\Jhu.Graywulf.Build.dll"/>
+  <UsingTask TaskName="Jhu.Graywulf.Build.Tasks.GenerateSql" AssemblyFile="$(SolutionDir)\build\Jhu.Graywulf.Build.dll"/>
+</Project>

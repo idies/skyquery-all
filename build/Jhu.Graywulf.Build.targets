@@ -1,0 +1,30 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="BeforeBuild">
+    <Configure
+      SolutionDir="$(SolutionDir)"
+      SolutionName="$(SolutionName)"
+      ProjectDir="$(ProjectDir)"
+      ProjectName="$(ProjectName)"
+      AssemblyName="$(AssemblyName)"
+      OutputType="$(OutputType)" 
+      ProjectTypeGuids="$(ProjectTypeGuids)" />
+    <InvokePS Condition="Exists('$(ProjectDir)\pre-build.ps1')"
+      SolutionDir="$(SolutionDir)"
+      SolutionName="$(SolutionName)"
+      ProjectDir="$(ProjectDir)"
+      ProjectName="$(ProjectName)"
+      OutDir="$(OutDir)"
+      TargetName="$(TargetName)"
+      Script="$(ProjectDir)\pre-build.ps1" />
+  </Target>
+  <Target Name="AfterBuild">
+    <InvokePS Condition="Exists('$(ProjectDir)\post-build.ps1')"
+      SolutionDir="$(SolutionDir)"
+      SolutionName="$(SolutionName)"
+      ProjectDir="$(ProjectDir)"
+      ProjectName="$(ProjectName)"
+      OutDir="$(OutDir)"
+      TargetName="$(TargetName)"
+      Script="$(ProjectDir)\post-build.ps1" />
+  </Target>
+</Project>
