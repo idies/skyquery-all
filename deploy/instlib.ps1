@@ -503,6 +503,7 @@ function DropCodeDb() {
 }
 
 function InstallCodeDbScripts() {
+	# TODO: remove skyquery specific
 	if ($skyquery_deploycodedb) {
 		$databases = $skyquery_codedb
 		Write-Host "Installing CodeDB scripts to:"
@@ -512,12 +513,9 @@ function InstallCodeDbScripts() {
 			$d = $db["Database"]
 			ExecSqlScript "$s" "$d" ".\bin\$skyquery_target\Jhu.Spherical.Sql.Create.sql"
 			ExecSqlScript "$s" "$d" ".\bin\$skyquery_target\Jhu.SkyQuery.SqlClrLib.Create.sql"
-			AddDatabaseUser "$s" "$d" "$skyquery_admin_account"
-			AddDatabaseUserRole "$s" "$d" "$skyquery_admin_account" "db_owner"
-			AddDatabaseUser "$s" "$d" "$skyquery_service_account"
-			AddDatabaseUserRole "$s" "$d" "$skyquery_service_account" "db_owner"
-			AddDatabaseUser "$s" "$d" "$skyquery_user_account"
-			AddDatabaseUserRole "$s" "$d" "$skyquery_user_account" "db_owner"
+			FixUser "$s" "$d" "$skyquery_admin_account" "db_owner"
+			FixUser "$s" "$d" "$skyquery_service_account" "db_owner"
+			FixUser "$s" "$d" "$skyquery_user_account" "db_owner"
 			Write-Host "... ... OK"
 		}
 	}
@@ -540,65 +538,7 @@ function RemoveCodeDbScripts() {
 
 #endregion
 # -------------------------------------------------------------
-#region SkyNode utils
-
-function DeploySkyNodeScripts($name, $version, $subset) {
-	$databases = FindDatabaseInstances "DatabaseDefinition:Graywulf\SciServer\SkyQuery\$name" "$version"
-	$scripts = FindFiles ".\skyquery-skynodes\sql\$dbname\*" "\d+_($subset).*\.sql"
-	Write-Host "Deploying SkyNode scripts to:"
-	foreach ($db in $databases) {
-		$s = $db["Server"]
-		$d = $db["Database"]
-		Write-Host "... " $s $d
-		foreach ($f in $scripts) {
-			Write-Host "... ... " $f.Name
-			ExecSqlScript "$s" "$d" $f.FullName
-		}
-	}
-}
-
-function ImportSkyNodeMetadata($name, $version) {
-	$databases = FindDatabaseInstances "DatabaseDefinition:Graywulf\SciServer\SkyQuery\$name" "$version"
-	$scripts = FindFiles ".\skyquery-skynodes\sql\$dbname\*" "\d+_meta\.xml"
-	Write-Host "Generating SkyNode metadata to:"
-	foreach ($db in $databases) {
-		$s = $db["Server"]
-		$d = $db["Database"]
-		Write-Host "... " $s $d
-		foreach ($f in $scripts) {
-			Write-Host "... ... " $f.Name
-			& ".\bin\$skyquery_target\gwmetautil.exe" import -Server "$s" -Database "$d" -E -Input "$($f.FullName)"
-		}
-	}
-}
-
-function FixSkyNodeUsers($name, $version) {
-	$databases = FindDatabaseInstances "DatabaseDefinition:Graywulf\SciServer\SkyQuery\$name" "$version"
-	Write-Host "Fixing SkyNode users in:"
-	foreach ($db in $databases) {
-		$s = $db["Server"]
-		$d = $db["Database"]
-		Write-Host "... " $s $d
-		FixUsers "$s" "$d"
-	}
-}
-
-#endregion
-# -------------------------------------------------------------
 #region Management utils
-
-function FixUsers($server, $database) {
-	$s = $server
-	$d = $database
-	# TODO: modify, skyquery-user is not dbo but allowed to read schema
-	# TODO: modify to deal with read-only databases
-	AddDatabaseUser "$s" "$d" "$skyquery_admin_account"
-	AddDatabaseUserRole "$s" "$d" "$skyquery_admin_account" "db_owner"
-	AddDatabaseUser "$s" "$d" "$skyquery_service_account"
-	AddDatabaseUserRole "$s" "$d" "$skyquery_service_account" "db_owner"
-	AddDatabaseUser "$s" "$d" "$skyquery_user_account"
-	AddDatabaseUserRole "$s" "$d" "$skyquery_user_account" "db_owner"
-}
 
 function FlushSchema() {
 	$servers = $skyquery_web

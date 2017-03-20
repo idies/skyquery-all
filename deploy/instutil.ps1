@@ -415,17 +415,54 @@ function DropDatabaseInstance($databaseInstance) {
 }
 
 function ExecSqlScript($server, $database, $script) {
-	sqlcmd -S "$server" -E -d "$database" -i "$script"
+	$res = sqlcmd -S "$server" -E -d "$database" -i "$script" -h -1 -k2 -W -b | Out-String -Stream
+	$res
+}
+
+function ExecSqlCommand($server, $database, $sql) {
+	$res = sqlcmd -S "$server" -E -d "$database" -Q "SET NOCOUNT ON;$sql" -h -1 -k2 -W -b | Out-String -Stream
+	$res
+}
+
+function SetDatabaseReadOnly($server, $database) {
+	$sql = "ALTER DATABASE $database SET READ_ONLY"
+	ExecSqlCommand "$server" "$database" "$sql"
+}
+
+function SetDatabaseReadWrite($server, $database) {
+	$sql = "ALTER DATABASE $database SET READ_WRITE"
+	ExecSqlCommand "$server" "$database" "$sql"
+}
+
+function SetDatabaseRestrictedUser($server, $database) {
+	$sql = "ALTER DATABASE $database SET RESTRICTED_USER WITH ROLLBACK IMMEDIATE"
+	ExecSqlCommand "$server" "$database" "$sql"
+}
+
+function SetDatabaseMultiUser($server, $database) {
+	$sql = "ALTER DATABASE $database SET MULTI_USER"
+	ExecSqlCommand "$server" "$database" "$sql"
 }
 
 function AddDatabaseUser($server, $database, $user) {
 	$sql = "CREATE USER [$user] FOR LOGIN [$user]"
-	sqlcmd -S "$server" -E -d "$database" -Q "$sql"
+	ExecSqlCommand "$server" "$database" "$sql"
 }
 
 function AddDatabaseUserRole($server, $database, $user, $role) {
 	$sql = "ALTER ROLE [$role] ADD MEMBER [$user]"
-	sqlcmd -S "$server" -E -d "$database" -Q "$sql"
+	ExecSqlCommand "$server" "$database" "$sql"
+}
+
+function IsDatabaseReadOnly($server, $database) {
+	$sql = "SELECT is_read_only FROM sys.databases WHERE name = '$database'"
+	$res = ExecSqlCommand "$server" "$database" "$sql"
+	$res
+}
+
+function FixUser($server, $database, $user, $role) {
+	AddDatabaseUser "$server" "$database" "$user"
+	AddDatabaseUserRole "$server" "$database" "$user" "$role"
 }
 
 #endregion
