@@ -271,6 +271,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{99798F
 		deploy\manage.ps1 = deploy\manage.ps1
 		deploy\setup.ps1 = deploy\setup.ps1
 		deploy\skynode.ps1 = deploy\skynode.ps1
+		deploy\sqlib.ps1 = deploy\sqlib.ps1
 		deploy\test.ps1 = deploy\test.ps1
 		deploy\version.ps1 = deploy\version.ps1
 	EndProjectSection
@@ -519,7 +520,6 @@ Global
 		{9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB}.Release|x86.ActiveCfg = Release|x86
 		{9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB}.Release|x86.Build.0 = Release|x86
 		{2887F181-7F61-4DF5-BD89-2800503D5F84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2887F181-7F61-4DF5-BD89-2800503D5F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2887F181-7F61-4DF5-BD89-2800503D5F84}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{2887F181-7F61-4DF5-BD89-2800503D5F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2887F181-7F61-4DF5-BD89-2800503D5F84}.Release|Any CPU.Build.0 = Release|Any CPU
