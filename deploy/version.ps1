@@ -39,9 +39,8 @@ Parameters:
 		number in major.minor.revision format
 
 Typical usage:
-	1. Update version: .\version.ps1 update
-	2. Commit changes of all submodules
-	3. Create tag: .\version.ps1 autotag
+	1. Commit changes of all submodules
+	2. Update version: .\version.ps1 update
 	4. Push
 "
 } elseif ($verb -match "^print") {
