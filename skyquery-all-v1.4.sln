@@ -217,6 +217,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.IO.Test", "skyquery\test\Jhu.SkyQuery.IO.Test\Jhu.SkyQuery.IO.Test.csproj", "{20858FCC-4BD6-4E89-9D3F-BCEB7ABA9A92}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spherical", "Spherical", "{214EAD40-B0B3-4383-AFBB-2D8B20E68F9B}"
+	ProjectSection(SolutionItems) = preProject
+		spherical\build.config = spherical\build.config
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{04A7E5DF-D7B7-42CD-BFB0-FEEC70B967D1}"
 EndProject
@@ -310,6 +313,32 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Schema.Test", "graywulf\test\Jhu.Graywulf.Schema.Test\Jhu.Graywulf.Schema.Test.csproj", "{08DA807C-0A14-4B90-AA6C-30F40FD92D41}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Sql", "spherical\src\Jhu.Spherical.Sql\Jhu.Spherical.Sql.csproj", "{08D73235-A602-4A3A-AEC3-F785841E0478}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Footprint", "Footprint", "{74CBDFB4-3CA4-4E9C-97F9-A4642E25CD1F}"
+	ProjectSection(SolutionItems) = preProject
+		footprint\build.config = footprint\build.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{2D386990-2151-484B-8BBD-0CF95BB8F6EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Footprint.Web.Lib", "footprint\dll\Jhu.Footprint.Web.Lib\Jhu.Footprint.Web.Lib.csproj", "{8D06003C-676E-48E0-87BF-DB12DA746B50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Footprint.Web.Api", "footprint\dll\Jhu.Footprint.Web.Api\Jhu.Footprint.Web.Api.csproj", "{24570021-F4C8-4015-A0AF-82D4BBBEC40D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{D328D2BA-3C38-4726-8060-F70218FB2349}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Footprint.Web.Lib.Test", "footprint\test\Jhu.Footprint.Web.Lib.Test\Jhu.Footprint.Web.Lib.Test.csproj", "{75F61EA3-FB34-4FB1-8016-8D7D7F95B969}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Footprint.Web.Api.Test", "footprint\test\Jhu.Footprint.Web.Api.Test\Jhu.Footprint.Web.Api.Test.csproj", "{02E5D24F-4A27-4C44-AAC6-E42ADFC573A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{1B16EA3F-E322-4EFB-A1D0-3368161DFCA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Footprint.Web.UI", "footprint\web\Jhu.Footprint.Web.UI\Jhu.Footprint.Web.UI.csproj", "{41B84D73-EEE3-42C2-A317-67C21210AB5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{3A635860-0BA2-403F-928D-06AD946197F9}"
+	ProjectSection(SolutionItems) = preProject
+		footprint\config\sections.config = footprint\config\sections.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -878,6 +907,46 @@ Global
 		{08D73235-A602-4A3A-AEC3-F785841E0478}.Release|Any CPU.Build.0 = Release|Any CPU
 		{08D73235-A602-4A3A-AEC3-F785841E0478}.Release|x86.ActiveCfg = Release|Any CPU
 		{08D73235-A602-4A3A-AEC3-F785841E0478}.Release|x86.Build.0 = Release|Any CPU
+		{8D06003C-676E-48E0-87BF-DB12DA746B50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D06003C-676E-48E0-87BF-DB12DA746B50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D06003C-676E-48E0-87BF-DB12DA746B50}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8D06003C-676E-48E0-87BF-DB12DA746B50}.Debug|x86.Build.0 = Debug|Any CPU
+		{8D06003C-676E-48E0-87BF-DB12DA746B50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D06003C-676E-48E0-87BF-DB12DA746B50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D06003C-676E-48E0-87BF-DB12DA746B50}.Release|x86.ActiveCfg = Release|Any CPU
+		{8D06003C-676E-48E0-87BF-DB12DA746B50}.Release|x86.Build.0 = Release|Any CPU
+		{24570021-F4C8-4015-A0AF-82D4BBBEC40D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24570021-F4C8-4015-A0AF-82D4BBBEC40D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24570021-F4C8-4015-A0AF-82D4BBBEC40D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{24570021-F4C8-4015-A0AF-82D4BBBEC40D}.Debug|x86.Build.0 = Debug|Any CPU
+		{24570021-F4C8-4015-A0AF-82D4BBBEC40D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24570021-F4C8-4015-A0AF-82D4BBBEC40D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24570021-F4C8-4015-A0AF-82D4BBBEC40D}.Release|x86.ActiveCfg = Release|Any CPU
+		{24570021-F4C8-4015-A0AF-82D4BBBEC40D}.Release|x86.Build.0 = Release|Any CPU
+		{75F61EA3-FB34-4FB1-8016-8D7D7F95B969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75F61EA3-FB34-4FB1-8016-8D7D7F95B969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75F61EA3-FB34-4FB1-8016-8D7D7F95B969}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{75F61EA3-FB34-4FB1-8016-8D7D7F95B969}.Debug|x86.Build.0 = Debug|Any CPU
+		{75F61EA3-FB34-4FB1-8016-8D7D7F95B969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75F61EA3-FB34-4FB1-8016-8D7D7F95B969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75F61EA3-FB34-4FB1-8016-8D7D7F95B969}.Release|x86.ActiveCfg = Release|Any CPU
+		{75F61EA3-FB34-4FB1-8016-8D7D7F95B969}.Release|x86.Build.0 = Release|Any CPU
+		{02E5D24F-4A27-4C44-AAC6-E42ADFC573A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02E5D24F-4A27-4C44-AAC6-E42ADFC573A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02E5D24F-4A27-4C44-AAC6-E42ADFC573A1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{02E5D24F-4A27-4C44-AAC6-E42ADFC573A1}.Debug|x86.Build.0 = Debug|Any CPU
+		{02E5D24F-4A27-4C44-AAC6-E42ADFC573A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02E5D24F-4A27-4C44-AAC6-E42ADFC573A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02E5D24F-4A27-4C44-AAC6-E42ADFC573A1}.Release|x86.ActiveCfg = Release|Any CPU
+		{02E5D24F-4A27-4C44-AAC6-E42ADFC573A1}.Release|x86.Build.0 = Release|Any CPU
+		{41B84D73-EEE3-42C2-A317-67C21210AB5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41B84D73-EEE3-42C2-A317-67C21210AB5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41B84D73-EEE3-42C2-A317-67C21210AB5C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{41B84D73-EEE3-42C2-A317-67C21210AB5C}.Debug|x86.Build.0 = Debug|Any CPU
+		{41B84D73-EEE3-42C2-A317-67C21210AB5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41B84D73-EEE3-42C2-A317-67C21210AB5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41B84D73-EEE3-42C2-A317-67C21210AB5C}.Release|x86.ActiveCfg = Release|Any CPU
+		{41B84D73-EEE3-42C2-A317-67C21210AB5C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -992,6 +1061,15 @@ Global
 		{7CB2799F-5B60-4CE9-A71F-1B3C8C868EDC} = {08B75CEE-73A4-4EB5-8C79-2EB3A1DF628C}
 		{08DA807C-0A14-4B90-AA6C-30F40FD92D41} = {31A32854-8930-499D-9DC1-969C3B2CCE36}
 		{08D73235-A602-4A3A-AEC3-F785841E0478} = {04A7E5DF-D7B7-42CD-BFB0-FEEC70B967D1}
+		{2D386990-2151-484B-8BBD-0CF95BB8F6EC} = {74CBDFB4-3CA4-4E9C-97F9-A4642E25CD1F}
+		{8D06003C-676E-48E0-87BF-DB12DA746B50} = {2D386990-2151-484B-8BBD-0CF95BB8F6EC}
+		{24570021-F4C8-4015-A0AF-82D4BBBEC40D} = {2D386990-2151-484B-8BBD-0CF95BB8F6EC}
+		{D328D2BA-3C38-4726-8060-F70218FB2349} = {74CBDFB4-3CA4-4E9C-97F9-A4642E25CD1F}
+		{75F61EA3-FB34-4FB1-8016-8D7D7F95B969} = {D328D2BA-3C38-4726-8060-F70218FB2349}
+		{02E5D24F-4A27-4C44-AAC6-E42ADFC573A1} = {D328D2BA-3C38-4726-8060-F70218FB2349}
+		{1B16EA3F-E322-4EFB-A1D0-3368161DFCA1} = {74CBDFB4-3CA4-4E9C-97F9-A4642E25CD1F}
+		{41B84D73-EEE3-42C2-A317-67C21210AB5C} = {1B16EA3F-E322-4EFB-A1D0-3368161DFCA1}
+		{3A635860-0BA2-403F-928D-06AD946197F9} = {74CBDFB4-3CA4-4E9C-97F9-A4642E25CD1F}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = skyquery-all.vsmdi
