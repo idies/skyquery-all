@@ -1,12 +1,10 @@
-$GRAYWULF="v1.3/develop"
-$SKYQUERY="v1.3/develop"
+$GRAYWULF="v1.4/develop"
+$SKYQUERY="v1.4/develop"
+$FOOTPRINT="v2.0/develop"
 $SHARPFITSIO="develop"
 $SPHERICAL="develop"
 
 cd graywulf
-git checkout -B $GRAYWULF remotes/origin/$GRAYWULF --
-
-cd ../graywulf-build
 git checkout -B $GRAYWULF remotes/origin/$GRAYWULF --
 
 cd ../graywulf-plugins
@@ -32,5 +30,11 @@ git checkout -B $SKYQUERY remotes/origin/$SKYQUERY --
 
 cd ../spherical
 git checkout -B $SPHERICAL remotes/origin/$SPHERICAL --
+
+cd ../footprint
+git checkout -B $FOOTPRINT remotes/origin/$FOOTPRINT --
+
+cd ../footprint-config
+git checkout -B $FOOTPRINT remotes/origin/$FOOTPRINT --
 
 cd ..
