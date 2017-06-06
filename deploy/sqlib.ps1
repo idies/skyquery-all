@@ -65,5 +65,27 @@ function FixSkyNodeUsers($name, $version) {
 	}
 }
 
+function GenerateSkyNodeDensityPlots($name) {
+	$databases = FindDatabaseDefinitions "Federation:Graywulf\SciServer\SkyQuery" "$name" |
+		where { -Not $_["System"]  }
+	Write-Host "Generating density plots for"
+	foreach ($dd in $databases) {
+		$ddname = $dd["Name"]
+		$scripts = FindFiles ".\skyquery-skynodes\sql\$ddname\*" "\d+_plot\.py"
+		$di = FindDatabaseInstances "DatabaseDefinition:Graywulf\SciServer\SkyQuery\$ddname" "PROD"
+		if ($di.Length -gt 0 -and $scripts.Length -gt 0) {
+			$db = $di[0]
+			$s = $db["Server"]
+			$d = $db["Database"]
+			Write-Host "... " $ddname $s $d
+			foreach ($f in $scripts) {
+					Write-Host "... ... " $f.Name
+					$env:PYTHONPATH=Resolve-Path .\skyquery-skynodes
+					python "$f" "$s" "$d"
+			}
+		}
+	}
+}
+
 #endregion
 # -------------------------------------------------------------

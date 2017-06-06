@@ -219,6 +219,25 @@ function FindServerInstances($role) {
 	$ss
 }
 
+function FindDatabaseDefinitions($federation, $databaseDefinition) {
+	$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
+
+	$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
+	$f = $ef.LoadEntity($federation)
+	$f.LoadDatabaseDefinitions($TRUE)
+	$dd = $f.DatabaseDefinitions.Values | 
+		foreach { @{
+			"Name" = $_.Name;
+			"System" = $_.System;
+		} }
+	if ($databaseDefinition) {
+		$dd = $dd | where {$_["Name"] -match "$databaseDefinition"}
+	}
+
+	$context.Dispose()
+	$dd
+}
+
 function FindDatabaseInstances($databaseDefinition, $databaseVersion) {
 	$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
 

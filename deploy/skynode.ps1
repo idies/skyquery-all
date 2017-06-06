@@ -30,6 +30,8 @@ Verbs:
 		create metadata to skynodes, dbversion is usually SCHEMA
 	fixuser <config> <dbname> [dbversion]
 		fix service user privileges
+	plot <config> <dbname>
+		generate density plots
 
 Parameters:
 	config
@@ -59,6 +61,9 @@ Parameters:
 } elseif ($verb -match "^fixuser") {
 	# Fix users in database
 	FixSkyNodeUsers "$dbname" "$dbversion"
+} elseif ($verb -match "^plot") {
+	# Generate density maps
+	GenerateSkyNodeDensityPlots "$dbname"
 } else {
 	Write-Host "Unrecognized verb: $verb"
 }
