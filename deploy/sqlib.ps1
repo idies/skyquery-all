@@ -27,16 +27,21 @@ function DropSkyNodeMetadata($name, $version) {
 }
 
 function ImportSkyNodeMetadata($name, $version) {
-	$databases = FindDatabaseInstances "DatabaseDefinition:Graywulf\SciServer\SkyQuery\$name" "$version"
-	$scripts = FindFiles ".\skyquery-skynodes\sql\$dbname\*" "\d+_meta\.xml"
+	$databases = FindDatabaseDefinitions "Federation:Graywulf\SciServer\SkyQuery" "$name" |
+		where { -Not $_["System"]  }
 	Write-Host "Generating SkyNode metadata to:"
-	foreach ($db in $databases) {
-		$s = $db["Server"]
-		$d = $db["Database"]
-		Write-Host "... " $s $d
-		foreach ($f in $scripts) {
-			Write-Host "... ... " $f.Name
-			& ".\bin\$skyquery_target\gwmetautil.exe" import -Server "$s" -Database "$d" -E -Input "$($f.FullName)"
+	foreach ($dd in $databases) {
+		$ddname = $dd["Name"]
+		$scripts = FindFiles ".\skyquery-skynodes\sql\$ddname\*" "\d+_meta\.xml"
+		$di = FindDatabaseInstances "DatabaseDefinition:Graywulf\SciServer\SkyQuery\$ddname" "$version"
+		foreach ($db in $di) {
+			$s = $db["Server"]
+			$d = $db["Database"]
+			Write-Host "... " $ddname $s $d
+			foreach ($f in $scripts) {
+				Write-Host "... ... " $f.Name
+				& ".\bin\$skyquery_target\gwmetautil.exe" import -Server "$s" -Database "$d" -E -Input "$($f.FullName)"
+			}
 		}
 	}
 }
