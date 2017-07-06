@@ -311,6 +311,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Schema.Test", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Sql", "spherical\src\Jhu.Spherical.Sql\Jhu.Spherical.Sql.csproj", "{08D73235-A602-4A3A-AEC3-F785841E0478}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Logging.Test", "graywulf\test\Jhu.Graywulf.Logging.Test\Jhu.Graywulf.Logging.Test.csproj", "{D152DC9A-004C-4851-B0E7-B81A4325C9B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -880,6 +882,14 @@ Global
 		{08D73235-A602-4A3A-AEC3-F785841E0478}.Release|Any CPU.Build.0 = Release|Any CPU
 		{08D73235-A602-4A3A-AEC3-F785841E0478}.Release|x86.ActiveCfg = Release|Any CPU
 		{08D73235-A602-4A3A-AEC3-F785841E0478}.Release|x86.Build.0 = Release|Any CPU
+		{D152DC9A-004C-4851-B0E7-B81A4325C9B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D152DC9A-004C-4851-B0E7-B81A4325C9B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D152DC9A-004C-4851-B0E7-B81A4325C9B7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D152DC9A-004C-4851-B0E7-B81A4325C9B7}.Debug|x86.Build.0 = Debug|Any CPU
+		{D152DC9A-004C-4851-B0E7-B81A4325C9B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D152DC9A-004C-4851-B0E7-B81A4325C9B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D152DC9A-004C-4851-B0E7-B81A4325C9B7}.Release|x86.ActiveCfg = Release|Any CPU
+		{D152DC9A-004C-4851-B0E7-B81A4325C9B7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -994,6 +1004,7 @@ Global
 		{7CB2799F-5B60-4CE9-A71F-1B3C8C868EDC} = {08B75CEE-73A4-4EB5-8C79-2EB3A1DF628C}
 		{08DA807C-0A14-4B90-AA6C-30F40FD92D41} = {31A32854-8930-499D-9DC1-969C3B2CCE36}
 		{08D73235-A602-4A3A-AEC3-F785841E0478} = {04A7E5DF-D7B7-42CD-BFB0-FEEC70B967D1}
+		{D152DC9A-004C-4851-B0E7-B81A4325C9B7} = {31A32854-8930-499D-9DC1-969C3B2CCE36}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = skyquery-all.vsmdi
