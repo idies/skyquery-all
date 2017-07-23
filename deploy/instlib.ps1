@@ -140,7 +140,7 @@ function AskPasswords() {
 function InstallLogging() {
 	if ($skyquery_deployregistry) {
 		Write-Host "Creating database for logging..."
-		$cstr = GetConnectionString "Jhu.Graywulf.Logging"
+		$cstr = GetConnectionString "jhu.graywulf/logging/@connectionString"
 		$srv, $db = GetServerAndDatabase "$cstr"
 		ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateLog -Q -Server "$srv" -Database "$db"
 		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_admin_account" -Role "db_owner"
@@ -163,7 +163,7 @@ function RemoveLogging() {
 function InstallJobPersistence() {
 	if ($skyquery_deployregistry) {
 		Write-Host "Creating database for job persistence store..."
-		$cstr = GetConnectionString "Jhu.Graywulf.Activities.Persistence"
+		$cstr = GetConnectionString "jhu.graywulf/scheduler/@persistenceConnectionString"
 		$srv, $db = GetServerAndDatabase "$cstr"
 		ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateJobPersistence -Q -Server "$srv" -Database "$db"
 		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_admin_account" -Role "db_owner"
@@ -192,7 +192,7 @@ function InitRegistry() {
 }
 
 function LoadRegistryConnectionString() {
-	$cstr = GetConnectionString "Jhu.Graywulf.Registry"
+	$cstr = GetConnectionString "jhu.graywulf/registry/@connectionString"
 	[Jhu.Graywulf.Registry.ContextManager]::Instance.ConnectionString = $cstr
 }
 

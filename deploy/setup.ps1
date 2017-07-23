@@ -52,6 +52,8 @@ if ($verb -match "^help") {
 } elseif ($verb -match "^export") {
 	ExportRegistry
 } elseif ($verb -match "^reinstall") {
+	$ErrorActionPreference = "Stop"
+
 	FindServers
 
 	StopScheduler
