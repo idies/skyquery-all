@@ -1,4 +1,26 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="BeforeBuild">
+    <Configure
+      SolutionDir="$(SolutionDir)"
+      SolutionName="$(SolutionName)"
+      ConfigurationName="$(ConfigurationName)"
+      ProjectDir="$(ProjectDir)"
+      ProjectName="$(ProjectName)"
+      TargetName="$(TargetName)"
+      OutputType="$(OutputType)" 
+      OutDir="$(OutDir)" 
+      ProjectTypeGuids="$(ProjectTypeGuids)" />
+    <InvokePS Condition="Exists('$(ProjectDir)\pre-build.ps1')"
+      SolutionDir="$(SolutionDir)"
+      SolutionName="$(SolutionName)"
+      ConfigurationName="$(ConfigurationName)"
+      ProjectDir="$(ProjectDir)"
+      ProjectName="$(ProjectName)"
+      TargetName="$(TargetName)"
+      OutputType="$(OutputType)"
+      OutDir="$(OutDir)"
+      Script="$(ProjectDir)\pre-build.ps1" />
+  </Target>
   <Target Name="AfterBuild">
     <GenerateSql
       SolutionDir="$(SolutionDir)"
@@ -9,5 +31,15 @@
       TargetName="$(TargetName)"
       OutputType="$(OutputType)"
       OutDir="$(OutDir)" />
+    <InvokePS Condition="Exists('$(ProjectDir)\post-build.ps1')"
+      SolutionDir="$(SolutionDir)"
+      SolutionName="$(SolutionName)"
+      ConfigurationName="$(ConfigurationName)"
+      ProjectDir="$(ProjectDir)"
+      ProjectName="$(ProjectName)"
+      TargetName="$(TargetName)"
+      OutputType="$(OutputType)"
+      OutDir="$(OutDir)"
+      Script="$(ProjectDir)\post-build.ps1" />
   </Target>
 </Project>

@@ -213,6 +213,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.IO.Test", "skyquery\test\Jhu.SkyQuery.IO.Test\Jhu.SkyQuery.IO.Test.csproj", "{20858FCC-4BD6-4E89-9D3F-BCEB7ABA9A92}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spherical", "Spherical", "{214EAD40-B0B3-4383-AFBB-2D8B20E68F9B}"
+	ProjectSection(SolutionItems) = preProject
+		spherical\build.config = spherical\build.config
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{04A7E5DF-D7B7-42CD-BFB0-FEEC70B967D1}"
 EndProject
@@ -368,6 +371,7 @@ Global
 		{6797ED88-1D8C-491B-A036-4C42C4BF2EAF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6797ED88-1D8C-491B-A036-4C42C4BF2EAF}.Release|x86.ActiveCfg = Release|Any CPU
 		{2BD2D467-D003-468D-9B97-83DDC6F2ED78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BD2D467-D003-468D-9B97-83DDC6F2ED78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BD2D467-D003-468D-9B97-83DDC6F2ED78}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{2BD2D467-D003-468D-9B97-83DDC6F2ED78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BD2D467-D003-468D-9B97-83DDC6F2ED78}.Release|Any CPU.Build.0 = Release|Any CPU
@@ -519,6 +523,7 @@ Global
 		{9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB}.Release|x86.ActiveCfg = Release|x86
 		{9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB}.Release|x86.Build.0 = Release|x86
 		{2887F181-7F61-4DF5-BD89-2800503D5F84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2887F181-7F61-4DF5-BD89-2800503D5F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2887F181-7F61-4DF5-BD89-2800503D5F84}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{2887F181-7F61-4DF5-BD89-2800503D5F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2887F181-7F61-4DF5-BD89-2800503D5F84}.Release|Any CPU.Build.0 = Release|Any CPU
