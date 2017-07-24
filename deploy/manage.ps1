@@ -5,9 +5,8 @@
 WrapItself $PSCommandPath $args
 
 $verb = $args[1]
-$config = $args[2]
 
-. Configure $config
+. Configure
 Init
 InitRegistry
 

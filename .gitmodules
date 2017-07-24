@@ -25,9 +25,13 @@
 [submodule "graywulf-sciserver-init"]
 	path = graywulf-sciserver-init
 	url = git@github.com:sciserver/graywulf-sciserver-init.git
+[submodule "sciserver-logging"]
+	path = sciserver-logging
+	url = git@github.com:sciserver/sciserver-logging.git
 [submodule "footprint"]
 	path = footprint
 	url = git@github.com:sciserver/footprint.git
+
 [submodule "footprint-config"]
 	path = footprint-config
 	url = git@github.com:sciserver/footprint-config.git

@@ -3,6 +3,7 @@ $SKYQUERY="v1.4/develop"
 $FOOTPRINT="v2.0/develop"
 $SHARPFITSIO="develop"
 $SPHERICAL="develop"
+$SCISERVER="skyquery"
 
 cd graywulf
 git checkout -B $GRAYWULF remotes/origin/$GRAYWULF --
@@ -30,6 +31,9 @@ git checkout -B $SKYQUERY remotes/origin/$SKYQUERY --
 
 cd ../spherical
 git checkout -B $SPHERICAL remotes/origin/$SPHERICAL --
+
+cd ../sciserver-logging
+git checkout -B $SCISERVER remotes/origin/$SCISERVER --
 
 cd ../footprint
 git checkout -B $FOOTPRINT remotes/origin/$FOOTPRINT --

@@ -6,11 +6,10 @@
 WrapItself $PSCommandPath $args
 
 $verb = $args[1]
-$config = $args[2]
-$dbname = $args[3]
-$dbversion = $args[4]
+$dbname = $args[2]
+$dbversion = $args[3]
 
-. Configure $config
+. Configure
 Init
 InitRegistry
 
@@ -18,22 +17,22 @@ if ($verb -match "^help") {
 	Write-Host `
 "SkyQuery SkyNode management script.
 
-Usage: .\skynode.ps1 <verb> <config> [parameters]
+Usage: .\skynode.ps1 <verb> [parameters]
 Verbs:
 	help
 		display this info
-	deploy <config> <dbname> <dbversion>
+	deploy <dbname> <dbversion>
 		run create and index .sql scripts on skynode databases
-	dropmeta <config> <dbname> [dbversion]
+	dropmeta <dbname> [dbversion]
 		delete metadata from skynodes, dbversion is usually SCHEMA
-	addmeta <config> <dbname> [dbversion]
+	addmeta <dbname> [dbversion]
 		create metadata to skynodes, dbversion is usually SCHEMA
-	fixuser <config> <dbname> [dbversion]
+	fixuser <dbname> [dbversion]
 		fix service user privileges
+	plot <dbname>
+		generate density plots
 
 Parameters:
-	config
-		graywulf config
 	dbname
 		database definition name
 	dbversion
@@ -59,6 +58,9 @@ Parameters:
 } elseif ($verb -match "^fixuser") {
 	# Fix users in database
 	FixSkyNodeUsers "$dbname" "$dbversion"
+} elseif ($verb -match "^plot") {
+	# Generate density maps
+	GenerateSkyNodeDensityPlots "$dbname"
 } else {
 	Write-Host "Unrecognized verb: $verb"
 }

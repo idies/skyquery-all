@@ -16,10 +16,10 @@ function AskPassword($account) {
 	$cred.GetNetworkCredential().Password
 }
 
-function GetConnectionString($name) {
-	$path = ".\bin\$skyquery_target\gwregutil.exe.config"
-	$xpath = "//connectionStrings/add[@name=`"$name`"]"
-	$cstr = Select-Xml -XPath $xpath -Path $path | foreach { $_.node.connectionString } | Select-Object -first 1
+function GetConnectionString($xpath) {
+	$path = ".\bin\$skyquery_target\gwscheduler.exe.config"
+	$xml = [xml](Get-Content $path)
+	$cstr = $xml.SelectNodes("/configuration/" + $xpath).Value
 	$cstr
 }
 
@@ -219,6 +219,25 @@ function FindServerInstances($role) {
 	$ss
 }
 
+function FindDatabaseDefinitions($federation, $databaseDefinition) {
+	$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
+
+	$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
+	$f = $ef.LoadEntity($federation)
+	$f.LoadDatabaseDefinitions($TRUE)
+	$dd = $f.DatabaseDefinitions.Values | 
+		foreach { @{
+			"Name" = $_.Name;
+			"System" = $_.System;
+		} }
+	if ($databaseDefinition) {
+		$dd = $dd | where {$_["Name"] -match "$databaseDefinition"}
+	}
+
+	$context.Dispose()
+	$dd
+}
+
 function FindDatabaseInstances($databaseDefinition, $databaseVersion) {
 	$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
 
@@ -264,7 +283,10 @@ function StartService($servers, $name) {
 		-Args $name `
 		-Script { 
 			param($sn) 
-			Start-Service $sn 
+			$state = Get-WmiObject -Class Win32_Service -Filter "Name = '$sn'" | select -ExpandProperty State
+			if ($state -ne "Running") {
+				Start-Service $sn 
+			}
 		}
 }
 
@@ -274,7 +296,17 @@ function StopService($servers, $name) {
 		-Args $name `
 		-Script { 
 			param($sn) 
-			Stop-Service $sn 
+			$state = Get-WmiObject -Class Win32_Service -Filter "Name = '$sn'" | select -ExpandProperty State
+			if ($state -ne "Stopped") {
+				Try {
+					Stop-Service $sn -ErrorAction Stop
+				} Catch {
+					Write-Host "Cannot stop service gracefully, going to kill process associated with service $sn"
+					$procid = Get-WmiObject -Class Win32_Service -Filter "Name = '$sn'" | select -ExpandProperty ProcessId
+					Write-Host "Killing process $procid"
+					Stop-Process -Force $procid
+				}
+			}
 		} 
 }
 

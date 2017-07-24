@@ -5,10 +5,9 @@
 WrapItself $PSCommandPath $args
 
 $verb = $args[1]
-$config = $args[2]
-$pattern = $args[3]
+$pattern = $args[2]
 
-. Configure $config
+. Configure
 
 if (!$pattern) {
 	$pattern = ""
