@@ -31,7 +31,6 @@
 [submodule "footprint"]
 	path = footprint
 	url = git@github.com:sciserver/footprint.git
-
 [submodule "footprint-config"]
 	path = footprint-config
 	url = git@github.com:sciserver/footprint-config.git
