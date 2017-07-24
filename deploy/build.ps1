@@ -11,7 +11,7 @@ $xml.Save($configfile.FullName)
 . $root\configure.ps1
 
 $SolutionDir=pwd
-$SolutionName = "skyquery-all-v1.2"
+$SolutionName = Get-Item *.sln | select -ExpandProperty BaseName
 
 echo "Starting build for config '$root' with target '$skyquery_target'"
 

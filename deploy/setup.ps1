@@ -5,9 +5,8 @@
 WrapItself $PSCommandPath $args
 
 $verb = $args[1]
-$config = $args[2]
 
-. Configure $config
+. Configure
 Init
 InitRegistry
 
@@ -49,8 +48,6 @@ if ($verb -match "^help") {
 	InstallCodeDbScripts
 	
 	echo "Install complete. Run 'setup start $config' to finish installation."
-} elseif ($verb -match "^export") {
-	ExportRegistry
 } elseif ($verb -match "^reinstall") {
 	$ErrorActionPreference = "Stop"
 

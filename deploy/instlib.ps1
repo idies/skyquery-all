@@ -10,7 +10,16 @@ function WrapItself([string] $path, [string[]] $params) {
 	# This is the normal execution path
 }
 
-function Configure($config) {
+function GetConfig() {
+	$configfile = Get-Item build.config
+	$xml = [xml](Get-Content $configfile)
+	$config = [string]$xml.config.root
+	$config
+}
+
+function Configure() {
+	$config = GetConfig
+
 	# Load config
 	if (!(test-path .\$config\configure.ps1)) {
 		Write-Host Invalid configuration: $config
@@ -20,6 +29,7 @@ function Configure($config) {
 	# Load configuration and initialize setup
 
 	. .\$config\configure.ps1
+	Write-Host "Using config from $config"
 	Write-Host "Configured for $skyquery_config"
 	Write-Host "Build target is $skyquery_target"
 }
@@ -218,7 +228,7 @@ function RemoveRegistry() {
 }
 
 function ExportSubtree($entity, $output, $options) {
-	ExecLocal .\bin\$skyquery_target\gwregutil.exe export -root "$entity" -Output "$config\$output" $options -ExcludeUserCreated
+	ExecLocal .\bin\$skyquery_target\gwregutil.exe export -root "$entity" -Output "$config\registry\$output" $options -ExcludeUserCreated
 }
 
 function ExportRegistry() {
