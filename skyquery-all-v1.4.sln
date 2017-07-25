@@ -349,6 +349,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{258A3828-A5F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Footprint.Web.UI", "footprint\web\Jhu.Footprint.Web.UI\Jhu.Footprint.Web.UI.csproj", "{41B84D73-EEE3-42C2-A317-67C21210AB5C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sql", "Sql", "{BDA79A80-829A-4921-A3D6-C9B9D41870C0}"
+	ProjectSection(SolutionItems) = preProject
+		footprint\sql\Jhu.Footprint.Logic.Create.sql = footprint\sql\Jhu.Footprint.Logic.Create.sql
+		footprint\sql\Jhu.Footprint.Logic.Drop.sql = footprint\sql\Jhu.Footprint.Logic.Drop.sql
+		footprint\sql\Jhu.Footprint.Tables.Create.sql = footprint\sql\Jhu.Footprint.Tables.Create.sql
+		footprint\sql\Jhu.Footprint.Tables.Drop.sql = footprint\sql\Jhu.Footprint.Tables.Drop.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{9F6A68E2-D535-4537-8105-8DA265089207}"
+	ProjectSection(SolutionItems) = preProject
+		footprint\config\sections.config = footprint\config\sections.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -392,7 +405,6 @@ Global
 		{6797ED88-1D8C-491B-A036-4C42C4BF2EAF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6797ED88-1D8C-491B-A036-4C42C4BF2EAF}.Release|x86.ActiveCfg = Release|Any CPU
 		{2BD2D467-D003-468D-9B97-83DDC6F2ED78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2BD2D467-D003-468D-9B97-83DDC6F2ED78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BD2D467-D003-468D-9B97-83DDC6F2ED78}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{2BD2D467-D003-468D-9B97-83DDC6F2ED78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BD2D467-D003-468D-9B97-83DDC6F2ED78}.Release|Any CPU.Build.0 = Release|Any CPU
@@ -544,7 +556,6 @@ Global
 		{9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB}.Release|x86.ActiveCfg = Release|x86
 		{9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB}.Release|x86.Build.0 = Release|x86
 		{2887F181-7F61-4DF5-BD89-2800503D5F84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2887F181-7F61-4DF5-BD89-2800503D5F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2887F181-7F61-4DF5-BD89-2800503D5F84}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{2887F181-7F61-4DF5-BD89-2800503D5F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2887F181-7F61-4DF5-BD89-2800503D5F84}.Release|Any CPU.Build.0 = Release|Any CPU
@@ -1121,6 +1132,8 @@ Global
 		{02E5D24F-4A27-4C44-AAC6-E42ADFC573A1} = {7B4F739E-1BD4-4072-9D64-8A0FB4E12725}
 		{258A3828-A5F3-42C7-B81B-A684859F0B0D} = {00DF5363-D913-4D35-9CDE-445570E1ED35}
 		{41B84D73-EEE3-42C2-A317-67C21210AB5C} = {258A3828-A5F3-42C7-B81B-A684859F0B0D}
+		{BDA79A80-829A-4921-A3D6-C9B9D41870C0} = {00DF5363-D913-4D35-9CDE-445570E1ED35}
+		{9F6A68E2-D535-4537-8105-8DA265089207} = {00DF5363-D913-4D35-9CDE-445570E1ED35}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = skyquery-all.vsmdi
