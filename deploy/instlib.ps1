@@ -10,7 +10,7 @@ function WrapItself([string] $path, [string[]] $params) {
 	# This is the normal execution path
 }
 
-function GetConfig() {
+function GetConfigRoot() {
 	$configfile = Get-Item build.config
 	$xml = [xml](Get-Content $configfile)
 	$config = [string]$xml.config.root
@@ -18,7 +18,7 @@ function GetConfig() {
 }
 
 function Configure() {
-	$config = GetConfig
+	$config = GetConfigRoot
 
 	# Load config
 	if (!(test-path .\$config\configure.ps1)) {
