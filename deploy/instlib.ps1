@@ -374,7 +374,7 @@ function StartRemotingService() {
 function StopRemotingService() {
 	if ($skyquery_deployremoteservice) {
 		$servers = GetRemotingServiceServers
-		StopService $servers $skyquery_remoteservice
+		StopServiceWithTimeout $servers $skyquery_remoteservice 30
 	}
 }
 

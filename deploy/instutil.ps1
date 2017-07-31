@@ -310,6 +310,28 @@ function StopService($servers, $name) {
 		} 
 }
 
+function StopServiceWithTimeout($servers, $name, $timeoutSeconds) {
+	Write-Host "Stopping service $name on with a timeout of $timeoutSeconds seconds:"
+	ForEachServer $servers icm '$s' `
+		-Args $name, $timeoutSeconds `
+		-Script {
+			param($sn, $to)
+			$timespan = New-Object -TypeName System.Timespan -ArgumentList 0,0,$to
+			$svc = Get-Service -Name $sn
+			if ($svc.Status -ne [ServiceProcess.ServiceControllerStatus]::Stopped) {
+				Try {
+					$svc.Stop()
+					$svc.WaitForStatus([ServiceProcess.ServiceControllerStatus]::Stopped, $timespan)
+				} Catch {
+					Write-Host "Cannot stop service gracefully, going to kill process associated with service $sn"
+					$procid = Get-WmiObject -Class Win32_Service -Filter "Name = '$sn'" | select -ExpandProperty ProcessId
+					Write-Host "Killing process $procid"
+					Stop-Process -Force $procid
+				}
+			}
+		}
+}
+
 function RemoveService([string] $name, [string] $exe, [string[]] $servers) {
 	Write-Host "Removing service $name from:"
 	foreach ($s in $servers) {
