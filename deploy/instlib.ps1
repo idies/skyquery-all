@@ -196,6 +196,7 @@ function RemoveJobPersistence() {
 function InitRegistry() {
 	Add-Type -Path ".\bin\$skyquery_target\Jhu.Graywulf.Registry.dll"
 	Add-Type -Path ".\bin\$skyquery_target\Jhu.Graywulf.Registry.Enum.dll"
+	Add-Type -Path ".\bin\$skyquery_target\Jhu.Graywulf.Logging.dll"
 	LoadRegistryConnectionString
 	Write-Host "Registry connection string is"
 	Write-Host $([Jhu.Graywulf.Registry.ContextManager]::Instance.ConnectionString)
