@@ -65,12 +65,33 @@ function ExecLocal {
 	HandleError
 }
 
+function ExecWithContext {
+	$cmd = RenderCommand($args)
+	try {
+		[Jhu.Graywulf.Logging.LoggingContext]::Current.StartLogger([Jhu.Graywulf.Logging.EventSource]::CommandLineTool,  $true)
+		$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
+		$res = iex $cmd
+		$context.Dispose()
+		[Jhu.Graywulf.Logging.LoggingContext]::Current.StopLogger()
+
+		$res
+	} catch [Exception] {
+		Write-Host $_.Exception.Message
+		Write-Host $_.Exception.Stacktrace 
+		throw
+	}
+}
+
 function ForEachServer($servers) {
 	$cmd = RenderCommand($args)
 	foreach ($s in $servers) {
 		Write-Host "... $s"
-		iex $cmd
-		Write-Host "... ... OK"
+		if ($skyquery_nodeploy -contains $s) {
+			"... ... skipped"
+		} else {
+			iex $cmd
+			Write-Host "... ... OK"
+		}
 	}
 }
 
@@ -186,77 +207,71 @@ function UpdateVersion($config, $version) {
 #region Registry
 
 function FindMachines($role) {
-	$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
+	ExecWithContext icm -Script {	
+		$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
+		$mr = $ef.LoadEntity($role)
+		$mr.LoadMachines($TRUE)
+		$mm = $mr.Machines.Values | 
+			where-object {$_.DeploymentState -eq [Jhu.Graywulf.Registry.DeploymentState]::Deployed} |
+			foreach { "$($_.Hostname.ResolvedValue)" }
 	
-	$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
-	$mr = $ef.LoadEntity($role)
-	$mr.LoadMachines($TRUE)
-	$mm = $mr.Machines.Values | 
-		where-object {$_.DeploymentState -eq [Jhu.Graywulf.Registry.DeploymentState]::Deployed} |
-		foreach { "$($_.Hostname.ResolvedValue)" }
-	
-	$context.Dispose()
-	
-	$mm
+		$mm
+	}
 }
 
 function FindServerInstances($role) {
-	$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
-	
-	$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
-	$mr = $ef.LoadEntity($role)
-	$mr.LoadMachines($TRUE)
-	$mm = $mr.Machines.Values
-	$ss = @()
+	ExecWithContext icm -Script {	
+		$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
+		$mr = $ef.LoadEntity($role)
+		$mr.LoadMachines($TRUE)
+		$mm = $mr.Machines.Values
+		$ss = @()
 
-	foreach ($m in $mm) {
-		$m.LoadServerInstances($TRUE)
-		$ss += $m.ServerInstances.Values | foreach { $_.GetCompositeName() }
+		foreach ($m in $mm) {
+			$m.LoadServerInstances($TRUE)
+			$ss += $m.ServerInstances.Values | foreach { $_.GetCompositeName() }
+		}
+	
+		$ss
 	}
-	
-	$context.Dispose()
-	
-	$ss
 }
 
 function FindDatabaseDefinitions($federation, $databaseDefinition) {
-	$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
+	ExecWithContext icm -Script {	
+		$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
+		$f = $ef.LoadEntity($federation)
+		$f.LoadDatabaseDefinitions($TRUE)
+		$dd = $f.DatabaseDefinitions.Values | 
+			foreach { @{
+				"Name" = $_.Name;
+				"System" = $_.System;
+			} }
+		if ($databaseDefinition) {
+			$dd = $dd | where {$_["Name"] -match "$databaseDefinition"}
+		}
 
-	$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
-	$f = $ef.LoadEntity($federation)
-	$f.LoadDatabaseDefinitions($TRUE)
-	$dd = $f.DatabaseDefinitions.Values | 
-		foreach { @{
-			"Name" = $_.Name;
-			"System" = $_.System;
-		} }
-	if ($databaseDefinition) {
-		$dd = $dd | where {$_["Name"] -match "$databaseDefinition"}
+		$dd
 	}
-
-	$context.Dispose()
-	$dd
 }
 
 function FindDatabaseInstances($databaseDefinition, $databaseVersion) {
-	$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
+	ExecWithContext icm -Script {	
+		$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
+		$dd = $ef.LoadEntity($databaseDefinition)
+		$dd.LoadDatabaseInstances($TRUE)
+		$di = $dd.DatabaseInstances.Values |
+			foreach { @{
+				"Name" = $_.GetFullyQualifiedName();
+				"Server" = $_.ServerInstance.GetCompositeName();
+				"Database" = $_.DatabaseName;
+				"Version" = $_.DatabaseVersion.Name;
+			} }
+		if ($databaseVersion) {
+			$di = $di | where {$_["Version"] -eq "$databaseVersion"}
+		}
 
-	$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
-	$dd = $ef.LoadEntity($databaseDefinition)
-	$dd.LoadDatabaseInstances($TRUE)
-	$di = $dd.DatabaseInstances.Values |
-		foreach { @{
-			"Name" = $_.GetFullyQualifiedName();
-			"Server" = $_.ServerInstance.GetCompositeName();
-			"Database" = $_.DatabaseName;
-			"Version" = $_.DatabaseVersion.Name;
-		} }
-	if ($databaseVersion) {
-		$di = $di | where {$_["Version"] -eq "$databaseVersion"}
+		$di
 	}
-	
-	$context.Dispose()
-	$di
 }
 
 #endregion
@@ -265,16 +280,12 @@ function FindDatabaseInstances($databaseDefinition, $databaseVersion) {
 
 function InstallService([string[]] $servers, [string] $name, [string] $exe, [string] $user, [string] $pass) {
 	Write-Host "Installing service $name on:"
-	foreach ($s in $servers) {
-		Write-Host "... $s"
-		icm $s `
-			-Args $user, $pass, $exe, $fwpath, $name `
-			-Script {
-				param($un, $pw, $xe, $fw, $sn) 
-				& $fw\InstallUtil.exe /username=$un /password=$pw /unattended /svcname=$sn $xe
-			}
-		Write-Host "... ... OK"
-	}
+	ForEachServer $servers icm '$s' `
+		-Args $user, $pass, $exe, $fwpath, $name `
+		-Script {
+			param($un, $pw, $xe, $fw, $sn) 
+			& $fw\InstallUtil.exe /username=$un /password=$pw /unattended /svcname=$sn $xe
+		}
 }
 
 function StartService($servers, $name) {
@@ -282,10 +293,10 @@ function StartService($servers, $name) {
 	ForEachServer $servers icm '$s' `
 		-Args $name `
 		-Script { 
-			param($sn) 
+			param($sn)
 			$state = Get-WmiObject -Class Win32_Service -Filter "Name = '$sn'" | select -ExpandProperty State
 			if ($state -ne "Running") {
-				Start-Service $sn 
+				Start-Service $sn -ErrorAction Stop
 			}
 		}
 }
@@ -310,18 +321,41 @@ function StopService($servers, $name) {
 		} 
 }
 
+function StopServiceWithTimeout($servers, $name, $timeoutSeconds) {
+	Write-Host "Stopping service $name on with a timeout of $timeoutSeconds seconds:"
+	ForEachServer $servers icm '$s' `
+		-Args $name, $timeoutSeconds `
+		-Script {
+			param($sn, $to)
+			$timespan = New-Object -TypeName System.Timespan -ArgumentList 0,0,$to
+			$svc = Get-Service -Name $sn -ErrorAction Stop
+			if ($svc.Status -ne [ServiceProcess.ServiceControllerStatus]::Stopped) {
+				Try {
+					$svc.Stop()
+					$svc.WaitForStatus([ServiceProcess.ServiceControllerStatus]::Stopped, $timespan)
+				} Catch {
+					Write-Host "Cannot stop service gracefully, going to kill process associated with service $sn"
+					$procid = Get-WmiObject -Class Win32_Service -Filter "Name = '$sn'" | select -ExpandProperty ProcessId
+					Write-Host "Killing process $procid"
+					Stop-Process -Force $procid
+				}
+			}
+		}
+}
+
 function RemoveService([string] $name, [string] $exe, [string[]] $servers) {
 	Write-Host "Removing service $name from:"
-	foreach ($s in $servers) {
-		Write-Host "... $s"
-		icm $s `
-			-Args $skyquery_gwbin, $exe, $fwpath, $name `
-			-Script { 
-				param($gw, $xe, $fw, $sn) 
+	ForEachServer $servers icm '$s' `
+		-Args $skyquery_gwbin, $exe, $fwpath, $name `
+		-Script { 
+			param($gw, $xe, $fw, $sn) 
+			$svc = Get-Service -Name $sn -ErrorAction Stop
+			if ($svc) {
 				& $fw\InstallUtil.exe /u /svcname=$sn $xe
-			} 
-		Write-Host "... ... OK"
-	}
+			} else {
+				Write-Host "Service not found."
+			}
+		} 
 }
 
 #endregion
@@ -428,22 +462,23 @@ function RemoveWebSite($servers, $target, $apppool, $site, $app) {
 #region Database and SQL scripts
 
 function DeployDatabaseInstance($databaseInstance) {
-	$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
-	$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
-	$di = $ef.LoadEntity($databaseInstance)
-	$di.Discover()
-	if ($di.DeploymentState -ne [Jhu.Graywulf.Registry.DeploymentState]::Deployed) {
-		$di.Deploy()
-	}
-	$context.Dispose()
+	ExecWithContext icm `
+		-Script {
+			$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
+			$di = $ef.LoadEntity($databaseInstance)
+			$di.Discover()
+			if ($di.DeploymentState -ne [Jhu.Graywulf.Registry.DeploymentState]::Deployed) {
+				$di.Deploy()
+			}
+		}
 }
 
 function DropDatabaseInstance($databaseInstance) {
-	$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
-	$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
-	$di = $ef.LoadEntity($databaseInstance)
-	$di.Undeploy()
-	$context.Dispose()
+	ExecWithContext icm -Script {	
+		$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
+		$di = $ef.LoadEntity($databaseInstance)
+		$di.Undeploy()
+	}
 }
 
 function ExecSqlScript($server, $database, $script) {
