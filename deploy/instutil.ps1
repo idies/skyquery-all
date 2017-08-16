@@ -83,6 +83,8 @@ function ExecWithContext {
 }
 
 function ForEachServer($servers) {
+	# TODO: add retry logic for WinRM errors
+	# fail with everything else
 	$cmd = RenderCommand($args)
 	foreach ($s in $servers) {
 		Write-Host "... $s"
@@ -128,6 +130,7 @@ function RemoveDir($servers, $target) {
 }
 
 function CreateShare($servers, $path, $share) {
+	# TODO: this shouldn't fail silently if cannot create directory
 	ForEachServer $servers icm `
 		-Args "$path", "$share" `
 		-Script {
@@ -279,6 +282,7 @@ function FindDatabaseInstances($databaseDefinition, $databaseVersion) {
 #region Services
 
 function InstallService([string[]] $servers, [string] $name, [string] $exe, [string] $user, [string] $pass) {
+	# TODO: skip is service already installed, though it doesn't cause any issues
 	Write-Host "Installing service $name on:"
 	ForEachServer $servers icm '$s' `
 		-Args $user, $pass, $exe, $fwpath, $name `
