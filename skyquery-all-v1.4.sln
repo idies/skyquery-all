@@ -376,6 +376,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SharpAstroLib.Sql", "sh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SharpAstroLib.Test", "sharpastrolib\test\Jhu.SharpAstroLib.Test\Jhu.SharpAstroLib.Test.csproj", "{84241115-5D7D-45EE-AD10-2A118C94DB90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.ServiceModel", "graywulf\dll\Jhu.Graywulf.ServiceModel\Jhu.Graywulf.ServiceModel.csproj", "{AA744162-DFA0-46BC-BE03-20D50DD77806}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1050,6 +1052,14 @@ Global
 		{84241115-5D7D-45EE-AD10-2A118C94DB90}.Release|Any CPU.Build.0 = Release|Any CPU
 		{84241115-5D7D-45EE-AD10-2A118C94DB90}.Release|x86.ActiveCfg = Release|Any CPU
 		{84241115-5D7D-45EE-AD10-2A118C94DB90}.Release|x86.Build.0 = Release|Any CPU
+		{AA744162-DFA0-46BC-BE03-20D50DD77806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA744162-DFA0-46BC-BE03-20D50DD77806}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA744162-DFA0-46BC-BE03-20D50DD77806}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AA744162-DFA0-46BC-BE03-20D50DD77806}.Debug|x86.Build.0 = Debug|Any CPU
+		{AA744162-DFA0-46BC-BE03-20D50DD77806}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA744162-DFA0-46BC-BE03-20D50DD77806}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA744162-DFA0-46BC-BE03-20D50DD77806}.Release|x86.ActiveCfg = Release|Any CPU
+		{AA744162-DFA0-46BC-BE03-20D50DD77806}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1186,6 +1196,7 @@ Global
 		{8E1302A6-882E-476A-BE41-8C87CB569CEC} = {7E59B5E3-61A9-4163-8899-60E766B7C8A4}
 		{B49B1902-9CB1-4063-B880-164E7C796791} = {7E59B5E3-61A9-4163-8899-60E766B7C8A4}
 		{84241115-5D7D-45EE-AD10-2A118C94DB90} = {84554A59-7311-4A7D-B8C2-58E858965CA9}
+		{AA744162-DFA0-46BC-BE03-20D50DD77806} = {2939F058-FEE3-4142-BF45-8672DCFD4C11}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = skyquery-all.vsmdi
