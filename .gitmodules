@@ -34,3 +34,6 @@
 [submodule "footprint-config"]
 	path = footprint-config
 	url = git@github.com:sciserver/footprint-config.git
+[submodule "sharpastrolib"]
+	path = sharpastrolib
+	url = git@github.com:sciserver/sharpastrolib.git
