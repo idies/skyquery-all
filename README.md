@@ -9,6 +9,7 @@ To build SkyQuery you need
 * MSBuild 14.0 which, I think, comes with Visual Studio 2015, 
 * git >2.0, and 
 * putty installed using the installer for SSH connections.
+* PowerShell configured to Unrestricted execution policy. Note, that PowerShell comes in 32 and 64 bits and MSBuild is a 32 bit process as of Visual Studio 2015 and Windows Server 2012, so you have to start a 32-bit PowerShell in Administrator mode to change the execution policy.
 
 You also need a valid SSH key to github that’s already added to peagent and configured in the global git config. The best to have TortoiseGit.
 
