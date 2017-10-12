@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{C1B23ACA-3EF8-4EEF-9192-938632124F27}"
 	ProjectSection(SolutionItems) = preProject
@@ -136,6 +136,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SharpFitsIO.Test", "sha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Sql", "graywulf\dll\Jhu.Graywulf.Sql\Jhu.Graywulf.Sql.csproj", "{AADA04EE-F578-4628-8AE0-D423BB94C738}"
 	ProjectSection(ProjectDependencies) = postProject
+		{C9554A8A-0700-4696-BCD5-1B6696FCCCCB} = {C9554A8A-0700-4696-BCD5-1B6696FCCCCB}
 		{77BE21A2-3AF7-478A-8279-3C741BF3BD59} = {77BE21A2-3AF7-478A-8279-3C741BF3BD59}
 	EndProjectSection
 EndProject
