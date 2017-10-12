@@ -5,6 +5,8 @@ $SHARPFITSIO="develop"
 $SPHERICAL="develop"
 $SCISERVER="skyquery"
 
+cd modules
+
 cd graywulf
 git checkout -B $GRAYWULF remotes/origin/$GRAYWULF --
 
@@ -44,4 +46,4 @@ git checkout -B $FOOTPRINT remotes/origin/$FOOTPRINT --
 cd ../sharpastrolib
 git checkout -B v1.0/develop remotes/origin/v1.0/develop --
 
-cd ..
+cd ../..

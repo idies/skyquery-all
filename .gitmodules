@@ -1,39 +1,39 @@
 [submodule "graywulf"]
-	path = graywulf
+	path = modules/graywulf
 	url = git@github.com:sciserver/graywulf.git
 [submodule "skyquery"]
-	path = skyquery
+	path = modules/skyquery
 	url = git@github.com:sciserver/skyquery.git
 [submodule "sharpfitsio"]
-	path = sharpfitsio
+	path = modules/sharpfitsio
 	url = git@github.com:sciserver/sharpfitsio.git
 [submodule "graywulf-plugins"]
-	path = graywulf-plugins
+	path = modules/graywulf-plugins
 	url = git@github.com:sciserver/graywulf-plugins.git
 [submodule "graywulf-tools"]
-	path = graywulf-tools
+	path = modules/graywulf-tools
 	url = git@github.com:sciserver/graywulf-tools.git
 [submodule "spherical"]
-	path = spherical
+	path = modules/spherical
 	url = git@github.com:sciserver/spherical.git
 [submodule "skyquery-config"]
-	path = skyquery-config
+	path = modules/skyquery-config
 	url = git@github.com:sciserver/skyquery-config.git
 [submodule "skyquery-skynodes"]
-	path = skyquery-skynodes
+	path = modules/skyquery-skynodes
 	url = git@github.com:sciserver/skyquery-skynodes.git
 [submodule "graywulf-sciserver-init"]
-	path = graywulf-sciserver-init
+	path = modules/graywulf-sciserver-init
 	url = git@github.com:sciserver/graywulf-sciserver-init.git
 [submodule "sciserver-logging"]
-	path = sciserver-logging
+	path = modules/sciserver-logging
 	url = git@github.com:sciserver/sciserver-logging.git
 [submodule "footprint"]
 	path = modules/footprint
 	url = git@github.com:sciserver/footprint.git
 [submodule "footprint-config"]
-	path = footprint-config
+	path = modules/footprint-config
 	url = git@github.com:sciserver/footprint-config.git
 [submodule "sharpastrolib"]
-	path = sharpastrolib
+	path = modules/sharpastrolib
 	url = git@github.com:sciserver/sharpastrolib.git

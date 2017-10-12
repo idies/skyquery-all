@@ -14,25 +14,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{2939F058-FEE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graywulf", "Graywulf", "{2C0C403F-4604-4DA8-8A2E-C593288D5D57}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf\build.config = graywulf\build.config
+		modules\graywulf\build.config = modules\graywulf\build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exe", "Exe", "{4F1895F8-526E-4F3B-868F-580C86D3EFAD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{08B75CEE-73A4-4EB5-8C79-2EB3A1DF628C}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf\web\build.config = graywulf\web\build.config
-		graywulf\web\web-build.ps1 = graywulf\web\web-build.ps1
+		modules\graywulf\web\build.config = modules\graywulf\web\build.config
+		modules\graywulf\web\web-build.ps1 = modules\graywulf\web\web-build.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{31A32854-8930-499D-9DC1-969C3B2CCE36}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf\test\build.config = graywulf\test\build.config
+		modules\graywulf\test\build.config = modules\graywulf\test\build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SkyQuery", "SkyQuery", "{D3BA5B7E-66A6-4881-8BE5-50909394F85D}"
 	ProjectSection(SolutionItems) = preProject
-		skyquery\build.config = skyquery\build.config
+		modules\skyquery\build.config = modules\skyquery\build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{66A6B425-4D46-4BF6-A6A2-E71D7E5B0502}"
@@ -43,7 +43,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{A345CE3F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{4692BF22-9181-4F47-993B-94E5F4EC604B}"
 	ProjectSection(SolutionItems) = preProject
-		skyquery\test\build.config = skyquery\test\build.config
+		modules\skyquery\test\build.config = modules\skyquery\test\build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharpFitsIO", "SharpFitsIO", "{A868B388-B6B5-4678-9D5B-C479C0D7444F}"
@@ -65,147 +65,147 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		skyquery-all.vsmdi = skyquery-all.vsmdi
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Components", "graywulf\dll\Jhu.Graywulf.Components\Jhu.Graywulf.Components.csproj", "{ABB4C403-720A-47E1-9485-CFAADD696656}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Components", "modules\graywulf\dll\Jhu.Graywulf.Components\Jhu.Graywulf.Components.csproj", "{ABB4C403-720A-47E1-9485-CFAADD696656}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Install", "graywulf\dll\Jhu.Graywulf.Install\Jhu.Graywulf.Install.csproj", "{AC357A2C-5388-4D7F-B1AF-C78D9BF8326C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Install", "modules\graywulf\dll\Jhu.Graywulf.Install\Jhu.Graywulf.Install.csproj", "{AC357A2C-5388-4D7F-B1AF-C78D9BF8326C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.IO", "graywulf\dll\Jhu.Graywulf.IO\Jhu.Graywulf.IO.csproj", "{6797ED88-1D8C-491B-A036-4C42C4BF2EAF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.IO", "modules\graywulf\dll\Jhu.Graywulf.IO\Jhu.Graywulf.IO.csproj", "{6797ED88-1D8C-491B-A036-4C42C4BF2EAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Jobs", "graywulf\dll\Jhu.Graywulf.Jobs\Jhu.Graywulf.Jobs.csproj", "{2BD2D467-D003-468D-9B97-83DDC6F2ED78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Jobs", "modules\graywulf\dll\Jhu.Graywulf.Jobs\Jhu.Graywulf.Jobs.csproj", "{2BD2D467-D003-468D-9B97-83DDC6F2ED78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Logging", "graywulf\dll\Jhu.Graywulf.Logging\Jhu.Graywulf.Logging.csproj", "{FD98FB58-A3E5-4D32-B6D6-3E20609C4D09}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Logging", "modules\graywulf\dll\Jhu.Graywulf.Logging\Jhu.Graywulf.Logging.csproj", "{FD98FB58-A3E5-4D32-B6D6-3E20609C4D09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Metadata", "graywulf\dll\Jhu.Graywulf.Metadata\Jhu.Graywulf.Metadata.csproj", "{129E1B6F-B0B3-4C7C-8FE2-4B1B8556B96D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Metadata", "modules\graywulf\dll\Jhu.Graywulf.Metadata\Jhu.Graywulf.Metadata.csproj", "{129E1B6F-B0B3-4C7C-8FE2-4B1B8556B96D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Registry", "graywulf\dll\Jhu.Graywulf.Registry\Jhu.Graywulf.Registry.csproj", "{59BFB28B-3F97-4714-B8D7-A1B40F668831}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Registry", "modules\graywulf\dll\Jhu.Graywulf.Registry\Jhu.Graywulf.Registry.csproj", "{59BFB28B-3F97-4714-B8D7-A1B40F668831}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.RemoteService", "graywulf\dll\Jhu.Graywulf.RemoteService\Jhu.Graywulf.RemoteService.csproj", "{5460DB30-CFD9-4EDB-A1E8-161A7CC505C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.RemoteService", "modules\graywulf\dll\Jhu.Graywulf.RemoteService\Jhu.Graywulf.RemoteService.csproj", "{5460DB30-CFD9-4EDB-A1E8-161A7CC505C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web", "graywulf\dll\Jhu.Graywulf.Web\Jhu.Graywulf.Web.csproj", "{E9D182CF-746E-4E40-B01C-74A32FB70749}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web", "modules\graywulf\dll\Jhu.Graywulf.Web\Jhu.Graywulf.Web.csproj", "{E9D182CF-746E-4E40-B01C-74A32FB70749}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Install.CmdLineUtil", "graywulf\exe\Jhu.Graywulf.Install.CmdLineUtil\Jhu.Graywulf.Install.CmdLineUtil.csproj", "{19966DF7-6E7D-454C-B4D7-54EC77E220D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Install.CmdLineUtil", "modules\graywulf\exe\Jhu.Graywulf.Install.CmdLineUtil\Jhu.Graywulf.Install.CmdLineUtil.csproj", "{19966DF7-6E7D-454C-B4D7-54EC77E220D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Jobs.CmdLineUtil", "graywulf\exe\Jhu.Graywulf.Jobs.CmdLineUtil\Jhu.Graywulf.Jobs.CmdLineUtil.csproj", "{1844E778-F94F-4F73-A2DA-7694CE00ADC0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Jobs.CmdLineUtil", "modules\graywulf\exe\Jhu.Graywulf.Jobs.CmdLineUtil\Jhu.Graywulf.Jobs.CmdLineUtil.csproj", "{1844E778-F94F-4F73-A2DA-7694CE00ADC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Metadata.CmdLineUtil", "graywulf\exe\Jhu.Graywulf.Metadata.CmdLineUtil\Jhu.Graywulf.Metadata.CmdLineUtil.csproj", "{CE2D9C45-BF0A-452F-82E5-1E974DCAF046}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Metadata.CmdLineUtil", "modules\graywulf\exe\Jhu.Graywulf.Metadata.CmdLineUtil\Jhu.Graywulf.Metadata.CmdLineUtil.csproj", "{CE2D9C45-BF0A-452F-82E5-1E974DCAF046}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.RemoteService.Server", "graywulf\exe\Jhu.Graywulf.RemoteService.Server\Jhu.Graywulf.RemoteService.Server.csproj", "{3AC81304-44BA-4D55-A872-469BC11C9CBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.RemoteService.Server", "modules\graywulf\exe\Jhu.Graywulf.RemoteService.Server\Jhu.Graywulf.RemoteService.Server.csproj", "{3AC81304-44BA-4D55-A872-469BC11C9CBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.Admin", "graywulf\web\Jhu.Graywulf.Web.Admin\Jhu.Graywulf.Web.Admin.csproj", "{C5F3DDC5-E942-4DC8-B6EE-9CD4D8B5C79E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.Admin", "modules\graywulf\web\Jhu.Graywulf.Web.Admin\Jhu.Graywulf.Web.Admin.csproj", "{C5F3DDC5-E942-4DC8-B6EE-9CD4D8B5C79E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.UI", "graywulf\web\Jhu.Graywulf.Web.UI\Jhu.Graywulf.Web.UI.csproj", "{C2F9863F-3D23-4185-BDBC-2DDE39ACBDEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.UI", "modules\graywulf\web\Jhu.Graywulf.Web.UI\Jhu.Graywulf.Web.UI.csproj", "{C2F9863F-3D23-4185-BDBC-2DDE39ACBDEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Components.Test", "graywulf\test\Jhu.Graywulf.Components.Test\Jhu.Graywulf.Components.Test.csproj", "{CFB7B2D2-C676-4378-8C4D-D3640C40D0A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Components.Test", "modules\graywulf\test\Jhu.Graywulf.Components.Test\Jhu.Graywulf.Components.Test.csproj", "{CFB7B2D2-C676-4378-8C4D-D3640C40D0A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Test", "graywulf\test\Jhu.Graywulf.Test\Jhu.Graywulf.Test.csproj", "{EA6164BA-B283-46C2-874B-348D6BAD41AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Test", "modules\graywulf\test\Jhu.Graywulf.Test\Jhu.Graywulf.Test.csproj", "{EA6164BA-B283-46C2-874B-348D6BAD41AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.IO.Test", "graywulf\test\Jhu.Graywulf.IO.Test\Jhu.Graywulf.IO.Test.csproj", "{672333CE-F524-4D0C-B1A7-401170C9F212}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.IO.Test", "modules\graywulf\test\Jhu.Graywulf.IO.Test\Jhu.Graywulf.IO.Test.csproj", "{672333CE-F524-4D0C-B1A7-401170C9F212}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Jobs.Test", "graywulf\test\Jhu.Graywulf.Jobs.Test\Jhu.Graywulf.Jobs.Test.csproj", "{ECC46A31-4D61-4C1E-B9F6-6F1B97809FB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Jobs.Test", "modules\graywulf\test\Jhu.Graywulf.Jobs.Test\Jhu.Graywulf.Jobs.Test.csproj", "{ECC46A31-4D61-4C1E-B9F6-6F1B97809FB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Registry.Test", "graywulf\test\Jhu.Graywulf.Registry.Test\Jhu.Graywulf.Registry.Test.csproj", "{3935FE49-FB79-4A84-AF4C-D7968CCADD0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Registry.Test", "modules\graywulf\test\Jhu.Graywulf.Registry.Test\Jhu.Graywulf.Registry.Test.csproj", "{3935FE49-FB79-4A84-AF4C-D7968CCADD0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.RemoteService.Test", "graywulf\test\Jhu.Graywulf.RemoteService.Test\Jhu.Graywulf.RemoteService.Test.csproj", "{8E1D75B4-4188-44D9-8737-93C8BD3FB409}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.RemoteService.Test", "modules\graywulf\test\Jhu.Graywulf.RemoteService.Test\Jhu.Graywulf.RemoteService.Test.csproj", "{8E1D75B4-4188-44D9-8737-93C8BD3FB409}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Scheduler.Test", "graywulf\test\Jhu.Graywulf.Scheduler.Test\Jhu.Graywulf.Scheduler.Test.csproj", "{4FB5450D-64E7-4BFA-B7C0-28206E47F41D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Scheduler.Test", "modules\graywulf\test\Jhu.Graywulf.Scheduler.Test\Jhu.Graywulf.Scheduler.Test.csproj", "{4FB5450D-64E7-4BFA-B7C0-28206E47F41D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.Test", "graywulf\test\Jhu.Graywulf.Web.Test\Jhu.Graywulf.Web.Test.csproj", "{3C9EA0E6-DAD6-4F6E-BFBA-F24CFC8E2A66}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.Test", "modules\graywulf\test\Jhu.Graywulf.Web.Test\Jhu.Graywulf.Web.Test.csproj", "{3C9EA0E6-DAD6-4F6E-BFBA-F24CFC8E2A66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.SqlParser.UI", "graywulf\exe\Jhu.Graywulf.SqlParser.UI\Jhu.Graywulf.SqlParser.UI.csproj", "{6A391FD8-C720-4954-A353-31ED2C7F4FDC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.SqlParser.UI", "modules\graywulf\exe\Jhu.Graywulf.SqlParser.UI\Jhu.Graywulf.SqlParser.UI.csproj", "{6A391FD8-C720-4954-A353-31ED2C7F4FDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery", "skyquery\dll\Jhu.SkyQuery\Jhu.SkyQuery.csproj", "{2887F181-7F61-4DF5-BD89-2800503D5F84}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery", "modules\skyquery\dll\Jhu.SkyQuery\Jhu.SkyQuery.csproj", "{2887F181-7F61-4DF5-BD89-2800503D5F84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Parser", "skyquery\dll\Jhu.SkyQuery.Parser\Jhu.SkyQuery.Parser.csproj", "{8D422C6A-5E21-48A0-9B05-1BCA4C71C6D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Parser", "modules\skyquery\dll\Jhu.SkyQuery.Parser\Jhu.SkyQuery.Parser.csproj", "{8D422C6A-5E21-48A0-9B05-1BCA4C71C6D5}"
 	ProjectSection(ProjectDependencies) = postProject
 		{9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB} = {9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Xmd", "skyquery\dll\Jhu.SkyQuery.Xmd\Jhu.SkyQuery.Xmd.csproj", "{79AFC0EA-9465-45F8-A315-3FD2996B493D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Xmd", "modules\skyquery\dll\Jhu.SkyQuery.Xmd\Jhu.SkyQuery.Xmd.csproj", "{79AFC0EA-9465-45F8-A315-3FD2996B493D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.CmdLineUtil", "skyquery\exe\Jhu.SkyQuery.CmdLineUtil\Jhu.SkyQuery.CmdLineUtil.csproj", "{4B23941B-2A1B-4EB5-86A9-55BD0A0AFA1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.CmdLineUtil", "modules\skyquery\exe\Jhu.SkyQuery.CmdLineUtil\Jhu.SkyQuery.CmdLineUtil.csproj", "{4B23941B-2A1B-4EB5-86A9-55BD0A0AFA1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Install.CmdLineUtil", "skyquery\exe\Jhu.SkyQuery.Install.CmdLineUtil\Jhu.SkyQuery.Install.CmdLineUtil.csproj", "{951F6566-1E42-4BBC-BE2F-4AF1969D1262}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Install.CmdLineUtil", "modules\skyquery\exe\Jhu.SkyQuery.Install.CmdLineUtil\Jhu.SkyQuery.Install.CmdLineUtil.csproj", "{951F6566-1E42-4BBC-BE2F-4AF1969D1262}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Parser.Test", "skyquery\test\Jhu.SkyQuery.Parser.Test\Jhu.SkyQuery.Parser.Test.csproj", "{0C317B62-C844-44BE-BFC5-974F4C1166FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Parser.Test", "modules\skyquery\test\Jhu.SkyQuery.Parser.Test\Jhu.SkyQuery.Parser.Test.csproj", "{0C317B62-C844-44BE-BFC5-974F4C1166FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Test", "skyquery\test\Jhu.SkyQuery.Test\Jhu.SkyQuery.Test.csproj", "{4F27F7FE-7C79-4584-867E-EF17B017F4DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Test", "modules\skyquery\test\Jhu.SkyQuery.Test\Jhu.SkyQuery.Test.csproj", "{4F27F7FE-7C79-4584-867E-EF17B017F4DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SharpFitsIO", "sharpfitsio\src\Jhu.SharpFitsIO\Jhu.SharpFitsIO.csproj", "{D9E54B0E-9E09-4E53-95FD-4161F9D61914}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SharpFitsIO", "modules\sharpfitsio\src\Jhu.SharpFitsIO\Jhu.SharpFitsIO.csproj", "{D9E54B0E-9E09-4E53-95FD-4161F9D61914}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SharpFitsIO.Test", "sharpfitsio\test\Jhu.SharpFitsIO.Test\Jhu.SharpFitsIO.Test.csproj", "{68566FE0-6428-4FEF-B6EE-CC56B1FFA82A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SharpFitsIO.Test", "modules\sharpfitsio\test\Jhu.SharpFitsIO.Test\Jhu.SharpFitsIO.Test.csproj", "{68566FE0-6428-4FEF-B6EE-CC56B1FFA82A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Sql", "graywulf\dll\Jhu.Graywulf.Sql\Jhu.Graywulf.Sql.csproj", "{AADA04EE-F578-4628-8AE0-D423BB94C738}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Sql", "modules\graywulf\dll\Jhu.Graywulf.Sql\Jhu.Graywulf.Sql.csproj", "{AADA04EE-F578-4628-8AE0-D423BB94C738}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C9554A8A-0700-4696-BCD5-1B6696FCCCCB} = {C9554A8A-0700-4696-BCD5-1B6696FCCCCB}
 		{77BE21A2-3AF7-478A-8279-3C741BF3BD59} = {77BE21A2-3AF7-478A-8279-3C741BF3BD59}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Sql.Test", "graywulf\test\Jhu.Graywulf.Sql.Test\Jhu.Graywulf.Sql.Test.csproj", "{C006350E-76D3-4584-8162-646566B6133C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Sql.Test", "modules\graywulf\test\Jhu.Graywulf.Sql.Test\Jhu.Graywulf.Sql.Test.csproj", "{C006350E-76D3-4584-8162-646566B6133C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.Api", "graywulf\dll\Jhu.Graywulf.Web.Api\Jhu.Graywulf.Web.Api.csproj", "{975EE996-A41B-4C73-8562-E2B2035E8899}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.Api", "modules\graywulf\dll\Jhu.Graywulf.Web.Api\Jhu.Graywulf.Web.Api.csproj", "{975EE996-A41B-4C73-8562-E2B2035E8899}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.IO", "skyquery\dll\Jhu.SkyQuery.IO\Jhu.SkyQuery.IO.csproj", "{E7744E98-575F-4183-B3B9-9B491C053C18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.IO", "modules\skyquery\dll\Jhu.SkyQuery.IO\Jhu.SkyQuery.IO.csproj", "{E7744E98-575F-4183-B3B9-9B491C053C18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Schema", "graywulf\dll\Jhu.Graywulf.Schema\Jhu.Graywulf.Schema.csproj", "{5868B518-CBFC-43FB-B9C8-C617A65121C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Schema", "modules\graywulf\dll\Jhu.Graywulf.Schema\Jhu.Graywulf.Schema.csproj", "{5868B518-CBFC-43FB-B9C8-C617A65121C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.Controls", "graywulf\dll\Jhu.Graywulf.Web.Controls\Jhu.Graywulf.Web.Controls.csproj", "{3ADB72A9-4417-4454-AA10-1AF3B2750A94}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.Controls", "modules\graywulf\dll\Jhu.Graywulf.Web.Controls\Jhu.Graywulf.Web.Controls.csproj", "{3ADB72A9-4417-4454-AA10-1AF3B2750A94}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graywulf-Plugins", "Graywulf-Plugins", "{1034450D-76D5-4EBA-A1B9-46325C2F6E05}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf-plugins\build.config = graywulf-plugins\build.config
+		modules\graywulf-plugins\build.config = modules\graywulf-plugins\build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{EC97EC44-BAF0-440F-8C3F-37DDB4C2FF0B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{1CFB71E3-01FB-4D6B-947B-EEDF1A52B116}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf-plugins\test\build.config = graywulf-plugins\test\build.config
+		modules\graywulf-plugins\test\build.config = modules\graywulf-plugins\test\build.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.SimpleRestClient", "graywulf-plugins\src\Jhu.Graywulf.SimpleRestClient\Jhu.Graywulf.SimpleRestClient.csproj", "{8EC7930C-CCC4-47D3-99BD-39E54EB405A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.SimpleRestClient", "modules\graywulf-plugins\src\Jhu.Graywulf.SimpleRestClient\Jhu.Graywulf.SimpleRestClient.csproj", "{8EC7930C-CCC4-47D3-99BD-39E54EB405A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Keystone", "graywulf-plugins\src\Jhu.Graywulf.Keystone\Jhu.Graywulf.Keystone.csproj", "{FB1B903B-CBA6-4E7E-8C03-C7D8C49E2471}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Keystone", "modules\graywulf-plugins\src\Jhu.Graywulf.Keystone\Jhu.Graywulf.Keystone.csproj", "{FB1B903B-CBA6-4E7E-8C03-C7D8C49E2471}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Plugins", "graywulf-plugins\src\Jhu.Graywulf.Plugins\Jhu.Graywulf.Plugins.csproj", "{644DCDC2-729E-4F84-84D0-AD9C2F49A8C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Plugins", "modules\graywulf-plugins\src\Jhu.Graywulf.Plugins\Jhu.Graywulf.Plugins.csproj", "{644DCDC2-729E-4F84-84D0-AD9C2F49A8C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Keystone.Test", "graywulf-plugins\test\Jhu.Graywulf.Keystone.Test\Jhu.Graywulf.Keystone.Test.csproj", "{22F28923-33AA-4106-9236-55068B03512F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Keystone.Test", "modules\graywulf-plugins\test\Jhu.Graywulf.Keystone.Test\Jhu.Graywulf.Keystone.Test.csproj", "{22F28923-33AA-4106-9236-55068B03512F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Plugins.Test", "graywulf-plugins\test\Jhu.Graywulf.Plugins.Test\Jhu.Graywulf.Plugins.Test.csproj", "{2FC14E50-1F26-4BE2-8B95-0BB82F13DEF3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Plugins.Test", "modules\graywulf-plugins\test\Jhu.Graywulf.Plugins.Test\Jhu.Graywulf.Plugins.Test.csproj", "{2FC14E50-1F26-4BE2-8B95-0BB82F13DEF3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{792FFD0B-8D7B-463A-AF52-BB4B75F2C44C}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf\config\sections.config = graywulf\config\sections.config
+		modules\graywulf\config\sections.config = modules\graywulf\config\sections.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{12242A6B-95FF-4FFC-9EA7-2FDA235F1CD8}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf-plugins\config\sections.config = graywulf-plugins\config\sections.config
+		modules\graywulf-plugins\config\sections.config = modules\graywulf-plugins\config\sections.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Metadata.Test", "graywulf\test\Jhu.Graywulf.Metadata.Test\Jhu.Graywulf.Metadata.Test.csproj", "{AB11A9B9-D05F-4877-B245-5E9595EF61DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Metadata.Test", "modules\graywulf\test\Jhu.Graywulf.Metadata.Test\Jhu.Graywulf.Metadata.Test.csproj", "{AB11A9B9-D05F-4877-B245-5E9595EF61DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.IO.CmdLineUtil", "graywulf\exe\Jhu.Graywulf.IO.CmdLineUtil\Jhu.Graywulf.IO.CmdLineUtil.csproj", "{77071C20-D4B9-4953-84F8-D50AA75A229D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.IO.CmdLineUtil", "modules\graywulf\exe\Jhu.Graywulf.IO.CmdLineUtil\Jhu.Graywulf.IO.CmdLineUtil.csproj", "{77071C20-D4B9-4953-84F8-D50AA75A229D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graywulf-Tools", "Graywulf-Tools", "{7B5D4C8B-C554-446D-BCF2-3DEC3A4D87DB}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf-tools\build.config = graywulf-tools\build.config
+		modules\graywulf-tools\build.config = modules\graywulf-tools\build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{B6B010EB-78BB-45A2-B75B-D80E76E89B6B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exe", "Exe", "{75D17BBB-A4C3-4BC3-B84A-163D4DCB98C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.DBSubset.Lib", "graywulf-tools\dll\Jhu.Graywulf.DBSubset.Lib\Jhu.Graywulf.DBSubset.Lib.csproj", "{51F8DE68-52C4-44DB-8828-0BDEA25A8FDB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.DBSubset.Lib", "modules\graywulf-tools\dll\Jhu.Graywulf.DBSubset.Lib\Jhu.Graywulf.DBSubset.Lib.csproj", "{51F8DE68-52C4-44DB-8828-0BDEA25A8FDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.DBSubset.CmdLineUtil", "graywulf-tools\exe\Jhu.Graywulf.DBSubset.CmdLineUtil\Jhu.Graywulf.DBSubset.CmdLineUtil.csproj", "{37B0B7E9-A1A8-4333-8E3D-B10A2301BCA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.DBSubset.CmdLineUtil", "modules\graywulf-tools\exe\Jhu.Graywulf.DBSubset.CmdLineUtil\Jhu.Graywulf.DBSubset.CmdLineUtil.csproj", "{37B0B7E9-A1A8-4333-8E3D-B10A2301BCA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.DBSubset.UI", "graywulf-tools\exe\Jhu.Graywulf.DBSubset.UI\Jhu.Graywulf.DBSubset.UI.csproj", "{363A2C02-E654-47A7-A8A9-0D6A5CC7798A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.DBSubset.UI", "modules\graywulf-tools\exe\Jhu.Graywulf.DBSubset.UI\Jhu.Graywulf.DBSubset.UI.csproj", "{363A2C02-E654-47A7-A8A9-0D6A5CC7798A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.IO.Test", "skyquery\test\Jhu.SkyQuery.IO.Test\Jhu.SkyQuery.IO.Test.csproj", "{20858FCC-4BD6-4E89-9D3F-BCEB7ABA9A92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.IO.Test", "modules\skyquery\test\Jhu.SkyQuery.IO.Test\Jhu.SkyQuery.IO.Test.csproj", "{20858FCC-4BD6-4E89-9D3F-BCEB7ABA9A92}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spherical", "Spherical", "{214EAD40-B0B3-4383-AFBB-2D8B20E68F9B}"
 	ProjectSection(SolutionItems) = preProject
-		spherical\build.config = spherical\build.config
+		modules\spherical\build.config = modules\spherical\build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{04A7E5DF-D7B7-42CD-BFB0-FEEC70B967D1}"
@@ -214,37 +214,37 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exe", "Exe", "{1ECCC333-DD7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F6BD1B1E-DC73-4B2C-AC45-8A579B71AD81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical", "spherical\src\Jhu.Spherical\Jhu.Spherical.csproj", "{93EFA6AD-0C3F-4C7F-B1F7-D697D0BA49F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical", "modules\spherical\src\Jhu.Spherical\Jhu.Spherical.csproj", "{93EFA6AD-0C3F-4C7F-B1F7-D697D0BA49F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Htm", "spherical\src\Jhu.Spherical.Htm\Jhu.Spherical.Htm.csproj", "{8C128E59-14E3-4E84-824E-AF5FB58C5D58}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Htm", "modules\spherical\src\Jhu.Spherical.Htm\Jhu.Spherical.Htm.csproj", "{8C128E59-14E3-4E84-824E-AF5FB58C5D58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Sql.Cmd", "spherical\src\Jhu.Spherical.Sql.Cmd\Jhu.Spherical.Sql.Cmd.csproj", "{7DA194E0-76EA-440A-8E08-D53C630D450D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Sql.Cmd", "modules\spherical\src\Jhu.Spherical.Sql.Cmd\Jhu.Spherical.Sql.Cmd.csproj", "{7DA194E0-76EA-440A-8E08-D53C630D450D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.STC", "spherical\src\Jhu.Spherical.STC\Jhu.Spherical.STC.csproj", "{04B25384-8A76-4E92-849A-3F814996563F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.STC", "modules\spherical\src\Jhu.Spherical.STC\Jhu.Spherical.STC.csproj", "{04B25384-8A76-4E92-849A-3F814996563F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Visualizer", "spherical\src\Jhu.Spherical.Visualizer\Jhu.Spherical.Visualizer.csproj", "{1DCD8AC1-DCDD-4941-9E3F-D9EF60A078F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Visualizer", "modules\spherical\src\Jhu.Spherical.Visualizer\Jhu.Spherical.Visualizer.csproj", "{1DCD8AC1-DCDD-4941-9E3F-D9EF60A078F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Visualizer.Cmd", "spherical\src\Jhu.Spherical.Visualizer.Cmd\Jhu.Spherical.Visualizer.Cmd.csproj", "{40FB6544-652C-40E2-92EA-F3EC97372C96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Visualizer.Cmd", "modules\spherical\src\Jhu.Spherical.Visualizer.Cmd\Jhu.Spherical.Visualizer.Cmd.csproj", "{40FB6544-652C-40E2-92EA-F3EC97372C96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Web.Controls", "spherical\src\Jhu.Spherical.Web.Controls\Jhu.Spherical.Web.Controls.csproj", "{309A3646-0B42-4FE1-A011-D81B751AE658}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Web.Controls", "modules\spherical\src\Jhu.Spherical.Web.Controls\Jhu.Spherical.Web.Controls.csproj", "{309A3646-0B42-4FE1-A011-D81B751AE658}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Htm.Test", "spherical\test\Jhu.Spherical.Htm.Test\Jhu.Spherical.Htm.Test.csproj", "{D1B80D9F-91D5-463C-902D-AC8472913436}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Htm.Test", "modules\spherical\test\Jhu.Spherical.Htm.Test\Jhu.Spherical.Htm.Test.csproj", "{D1B80D9F-91D5-463C-902D-AC8472913436}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Sql.Test", "spherical\test\Jhu.Spherical.Sql.Test\Jhu.Spherical.Sql.Test.csproj", "{76C19B48-34D0-49B8-BB77-23174EFC25BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Sql.Test", "modules\spherical\test\Jhu.Spherical.Sql.Test\Jhu.Spherical.Sql.Test.csproj", "{76C19B48-34D0-49B8-BB77-23174EFC25BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.STC.Test", "spherical\test\Jhu.Spherical.STC.Test\Jhu.Spherical.STC.Test.csproj", "{E1532799-0349-4212-8802-A97195CB14DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.STC.Test", "modules\spherical\test\Jhu.Spherical.STC.Test\Jhu.Spherical.STC.Test.csproj", "{E1532799-0349-4212-8802-A97195CB14DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Test", "spherical\test\Jhu.Spherical.Test\Jhu.Spherical.Test.csproj", "{4A388FF5-15A4-4247-834B-9D152F4A78C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Test", "modules\spherical\test\Jhu.Spherical.Test\Jhu.Spherical.Test.csproj", "{4A388FF5-15A4-4247-834B-9D152F4A78C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Visualizer.Perf", "spherical\test\Jhu.Spherical.Visualizer.Perf\Jhu.Spherical.Visualizer.Perf.csproj", "{ABACAB52-5803-4782-94E0-EE047C6BB0FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Visualizer.Perf", "modules\spherical\test\Jhu.Spherical.Visualizer.Perf\Jhu.Spherical.Visualizer.Perf.csproj", "{ABACAB52-5803-4782-94E0-EE047C6BB0FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Visualizer.Test", "spherical\test\Jhu.Spherical.Visualizer.Test\Jhu.Spherical.Visualizer.Test.csproj", "{B300725A-D317-4BB9-83BE-38F8C6B0EAEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Visualizer.Test", "modules\spherical\test\Jhu.Spherical.Visualizer.Test\Jhu.Spherical.Visualizer.Test.csproj", "{B300725A-D317-4BB9-83BE-38F8C6B0EAEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Web.Controls.Test", "spherical\test\Jhu.Spherical.Web.Controls.Test\Jhu.Spherical.Web.Controls.Test.csproj", "{C30990DD-9DB1-47D0-91D8-F7BFB07F87CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Web.Controls.Test", "modules\spherical\test\Jhu.Spherical.Web.Controls.Test\Jhu.Spherical.Web.Controls.Test.csproj", "{C30990DD-9DB1-47D0-91D8-F7BFB07F87CC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{B412F758-68C5-4722-93F7-8A183B3AA874}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.ScriptGenerator", "spherical\build\Jhu.Spherical.ScriptGenerator\Jhu.Spherical.ScriptGenerator.csproj", "{1C361D81-ABFD-4DAF-8274-E1BBC149C7A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.ScriptGenerator", "modules\spherical\build\Jhu.Spherical.ScriptGenerator\Jhu.Spherical.ScriptGenerator.csproj", "{1C361D81-ABFD-4DAF-8274-E1BBC149C7A9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{99798FF2-1023-499E-8160-B7779BEA287B}"
 	ProjectSection(SolutionItems) = preProject
@@ -261,47 +261,47 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{99798F
 		deploy\version.ps1 = deploy\version.ps1
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.AccessControl", "graywulf\dll\Jhu.Graywulf.AccessControl\Jhu.Graywulf.AccessControl.csproj", "{DA689D40-EDCD-433D-8D9B-4E96829F8C6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.AccessControl", "modules\graywulf\dll\Jhu.Graywulf.AccessControl\Jhu.Graywulf.AccessControl.csproj", "{DA689D40-EDCD-433D-8D9B-4E96829F8C6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Registry.Enum", "graywulf\dll\Jhu.Graywulf.Registry.Enum\Jhu.Graywulf.Registry.Enum.csproj", "{F163A859-0FE2-4099-BD85-F61C9C05426A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Registry.Enum", "modules\graywulf\dll\Jhu.Graywulf.Registry.Enum\Jhu.Graywulf.Registry.Enum.csproj", "{F163A859-0FE2-4099-BD85-F61C9C05426A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Entities", "graywulf\dll\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.csproj", "{10B184E6-825D-4498-98D5-A42939E4BD2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Entities", "modules\graywulf\dll\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.csproj", "{10B184E6-825D-4498-98D5-A42939E4BD2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.AccessControl.Test", "graywulf\test\Jhu.Graywulf.AccessControl.Test\Jhu.Graywulf.AccessControl.Test.csproj", "{96B78C89-3E68-450B-B08B-48A7E8073759}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.AccessControl.Test", "modules\graywulf\test\Jhu.Graywulf.AccessControl.Test\Jhu.Graywulf.AccessControl.Test.csproj", "{96B78C89-3E68-450B-B08B-48A7E8073759}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Entities.Test", "graywulf\test\Jhu.Graywulf.Entities.Test\Jhu.Graywulf.Entities.Test.csproj", "{160F090C-EAD7-4C6D-AA3C-54FDA7082088}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Entities.Test", "modules\graywulf\test\Jhu.Graywulf.Entities.Test\Jhu.Graywulf.Entities.Test.csproj", "{160F090C-EAD7-4C6D-AA3C-54FDA7082088}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Entities.Build", "graywulf\build\Jhu.Graywulf.Entities.Build\Jhu.Graywulf.Entities.Build.csproj", "{B25AD38F-0515-481F-A7CB-2A252B9257FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Entities.Build", "modules\graywulf\build\Jhu.Graywulf.Entities.Build\Jhu.Graywulf.Entities.Build.csproj", "{B25AD38F-0515-481F-A7CB-2A252B9257FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.SqlClrLib", "skyquery\dll\Jhu.SkyQuery.SqlClrLib\Jhu.SkyQuery.SqlClrLib.csproj", "{95BF44FB-0D5E-4E2A-AAF6-C4B43F9F68DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.SqlClrLib", "modules\skyquery\dll\Jhu.SkyQuery.SqlClrLib\Jhu.SkyQuery.SqlClrLib.csproj", "{95BF44FB-0D5E-4E2A-AAF6-C4B43F9F68DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sql", "Sql", "{B68CA56A-EEEA-475D-AA13-9C1021AA9574}"
 	ProjectSection(SolutionItems) = preProject
-		graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Create.sql = graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Create.sql
-		graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Drop.sql = graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Drop.sql
-		graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Test.sql = graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Test.sql
-		graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Test.sql = graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Test.sql
-		graywulf\sql\Jhu.Graywulf.Registry.Logic.sql = graywulf\sql\Jhu.Graywulf.Registry.Logic.sql
-		graywulf\sql\Jhu.Graywulf.Registry.Tables.sql = graywulf\sql\Jhu.Graywulf.Registry.Tables.sql
+		modules\graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Create.sql = modules\graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Create.sql
+		modules\graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Drop.sql = modules\graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Drop.sql
+		modules\graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Test.sql = modules\graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Sql.Test.sql
+		modules\graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Test.sql = modules\graywulf\sql\Jhu.Graywulf.Entities\Jhu.Graywulf.Entities.Test.sql
+		modules\graywulf\sql\Jhu.Graywulf.Registry.Logic.sql = modules\graywulf\sql\Jhu.Graywulf.Registry.Logic.sql
+		modules\graywulf\sql\Jhu.Graywulf.Registry.Tables.sql = modules\graywulf\sql\Jhu.Graywulf.Registry.Tables.sql
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.DBSubset.SqlClrLib", "graywulf-tools\dll\Jhu.Graywulf.DBSubset.SqlClrLib\Jhu.Graywulf.DBSubset.SqlClrLib.csproj", "{01A2F334-D2BF-4796-964B-0422F7ABB5F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.DBSubset.SqlClrLib", "modules\graywulf-tools\dll\Jhu.Graywulf.DBSubset.SqlClrLib\Jhu.Graywulf.DBSubset.SqlClrLib.csproj", "{01A2F334-D2BF-4796-964B-0422F7ABB5F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Install.Test", "graywulf\test\Jhu.Graywulf.Install.Test\Jhu.Graywulf.Install.Test.csproj", "{80D215D3-A1FB-434A-B491-1B9F6F3F64AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Install.Test", "modules\graywulf\test\Jhu.Graywulf.Install.Test\Jhu.Graywulf.Install.Test.csproj", "{80D215D3-A1FB-434A-B491-1B9F6F3F64AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Schema.Clr.Test", "graywulf\test\Jhu.Graywulf.Schema.Clr.Test\Jhu.Graywulf.Schema.Clr.Test.csproj", "{4C626180-6443-4A75-A297-FDA313B072B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Schema.Clr.Test", "modules\graywulf\test\Jhu.Graywulf.Schema.Clr.Test\Jhu.Graywulf.Schema.Clr.Test.csproj", "{4C626180-6443-4A75-A297-FDA313B072B9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{DFB15775-778F-469E-8D98-49A745F44AC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Web.UI", "skyquery\web\Jhu.SkyQuery.Web.UI\Jhu.SkyQuery.Web.UI.csproj", "{6EB60D48-9695-4307-B38C-79D90AD1E8DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Web.UI", "modules\skyquery\web\Jhu.SkyQuery.Web.UI\Jhu.SkyQuery.Web.UI.csproj", "{6EB60D48-9695-4307-B38C-79D90AD1E8DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.Auth", "graywulf\web\Jhu.Graywulf.Web.Auth\Jhu.Graywulf.Web.Auth.csproj", "{7CB2799F-5B60-4CE9-A71F-1B3C8C868EDC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Web.Auth", "modules\graywulf\web\Jhu.Graywulf.Web.Auth\Jhu.Graywulf.Web.Auth.csproj", "{7CB2799F-5B60-4CE9-A71F-1B3C8C868EDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Schema.Test", "graywulf\test\Jhu.Graywulf.Schema.Test\Jhu.Graywulf.Schema.Test.csproj", "{08DA807C-0A14-4B90-AA6C-30F40FD92D41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Schema.Test", "modules\graywulf\test\Jhu.Graywulf.Schema.Test\Jhu.Graywulf.Schema.Test.csproj", "{08DA807C-0A14-4B90-AA6C-30F40FD92D41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Sql", "spherical\src\Jhu.Spherical.Sql\Jhu.Spherical.Sql.csproj", "{08D73235-A602-4A3A-AEC3-F785841E0478}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Spherical.Sql", "modules\spherical\src\Jhu.Spherical.Sql\Jhu.Spherical.Sql.csproj", "{08D73235-A602-4A3A-AEC3-F785841E0478}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Logging.Test", "graywulf\test\Jhu.Graywulf.Logging.Test\Jhu.Graywulf.Logging.Test.csproj", "{D152DC9A-004C-4851-B0E7-B81A4325C9B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Logging.Test", "modules\graywulf\test\Jhu.Graywulf.Logging.Test\Jhu.Graywulf.Logging.Test.csproj", "{D152DC9A-004C-4851-B0E7-B81A4325C9B7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SciServer-Logging", "SciServer-Logging", "{97D2AA2F-50EF-4B33-B15D-890E7F52C17E}"
 EndProject
@@ -309,48 +309,48 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{1711E349-823
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{EB925785-D8C8-4A32-B8B8-C3BCDA9B0767}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SciServer.Logging", "sciserver-logging\SciServer.Logging\SciServer.Logging.csproj", "{B00677C1-750C-4FA5-87A8-D8398D9CD777}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SciServer.Logging", "modules\sciserver-logging\SciServer.Logging\SciServer.Logging.csproj", "{B00677C1-750C-4FA5-87A8-D8398D9CD777}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SciServer.Logging.Test", "sciserver-logging\SciServer.Logging.Test\SciServer.Logging.Test.csproj", "{B221B319-441E-440B-81CE-6C5788D6F393}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SciServer.Logging.Test", "modules\sciserver-logging\SciServer.Logging.Test\SciServer.Logging.Test.csproj", "{B221B319-441E-440B-81CE-6C5788D6F393}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Scheduler", "graywulf\dll\Jhu.Graywulf.Scheduler\Jhu.Graywulf.Scheduler.csproj", "{94AB6A2E-6877-4FED-87E2-1F9F17622F43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Scheduler", "modules\graywulf\dll\Jhu.Graywulf.Scheduler\Jhu.Graywulf.Scheduler.csproj", "{94AB6A2E-6877-4FED-87E2-1F9F17622F43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Scheduler.Server", "graywulf\exe\Jhu.Graywulf.Scheduler.Server\Jhu.Graywulf.Scheduler.Server.csproj", "{496518F5-99BF-42FB-9F42-4450C766D29F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Scheduler.Server", "modules\graywulf\exe\Jhu.Graywulf.Scheduler.Server\Jhu.Graywulf.Scheduler.Server.csproj", "{496518F5-99BF-42FB-9F42-4450C766D29F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Activities", "graywulf\dll\Jhu.Graywulf.Activities\Jhu.Graywulf.Activities.csproj", "{57392DA3-E280-48EE-80C8-64E09FD8AFB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Activities", "modules\graywulf\dll\Jhu.Graywulf.Activities\Jhu.Graywulf.Activities.csproj", "{57392DA3-E280-48EE-80C8-64E09FD8AFB5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Footprint", "Footprint", "{00DF5363-D913-4D35-9CDE-445570E1ED35}"
 	ProjectSection(SolutionItems) = preProject
-		footprint\build.config = footprint\build.config
+		modules\footprint\build.config = modules\footprint\build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{06D53841-994E-461B-962B-AB9BB2CD383F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Footprint.Web.Lib", "footprint\dll\Jhu.Footprint.Web.Lib\Jhu.Footprint.Web.Lib.csproj", "{8D06003C-676E-48E0-87BF-DB12DA746B50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Footprint.Web.Lib", "modules\footprint\dll\Jhu.Footprint.Web.Lib\Jhu.Footprint.Web.Lib.csproj", "{8D06003C-676E-48E0-87BF-DB12DA746B50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Footprint.Web.Api", "footprint\dll\Jhu.Footprint.Web.Api\Jhu.Footprint.Web.Api.csproj", "{24570021-F4C8-4015-A0AF-82D4BBBEC40D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Footprint.Web.Api", "modules\footprint\dll\Jhu.Footprint.Web.Api\Jhu.Footprint.Web.Api.csproj", "{24570021-F4C8-4015-A0AF-82D4BBBEC40D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{7B4F739E-1BD4-4072-9D64-8A0FB4E12725}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Footprint.Web.Lib.Test", "footprint\test\Jhu.Footprint.Web.Lib.Test\Jhu.Footprint.Web.Lib.Test.csproj", "{75F61EA3-FB34-4FB1-8016-8D7D7F95B969}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Footprint.Web.Lib.Test", "modules\footprint\test\Jhu.Footprint.Web.Lib.Test\Jhu.Footprint.Web.Lib.Test.csproj", "{75F61EA3-FB34-4FB1-8016-8D7D7F95B969}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Footprint.Web.Api.Test", "footprint\test\Jhu.Footprint.Web.Api.Test\Jhu.Footprint.Web.Api.Test.csproj", "{02E5D24F-4A27-4C44-AAC6-E42ADFC573A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Footprint.Web.Api.Test", "modules\footprint\test\Jhu.Footprint.Web.Api.Test\Jhu.Footprint.Web.Api.Test.csproj", "{02E5D24F-4A27-4C44-AAC6-E42ADFC573A1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{258A3828-A5F3-42C7-B81B-A684859F0B0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Footprint.Web.UI", "footprint\web\Jhu.Footprint.Web.UI\Jhu.Footprint.Web.UI.csproj", "{41B84D73-EEE3-42C2-A317-67C21210AB5C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Footprint.Web.UI", "modules\footprint\web\Jhu.Footprint.Web.UI\Jhu.Footprint.Web.UI.csproj", "{41B84D73-EEE3-42C2-A317-67C21210AB5C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sql", "Sql", "{BDA79A80-829A-4921-A3D6-C9B9D41870C0}"
 	ProjectSection(SolutionItems) = preProject
-		footprint\sql\Jhu.Footprint.Logic.Create.sql = footprint\sql\Jhu.Footprint.Logic.Create.sql
-		footprint\sql\Jhu.Footprint.Logic.Drop.sql = footprint\sql\Jhu.Footprint.Logic.Drop.sql
-		footprint\sql\Jhu.Footprint.Tables.Create.sql = footprint\sql\Jhu.Footprint.Tables.Create.sql
-		footprint\sql\Jhu.Footprint.Tables.Drop.sql = footprint\sql\Jhu.Footprint.Tables.Drop.sql
+		modules\footprint\sql\Jhu.Footprint.Logic.Create.sql = modules\footprint\sql\Jhu.Footprint.Logic.Create.sql
+		modules\footprint\sql\Jhu.Footprint.Logic.Drop.sql = modules\footprint\sql\Jhu.Footprint.Logic.Drop.sql
+		modules\footprint\sql\Jhu.Footprint.Tables.Create.sql = modules\footprint\sql\Jhu.Footprint.Tables.Create.sql
+		modules\footprint\sql\Jhu.Footprint.Tables.Drop.sql = modules\footprint\sql\Jhu.Footprint.Tables.Drop.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{9F6A68E2-D535-4537-8105-8DA265089207}"
 	ProjectSection(SolutionItems) = preProject
-		footprint\config\sections.config = footprint\config\sections.config
+		modules\footprint\config\sections.config = modules\footprint\config\sections.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharpAstroLib", "SharpAstroLib", "{AFB21F24-CC3B-4AE8-9FD8-D2FE13E0C643}"
@@ -359,27 +359,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{7E59B5E3-61A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{84554A59-7311-4A7D-B8C2-58E858965CA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SharpAstroLib", "sharpastrolib\src\Jhu.SharpAstroLib\Jhu.SharpAstroLib.csproj", "{D2DE5B24-643C-4980-980A-3E170CA0B49E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SharpAstroLib", "modules\sharpastrolib\src\Jhu.SharpAstroLib\Jhu.SharpAstroLib.csproj", "{D2DE5B24-643C-4980-980A-3E170CA0B49E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SharpAstroLib.Web", "sharpastrolib\src\Jhu.SharpAstroLib.Web\Jhu.SharpAstroLib.Web.csproj", "{8E1302A6-882E-476A-BE41-8C87CB569CEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SharpAstroLib.Web", "modules\sharpastrolib\src\Jhu.SharpAstroLib.Web\Jhu.SharpAstroLib.Web.csproj", "{8E1302A6-882E-476A-BE41-8C87CB569CEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SharpAstroLib.Sql", "sharpastrolib\src\Jhu.SharpAstroLib.Sql\Jhu.SharpAstroLib.Sql.csproj", "{B49B1902-9CB1-4063-B880-164E7C796791}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SharpAstroLib.Sql", "modules\sharpastrolib\src\Jhu.SharpAstroLib.Sql\Jhu.SharpAstroLib.Sql.csproj", "{B49B1902-9CB1-4063-B880-164E7C796791}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SharpAstroLib.Test", "sharpastrolib\test\Jhu.SharpAstroLib.Test\Jhu.SharpAstroLib.Test.csproj", "{84241115-5D7D-45EE-AD10-2A118C94DB90}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SharpAstroLib.Test", "modules\sharpastrolib\test\Jhu.SharpAstroLib.Test\Jhu.SharpAstroLib.Test.csproj", "{84241115-5D7D-45EE-AD10-2A118C94DB90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.ServiceModel", "graywulf\dll\Jhu.Graywulf.ServiceModel\Jhu.Graywulf.ServiceModel.csproj", "{AA744162-DFA0-46BC-BE03-20D50DD77806}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.ServiceModel", "modules\graywulf\dll\Jhu.Graywulf.ServiceModel\Jhu.Graywulf.ServiceModel.csproj", "{AA744162-DFA0-46BC-BE03-20D50DD77806}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Parsing", "graywulf\dll\Jhu.Graywulf.Parsing\Jhu.Graywulf.Parsing.csproj", "{6215A919-1626-4F32-8C16-5764243B2748}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Parsing", "modules\graywulf\dll\Jhu.Graywulf.Parsing\Jhu.Graywulf.Parsing.csproj", "{6215A919-1626-4F32-8C16-5764243B2748}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Parsing.Generator", "graywulf\dll\Jhu.Graywulf.Parsing.Generator\Jhu.Graywulf.Parsing.Generator.csproj", "{F4BB3377-5EDC-4989-899D-EF7C89BA1632}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Parsing.Generator", "modules\graywulf\dll\Jhu.Graywulf.Parsing.Generator\Jhu.Graywulf.Parsing.Generator.csproj", "{F4BB3377-5EDC-4989-899D-EF7C89BA1632}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Parsing.Generator.Test", "graywulf\test\Jhu.Graywulf.Parsing.Generator.Test\Jhu.Graywulf.Parsing.Generator.Test.csproj", "{131EA75A-8232-42EE-8FDA-0102D6F83D9A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Parsing.Generator.Test", "modules\graywulf\test\Jhu.Graywulf.Parsing.Generator.Test\Jhu.Graywulf.Parsing.Generator.Test.csproj", "{131EA75A-8232-42EE-8FDA-0102D6F83D9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Parsing.Generator.CmdLineUtil", "graywulf\exe\Jhu.Graywulf.Parsing.Generator.CmdLineUtil\Jhu.Graywulf.Parsing.Generator.CmdLineUtil.csproj", "{C9554A8A-0700-4696-BCD5-1B6696FCCCCB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Parsing.Generator.CmdLineUtil", "modules\graywulf\exe\Jhu.Graywulf.Parsing.Generator.CmdLineUtil\Jhu.Graywulf.Parsing.Generator.CmdLineUtil.csproj", "{C9554A8A-0700-4696-BCD5-1B6696FCCCCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Sql.Parser.Grammar", "graywulf\build\Jhu.Graywulf.Sql.Parser.Grammar\Jhu.Graywulf.Sql.Parser.Grammar.csproj", "{77BE21A2-3AF7-478A-8279-3C741BF3BD59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Sql.Parser.Grammar", "modules\graywulf\build\Jhu.Graywulf.Sql.Parser.Grammar\Jhu.Graywulf.Sql.Parser.Grammar.csproj", "{77BE21A2-3AF7-478A-8279-3C741BF3BD59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Parser.Grammar", "skyquery\build\Jhu.SkyQuery.Parser.Grammar\Jhu.SkyQuery.Parser.Grammar.csproj", "{9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Parser.Grammar", "modules\skyquery\build\Jhu.SkyQuery.Parser.Grammar\Jhu.SkyQuery.Parser.Grammar.csproj", "{9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
