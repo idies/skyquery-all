@@ -29,7 +29,7 @@
 	path = sciserver-logging
 	url = git@github.com:sciserver/sciserver-logging.git
 [submodule "footprint"]
-	path = footprint
+	path = modules/footprint
 	url = git@github.com:sciserver/footprint.git
 [submodule "footprint-config"]
 	path = footprint-config
