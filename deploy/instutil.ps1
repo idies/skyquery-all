@@ -69,7 +69,7 @@ function ExecWithContext {
 	$cmd = RenderCommand($args)
 	try {
 		[Jhu.Graywulf.Logging.LoggingContext]::Current.StartLogger([Jhu.Graywulf.Logging.EventSource]::CommandLineTool,  $true)
-		$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext()
+		$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext([Jhu.Graywulf.Registry.TransactionMode]::ReadOnly)
 		$res = iex $cmd
 		$context.Dispose()
 		[Jhu.Graywulf.Logging.LoggingContext]::Current.StopLogger()

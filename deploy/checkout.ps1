@@ -3,7 +3,7 @@ $SKYQUERY="v1.4/develop"
 $FOOTPRINT="v2.0/develop"
 $SHARPFITSIO="develop"
 $SPHERICAL="develop"
-$SCISERVER="skyquery"
+$SCISERVER="skyquery-v1.4"
 
 cd modules
 

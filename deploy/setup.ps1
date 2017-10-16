@@ -13,10 +13,13 @@ InitRegistry
 if ($verb -match "^help") {
 	# TODO
 	echo "This will display the help some day."
+} elseif ($verb -match "^createdb") {
+	$ErrorActionPreference = "Stop"
+	InstallLogging $true
+	InstallJobPersistence $true
+	InstallRegistry $true
 } elseif ($verb -match "^initdb") {
 	$ErrorActionPreference = "Stop"
-
-	# Create and configure registry
 	InstallLogging
 	InstallJobPersistence
 	InstallRegistry
