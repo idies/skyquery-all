@@ -2,7 +2,7 @@
 
 function DeploySkyNodeScripts($name, $version, $subset) {
 	$databases = FindDatabaseInstances "DatabaseDefinition:Graywulf\SciServer\SkyQuery\$name" "$version"
-	$scripts = FindFiles ".\skyquery-skynodes\sql\$dbname\*" "\d+_($subset).*\.sql"
+	$scripts = FindFiles ".\modules\skyquery-skynodes\sql\$dbname\*" "\d+_($subset).*\.sql"
 	Write-Host "Deploying SkyNode scripts to:"
 	foreach ($db in $databases) {
 		$s = $db["Server"]
@@ -32,7 +32,7 @@ function ImportSkyNodeMetadata($name, $version) {
 	Write-Host "Generating SkyNode metadata to:"
 	foreach ($dd in $databases) {
 		$ddname = $dd["Name"]
-		$scripts = FindFiles ".\skyquery-skynodes\sql\$ddname\*" "\d+_meta\.xml"
+		$scripts = FindFiles ".\modules\skyquery-skynodes\sql\$ddname\*" "\d+_meta\.xml"
 		$di = FindDatabaseInstances "DatabaseDefinition:Graywulf\SciServer\SkyQuery\$ddname" "$version"
 		foreach ($db in $di) {
 			$s = $db["Server"]
