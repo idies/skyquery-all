@@ -381,6 +381,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Sql.Parser.Gra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Parser.Grammar", "modules\skyquery\build\Jhu.SkyQuery.Parser.Grammar\Jhu.SkyQuery.Parser.Grammar.csproj", "{9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Tap", "modules\skyquery\dll\Jhu.SkyQuery.Tap\Jhu.SkyQuery.Tap.csproj", "{F19BFC4D-9ED7-4555-B75F-3D84C2E4C185}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1483,6 +1485,18 @@ Global
 		{9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB}.Release|x64.Build.0 = Release|x64
 		{9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB}.Release|x86.ActiveCfg = Release|x86
 		{9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB}.Release|x86.Build.0 = Release|x86
+		{F19BFC4D-9ED7-4555-B75F-3D84C2E4C185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F19BFC4D-9ED7-4555-B75F-3D84C2E4C185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F19BFC4D-9ED7-4555-B75F-3D84C2E4C185}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F19BFC4D-9ED7-4555-B75F-3D84C2E4C185}.Debug|x64.Build.0 = Debug|Any CPU
+		{F19BFC4D-9ED7-4555-B75F-3D84C2E4C185}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F19BFC4D-9ED7-4555-B75F-3D84C2E4C185}.Debug|x86.Build.0 = Debug|Any CPU
+		{F19BFC4D-9ED7-4555-B75F-3D84C2E4C185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F19BFC4D-9ED7-4555-B75F-3D84C2E4C185}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F19BFC4D-9ED7-4555-B75F-3D84C2E4C185}.Release|x64.ActiveCfg = Release|Any CPU
+		{F19BFC4D-9ED7-4555-B75F-3D84C2E4C185}.Release|x64.Build.0 = Release|Any CPU
+		{F19BFC4D-9ED7-4555-B75F-3D84C2E4C185}.Release|x86.ActiveCfg = Release|Any CPU
+		{F19BFC4D-9ED7-4555-B75F-3D84C2E4C185}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1621,6 +1635,7 @@ Global
 		{C9554A8A-0700-4696-BCD5-1B6696FCCCCB} = {4F1895F8-526E-4F3B-868F-580C86D3EFAD}
 		{77BE21A2-3AF7-478A-8279-3C741BF3BD59} = {8FA54973-7055-4E53-9BE2-9326DB062BEE}
 		{9957F3EB-C6AE-4D7E-951D-AB6F4310EFDB} = {A345CE3F-DDE3-40E4-9F53-9ACF32490191}
+		{F19BFC4D-9ED7-4555-B75F-3D84C2E4C185} = {66A6B425-4D46-4BF6-A6A2-E71D7E5B0502}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = skyquery-all.vsmdi
