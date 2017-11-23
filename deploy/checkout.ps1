@@ -1,7 +1,7 @@
 $GRAYWULF="v1.4/develop"
 $SKYQUERY="v1.4/develop"
 $FOOTPRINT="v2.0/develop"
-$SHARPFITSIO="develop"
+$SHARPFITSIO="v1.1/develop"
 $SPHERICAL="v2.1/develop"
 $SCISERVER="skyquery-v1.4"
 
