@@ -37,7 +37,6 @@
 [submodule "sharpastrolib"]
 	path = modules/sharpastrolib
 	url = git@github.com:sciserver/sharpastrolib.git
-[submodule "modules/netvolibs"]
-	path = modules/netvolibs
-	url = git@github.com:sciserver/netvolibs.git
-	branch = v1.0/develop
+[submodule "modules/sharpvolibs"]
+	path = modules/sharpvolibs
+	url = git@github.com:sciserver/sharpvolibs.git

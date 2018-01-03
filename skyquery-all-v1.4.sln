@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2010
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{C1B23ACA-3EF8-4EEF-9192-938632124F27}"
 	ProjectSection(SolutionItems) = preProject
@@ -384,18 +384,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Tap", "modules
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.SkyQuery.Tap.Test", "modules\skyquery\test\Jhu.SkyQuery.Tap.Test\Jhu.SkyQuery.Tap.Test.csproj", "{AD52C28F-4EE4-41CB-8F59-270F1C05588B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VO", "VO", "{B8EF3EA1-5665-4AA1-85A3-58B897E3DC77}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharpVoLibs", "SharpVoLibs", "{B8EF3EA1-5665-4AA1-85A3-58B897E3DC77}"
 	ProjectSection(SolutionItems) = preProject
-		modules\netvolibs\build.config = modules\netvolibs\build.config
+		modules\sharpvolibs\build.config = modules\sharpvolibs\build.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{888292E9-33F6-4122-A41C-BE3D79FA943C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{C7847E89-DCFD-4DFE-9714-96533B9B70E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.VO", "modules\netvolibs\dll\Jhu.VO\Jhu.VO.csproj", "{0141EC6D-CCEC-498C-A8E3-84C3938A8E53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.VO", "modules\sharpvolibs\dll\Jhu.VO\Jhu.VO.csproj", "{0141EC6D-CCEC-498C-A8E3-84C3938A8E53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.VO.Test", "modules\netvolibs\test\Jhu.VO.Test\Jhu.VO.Test.csproj", "{408C9CAF-54D1-428D-A692-1322AFA8ABE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.VO.Test", "modules\sharpvolibs\test\Jhu.VO.Test\Jhu.VO.Test.csproj", "{408C9CAF-54D1-428D-A692-1322AFA8ABE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

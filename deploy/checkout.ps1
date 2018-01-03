@@ -46,4 +46,7 @@ git checkout -B $FOOTPRINT remotes/origin/$FOOTPRINT --
 cd ../sharpastrolib
 git checkout -B v1.0/develop remotes/origin/v1.0/develop --
 
+cd ../sharpvolibs
+git checkout -B v1.0/develop remotes/origin/v1.0/develop --
+
 cd ../..
