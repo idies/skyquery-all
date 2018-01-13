@@ -234,19 +234,24 @@ function ExportSubtree($entity, $output, $options) {
 
 function ExportRegistry() {
 	Write-Host "Exporting cluster settings..."
-	ExportSubtree "Cluster:Graywulf" "SkyQuery_Cluster.xml" "-Cluster"
-	Write-Host "Exporting system federation settings..."
-	ExportSubtree "Federation:Graywulf\System\System" "SkyQuery_System.xml" "-Layout"
+	ExportSubtree "Cluster:Graywulf" "Cluster.xml" "-Cluster"
+	Write-Host "Exporting system settings..."
+	ExportSubtree "Federation:Graywulf\System\System" "System_Federation.xml" "-Federation"
+	ExportSubtree "Federation:Graywulf\System\System" "System_Layout.xml" "-Layout"
+	ExportSubtree "Federation:Graywulf\System\System" "System_Jobs.xml" "-Jobs"
 	Write-Host "Exporting SciServer domain..."
-	ExportSubtree "Domain:Graywulf\SciServer" "SkyQuery_Domain.xml" "-Domain"
+	ExportSubtree "Domain:Graywulf\SciServer" "SciServer_Domain.xml" "-Domain"
 	Write-Host "Exporting SkyQuery federation..."
 	ExportSubtree "Federation:Graywulf\SciServer\SkyQuery" "SkyQuery_Federation.xml" "-Federation"
 	Write-Host "Exporting SkyQuery layout..."
 	ExportSubtree "Federation:Graywulf\SciServer\SkyQuery" "SkyQuery_Layout.xml" "-Layout"
+	Write-Host "Exporting SkyQuery jobs..."
+	ExportSubtree "Federation:Graywulf\SciServer\SkyQuery" "SkyQuery_Jobs.xml" "-Jobs"
 }
 
 function ImportRegistry() {
 	if ($skyquery_deployregistry) {
+		# TODO: modify according to ExportRegistry
 		Write-Host "Importing registry: cluster..."
 		ExecLocal .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\SkyQuery_Cluster.xml -Duplicates Update
 		Write-Host "Importing registry: system..."
