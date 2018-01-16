@@ -16,4 +16,5 @@ if ($verb -match "^help") {
 } elseif ($verb -match "^export") {
 	ExportRegistry
 } elseif ($verb -match "^import") {
+	ImportRegistry
 }

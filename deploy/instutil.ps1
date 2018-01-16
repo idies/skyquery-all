@@ -68,11 +68,13 @@ function ExecLocal {
 function ExecWithContext {
 	$cmd = RenderCommand($args)
 	try {
+		$loggingContext = New-Object Jhu.Graywulf.Logging.LoggingContext
 		[Jhu.Graywulf.Logging.LoggingContext]::Current.StartLogger([Jhu.Graywulf.Logging.EventSource]::CommandLineTool,  $true)
 		$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext([Jhu.Graywulf.Registry.TransactionMode]::ReadOnly)
 		$res = iex $cmd
 		$context.Dispose()
 		[Jhu.Graywulf.Logging.LoggingContext]::Current.StopLogger()
+		$loggingContext.Dispose()
 
 		$res
 	} catch [Exception] {

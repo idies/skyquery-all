@@ -10,7 +10,7 @@ function WrapItself([string] $path, [string[]] $params) {
 	# This is the normal execution path
 }
 
-function GetConfigRoot() {
+function GetConfig() {
 	$configfile = Get-Item build.config
 	$xml = [xml](Get-Content $configfile)
 	$config = [string]$xml.config.root
@@ -18,7 +18,7 @@ function GetConfigRoot() {
 }
 
 function Configure() {
-	$config = GetConfigRoot
+	$config = GetConfig
 
 	# Load config
 	if (!(test-path .\$config\configure.ps1)) {
@@ -147,19 +147,15 @@ function AskPasswords() {
 # -------------------------------------------------------------
 #region Logging
 
-function InstallLogging($createdb) {
+function InstallLogging() {
 	if ($skyquery_deployregistry) {
 		Write-Host "Creating database for logging..."
-		$cstr = GetConnectionString "jhu.graywulf/logging/sql/@connectionString"
+		$cstr = GetConnectionString "jhu.graywulf/logging/@connectionString"
 		$srv, $db = GetServerAndDatabase "$cstr"
-		if ($createdb) {
-			ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateLog -Q -Server "$srv" -Database "$db"
-			ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_admin_account" -Role "db_owner"
-			ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_service_account" -Role "db_owner"
-			ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_user_account" -Role "db_owner"
-		} else {
-			ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateLog -Q -Server "$srv" -Database "$db" -SchemaOnly
-		}
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateLog -Q -Server "$srv" -Database "$db"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_admin_account" -Role "db_owner"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_service_account" -Role "db_owner"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_user_account" -Role "db_owner"
 	}
 }
 
@@ -174,19 +170,15 @@ function RemoveLogging() {
 # -------------------------------------------------------------
 #region Job persistence
 
-function InstallJobPersistence($createdb) {
+function InstallJobPersistence() {
 	if ($skyquery_deployregistry) {
 		Write-Host "Creating database for job persistence store..."
 		$cstr = GetConnectionString "jhu.graywulf/scheduler/@persistenceConnectionString"
 		$srv, $db = GetServerAndDatabase "$cstr"
-		if ($createdb) {
-			ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateJobPersistence -Q -Server "$srv" -Database "$db"
-			ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_admin_account" -Role "db_owner"
-			ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_service_account" -Role "db_owner"
-			ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_user_account" -Role "db_owner"
-		} else {
-			ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateJobPersistence -Q -Server "$srv" -Database "$db" -SchemaOnly
-		}
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateJobPersistence -Q -Server "$srv" -Database "$db"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_admin_account" -Role "db_owner"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_service_account" -Role "db_owner"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_user_account" -Role "db_owner"
 	}
 }
 
@@ -215,19 +207,15 @@ function LoadRegistryConnectionString() {
 	[Jhu.Graywulf.Registry.ContextManager]::Instance.ConnectionString = $cstr
 }
 
-function InstallRegistry($createdb) {
+function InstallRegistry() {
 	if ($skyquery_deployregistry) {
 		Write-Host "Creating database for registry..."
 		$cstr = [Jhu.Graywulf.Registry.ContextManager]::Instance.ConnectionString
 		$srv, $db = GetServerAndDatabase "$cstr"
-		if ($createdb) {
-			ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateRegistry -Q
-			ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_admin_account" -Role "db_owner"
-			ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_service_account" -Role "db_owner"
-			ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_user_account" -Role "db_owner"
-		} else {
-			ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateRegistry -Q -SchemaOnly
-		}
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe CreateRegistry -Q
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_admin_account" -Role "db_owner"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_service_account" -Role "db_owner"
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddUser -Q -Server "$srv" -Database "$db" -Username "$skyquery_user_account" -Role "db_owner"
 		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddCluster -Q -cluster "Graywulf" -User admin -Email admin@graywulf.org -Password alma
 		ExecLocal .\bin\$skyquery_target\gwregutil.exe AddDomain -Q -cluster "Cluster:Graywulf" -Domain "SciServer"
 	}
@@ -246,29 +234,34 @@ function ExportSubtree($entity, $output, $options) {
 
 function ExportRegistry() {
 	Write-Host "Exporting cluster settings..."
-	ExportSubtree "Cluster:Graywulf" "SkyQuery_Cluster.xml" "-Cluster"
-	Write-Host "Exporting system federation settings..."
-	ExportSubtree "Federation:Graywulf\System\System" "SkyQuery_System.xml" "-Layout"
+	ExportSubtree "Cluster:Graywulf" "Cluster.xml" "-Cluster"
+	Write-Host "Exporting system settings..."
+	ExportSubtree "Federation:Graywulf\System\System" "System_Federation.xml" "-Federation"
+	ExportSubtree "Federation:Graywulf\System\System" "System_Layout.xml" "-Layout"
+	ExportSubtree "Federation:Graywulf\System\System" "System_Jobs.xml" "-Jobs"
 	Write-Host "Exporting SciServer domain..."
-	ExportSubtree "Domain:Graywulf\SciServer" "SkyQuery_Domain.xml" "-Domain"
+	ExportSubtree "Domain:Graywulf\SciServer" "SciServer_Domain.xml" "-Domain"
 	Write-Host "Exporting SkyQuery federation..."
 	ExportSubtree "Federation:Graywulf\SciServer\SkyQuery" "SkyQuery_Federation.xml" "-Federation"
 	Write-Host "Exporting SkyQuery layout..."
 	ExportSubtree "Federation:Graywulf\SciServer\SkyQuery" "SkyQuery_Layout.xml" "-Layout"
+	Write-Host "Exporting SkyQuery jobs..."
+	ExportSubtree "Federation:Graywulf\SciServer\SkyQuery" "SkyQuery_Jobs.xml" "-Jobs"
 }
 
 function ImportRegistry() {
 	if ($skyquery_deployregistry) {
+		# TODO: modify according to ExportRegistry
 		Write-Host "Importing registry: cluster..."
-		ExecLocal .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\registry\SkyQuery_Cluster.xml -Duplicates Update
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\SkyQuery_Cluster.xml -Duplicates Update
 		Write-Host "Importing registry: system..."
-		ExecLocal .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\registry\SkyQuery_System.xml -Duplicates Update
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\SkyQuery_System.xml -Duplicates Update
 		Write-Host "Importing registry: domain..."
-		ExecLocal .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\registry\SkyQuery_Domain.xml -Duplicates Update
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\SkyQuery_Domain.xml -Duplicates Update
 		Write-Host "Importing registry: federation..."
-		ExecLocal .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\registry\SkyQuery_Federation.xml -Duplicates Update
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\SkyQuery_Federation.xml -Duplicates Update
 		Write-Host "Importing registry: layout..."
-		ExecLocal .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\registry\SkyQuery_Layout.xml -Duplicates Update
+		ExecLocal .\bin\$skyquery_target\gwregutil.exe Import -Input .\$config\SkyQuery_Layout.xml -Duplicates Update
 	}
 }
 
