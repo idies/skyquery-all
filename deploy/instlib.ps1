@@ -436,7 +436,7 @@ function RemoveScheduler() {
 function InstallWebAdmin() {
 	if ($skyquery_deployadmin) {
 		InstallWebSite $skyquery_controller `
-			".\graywulf\web\Jhu.Graywulf.Web.Admin\*" "$skyquery_admin_web_path" `
+			".\modules\graywulf\web\Jhu.Graywulf.Web.Admin\*" "$skyquery_admin_web_path" `
 			"$skyquery_admin_web_apppool" "$skyquery_admin_account" "$skyquery_admin_passwd" `
 			"$skyquery_admin_web_site" "gwadmin"
 	}
@@ -460,7 +460,7 @@ function InstallWebUI() {
 		$servers = $skyquery_web
 		RecycleAppPool $servers "$skyquery_user_web_apppool"
 		Write-Host "Copying web UI to:"
-		CopyDir $servers ".\skyquery\web\Jhu.SkyQuery.Web.UI\*" "$skyquery_user_web_path"
+		CopyDir $servers ".\modules\skyquery\web\Jhu.SkyQuery.Web.UI\*" "$skyquery_user_web_path"
 		Write-Host "Creating app pool for web UI on:"
 		CreateAppPool $servers "$skyquery_user_web_apppool" $skyquery_user_account $skyquery_user_passwd
 		Write-Host "Creating web app for web UI on:"
