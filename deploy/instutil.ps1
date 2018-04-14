@@ -33,8 +33,9 @@ function GetServerAndDatabase($cstr) {
 function RenderArgument($a) {
 	if ($a.GetType().Name -match 'ScriptBlock') {
 		$r = "{ $a }"
-	} elseif ($a.GetType().Name -match 'string' -and $a -match ' ') {
-		$r = "`"$a`""
+	#} elseif ($a.GetType().Name -match 'string' -and $a -match ' ') {
+	} elseif ($a.GetType().Name -match 'string') {
+		$r = EscapeArgument($a)
 	} elseif ($a.GetType().Name -match '\[\]') {
 		$r = ""
 		foreach ($aa in $a) {
@@ -44,9 +45,18 @@ function RenderArgument($a) {
 			$r += RenderArgument($aa)
 		}
 	} else {
-		$r = $a
+		$r = EscapeArgument($a)
 	}
 
+	return $r
+}
+
+function EscapeArgument($a) {
+	if ($a -match "^[a-z|A-Z|\-]+$") {
+		[string]$r = $a
+	} else {
+		[string]$r = "`"$a`""
+	}
 	return $r
 }
 
@@ -56,6 +66,7 @@ function RenderCommand($arguments) {
 		$cmd += RenderArgument($a)
 		$cmd += " "
 	}
+
 	return $cmd
 }
 
@@ -65,12 +76,13 @@ function ExecLocal {
 	HandleError
 }
 
-function ExecWithContext {
+function ExecWithContext() {
 	$cmd = RenderCommand($args)
 	try {
+		
 		$loggingContext = New-Object Jhu.Graywulf.Logging.LoggingContext
 		[Jhu.Graywulf.Logging.LoggingContext]::Current.StartLogger([Jhu.Graywulf.Logging.EventSource]::CommandLineTool,  $true)
-		$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext([Jhu.Graywulf.Registry.TransactionMode]::ReadOnly)
+		$context = [Jhu.Graywulf.Registry.ContextManager]::Instance.CreateContext([Jhu.Graywulf.Registry.TransactionMode]::ReadWrite)
 		$res = iex $cmd
 		$context.Dispose()
 		[Jhu.Graywulf.Logging.LoggingContext]::Current.StopLogger()
@@ -283,10 +295,10 @@ function FindDatabaseInstances($databaseDefinition, $databaseVersion) {
 function InstallService([string[]] $servers, [string] $name, [string] $exe, [string] $user, [string] $pass) {
 	Write-Host "Installing service $name on:"
 	ForEachServer $servers icm '$s' `
-		-Args $user, $pass, $exe, $fwpath, $name `
+		-Args "$user", "$pass", "$exe", "$fwpath", "$name" `
 		-Script {
 			param($un, $pw, $xe, $fw, $sn) 
-			& $fw\InstallUtil.exe /username=$un /password=$pw /unattended /svcname=$sn $xe
+			& "$fw\InstallUtil.exe" /username="$un" /password="$pw" /unattended /svcname="$sn" "$xe"
 		}
 }
 
