@@ -222,14 +222,21 @@ function UpdateVersion($config, $version) {
 
 function FindMachines($role) {
 	ExecWithContext icm -Script {	
-		$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
-		$mr = $ef.LoadEntity($role)
-		$mr.LoadMachines($TRUE)
-		$mm = $mr.Machines.Values | 
-			where-object {$_.DeploymentState -eq [Jhu.Graywulf.Registry.DeploymentState]::Deployed} |
-			foreach { "$($_.Hostname.ResolvedValue)" }
+		Try {
+			$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
+			$mr = $ef.LoadEntity($role)
+			$mr.LoadMachines($TRUE)
+			$mm = $mr.Machines.Values | 
+				where-object {$_.DeploymentState -eq [Jhu.Graywulf.Registry.DeploymentState]::Deployed} |
+				foreach { "$($_.Hostname.ResolvedValue)" }
 	
-		$mm
+			$mm
+		} Catch {
+			Write-Host $_.Exception.InnerException.Message
+			Write-Host $_.Exception.InnerException.StackTrace
+
+			Break
+		}
 	}
 }
 
