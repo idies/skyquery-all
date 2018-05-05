@@ -40,3 +40,6 @@
 [submodule "modules/sharpvolibs"]
 	path = modules/sharpvolibs
 	url = git@github.com:sciserver/sharpvolibs.git
+[submodule "modules/footprint-python-client"]
+	path = modules/footprint-python-client
+	url = git@github.com:sciserver/footprint-python-client.git
