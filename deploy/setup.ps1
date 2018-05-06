@@ -105,6 +105,23 @@ if ($verb -match "^help") {
 	RemoveLogging
 
 	echo "Configuration purged."
+} elseif ($verb -match "^debug") {
+
+	# ADD DEBUG CODE HERE
+
+	FindServers
+	PrintServers
+
+	Write-Host "----- Start debug -----"
+
+	$ss = GetBinariesServers
+	$ss = GetBinariesServers
+	$ss
+
+	Write-Host "----- End debug -----"
+
+	# -------------------
+
 } else {
 	Write-Host "Unrecognized verb: $verb"
 }

@@ -97,6 +97,31 @@ function ForEachServer($servers) {
 	}
 }
 
+function GetClusterNodeName([string]$serverName) { 
+	$eaf = $ErrorActionPreference
+    $ErrorActionPreference = "SilentlyContinue" 
+     
+    trap [Exception] {  
+      return $false 
+    } 
+    
+	$rg = Get-WMIObject -Class MSCluster_ResourceGroup -ComputerName $serverName -Namespace root\mscluster |
+	      select -ExpandProperty PSComputerName -First 1
+	
+	$ErrorActionPreference = $eaf
+	     
+    return $rg
+} 
+
+function GetHostName([string]$fqdn) {
+	$pos = $fqdn.IndexOf(".")
+	if ($pos -ge 0) {
+		return $fqdn.Substring(0, $pos).ToUpperInvariant()
+	} else {
+		return $fqdn.ToUpperInvariant()
+	}
+}
+
 #endregion
 # -------------------------------------------------------------
 #region File utilities
@@ -227,12 +252,15 @@ function FindServerInstances($role) {
 		$ef = New-Object Jhu.Graywulf.Registry.EntityFactory $context
 		$mr = $ef.LoadEntity($role)
 		$mr.LoadMachines($TRUE)
-		$mm = $mr.Machines.Values
+		$mm = $mr.Machines.Values | 
+			where-object {$_.DeploymentState -eq [Jhu.Graywulf.Registry.DeploymentState]::Deployed}
 		$ss = @()
 
 		foreach ($m in $mm) {
 			$m.LoadServerInstances($TRUE)
-			$ss += $m.ServerInstances.Values | foreach { $_.GetCompositeName() }
+			$ss += $m.ServerInstances.Values | 
+				where-object {$_.DeploymentState -eq [Jhu.Graywulf.Registry.DeploymentState]::Deployed} | 
+				foreach { $_.GetCompositeName() }
 		}
 	
 		$ss
@@ -263,6 +291,9 @@ function FindDatabaseInstances($databaseDefinition, $databaseVersion) {
 		$dd = $ef.LoadEntity($databaseDefinition)
 		$dd.LoadDatabaseInstances($TRUE)
 		$di = $dd.DatabaseInstances.Values |
+			where-object {
+				$_.ServerInstance.DeploymentState -eq [Jhu.Graywulf.Registry.DeploymentState]::Deployed -and `
+				$_.ServerInstance.Machine.DeploymentState -eq [Jhu.Graywulf.Registry.DeploymentState]::Deployed} | 
 			foreach { @{
 				"Name" = $_.GetFullyQualifiedName();
 				"Server" = $_.ServerInstance.GetCompositeName();

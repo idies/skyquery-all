@@ -316,15 +316,26 @@ function PrintServers() {
 #region Binaries
 
 function GetBinariesServers() {
-	$servers = @()
-	if ($skyquery_deployscheduler -or $skyquery_deployremoteservice) {
-		$servers += $skyquery_controller
+	if ($global:gw_binaries_servers -eq $null) {
+		$servers = @()
+		if ($skyquery_deployscheduler -or $skyquery_deployremoteservice) {
+			$servers += $skyquery_controller
+		}
+		if ($skyquery_deployremoteservice) {
+			$servers += $skyquery_skynode
+			$servers += $skyquery_mydb
+		}
+		# Remove failover cluster virtual nodes
+		$global:gw_binaries_servers = @()
+		foreach ($s in $servers) {
+			$nn = GetClusterNodeName($s)
+			$ss = GetHostName($s)
+			if ($nn -eq $null -or $nn -eq $ss) {
+				$global:gw_binaries_servers += $s
+			}
+		}
 	}
-	if ($skyquery_deployremoteservice) {
-		$servers += $skyquery_skynode
-		$servers += $skyquery_mydb
-	}
-	$servers
+	return $global:gw_binaries_servers
 }
 
 function CreateBinariesDir() {
@@ -356,11 +367,23 @@ function RemoveBinaries() {
 #region Remoting service
 
 function GetRemotingServiceServers() {
-	$servers = @()
-	$servers += $skyquery_controller
-	$servers += $skyquery_skynode 
-	$servers += $skyquery_mydb
-	$servers
+	if ($global:gw_remoting_service_servers -eq $null) {
+		$servers = @()
+		$servers += $skyquery_controller
+		$servers += $skyquery_skynode 
+		$servers += $skyquery_mydb
+		$servers
+		# Remove failover cluster virtual nodes
+		$global:gw_remoting_service_servers = @()
+		foreach ($s in $servers) {
+			$nn = GetClusterNodeName($s)
+			$ss = GetHostName($s)
+			if ($nn -eq $null -or $nn -eq $ss) {
+				$global:gw_remoting_service_servers += $s
+			}
+		}
+		return $global:gw_remoting_service_servers
+	}
 }
 
 function InstallRemotingService() {
