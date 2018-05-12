@@ -503,12 +503,12 @@ function DropDatabaseInstance($databaseInstance) {
 }
 
 function ExecSqlScript($server, $database, $script) {
-	$res = sqlcmd -S "$server" -E -d "$database" -i "$script" -h -1 -k2 -W -b | Out-String -Stream
+	$res = sqlcmd -S "$server" -E -d "$database" -i "$script" -h -1 -k2 -W | Out-String -Stream
 	$res
 }
 
 function ExecSqlCommand($server, $database, $sql) {
-	$res = sqlcmd -S "$server" -E -d "$database" -Q "SET NOCOUNT ON;$sql" -h -1 -k2 -W -b | Out-String -Stream
+	$res = sqlcmd -S "$server" -E -d "$database" -Q "SET NOCOUNT ON;$sql" -h -1 -k2 -W | Out-String -Stream
 	$res
 }
 
@@ -533,7 +533,7 @@ function SetDatabaseMultiUser($server, $database) {
 }
 
 function AddDatabaseUser($server, $database, $user) {
-	$sql = "CREATE USER [$user] FOR LOGIN [$user]"
+	$sql = "IF USER_ID(`'$user`') IS NULL CREATE USER [$user] FOR LOGIN [$user]"
 	ExecSqlCommand "$server" "$database" "$sql"
 }
 

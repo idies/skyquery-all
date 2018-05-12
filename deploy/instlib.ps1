@@ -527,7 +527,9 @@ function InstallCodeDbScripts() {
 			Write-Host "... " $db["Server"] $db["Database"]
 			$s = $db["Server"]
 			$d = $db["Database"]
+			Write-Host "... ... Spherical"
 			ExecSqlScript "$s" "$d" ".\bin\$skyquery_target\Jhu.Spherical.Sql.Create.sql"
+			Write-Host "... ... SkyQuery"
 			ExecSqlScript "$s" "$d" ".\bin\$skyquery_target\Jhu.SkyQuery.SqlClrLib.Create.sql"
 			FixUser "$s" "$d" "$skyquery_admin_account" "db_owner"
 			FixUser "$s" "$d" "$skyquery_service_account" "db_owner"
@@ -545,7 +547,9 @@ function RemoveCodeDbScripts() {
 			$s = $db["Server"]
 			$d = $db["Database"]
 			Write-Host "... " $s $d
+			Write-Host "... ... SkyQuery"
 			ExecSqlScript "$s" "$d" ".\bin\$skyquery_target\Jhu.SkyQuery.SqlClrLib.Drop.sql"
+			Write-Host "... ... Spherical"
 			ExecSqlScript "$s" "$d" ".\bin\$skyquery_target\Jhu.Spherical.Sql.Drop.sql"
 			Write-Host "... ... OK"
 		}
