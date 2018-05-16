@@ -546,7 +546,8 @@ function InstallCodeDbScripts() {
 	if ($skyquery_deploycodedb) {
 		$databases = $skyquery_codedb
 		Write-Host "Installing CodeDB scripts to:"
-		foreach ($db in $databases) {
+		$dbs = $databases | select -Unique
+		foreach ($db in $dbs) {
 			Write-Host "... " $db["Server"] $db["Database"]
 			$s = $db["Server"]
 			$d = $db["Database"]
@@ -566,7 +567,8 @@ function RemoveCodeDbScripts() {
 	if ($skyquery_deploycodedb) {
 		$databases = $skyquery_codedb
 		Write-Host "Removing CodeDB scripts from:"
-		foreach ($db in $databases) {
+		$dbs = $databases | select -Unique
+		foreach ($db in $dbs) {
 			$s = $db["Server"]
 			$d = $db["Database"]
 			Write-Host "... " $s $d

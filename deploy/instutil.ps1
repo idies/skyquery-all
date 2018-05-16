@@ -97,8 +97,10 @@ function ExecWithContext() {
 }
 
 function ForEachServer($servers) {
+	# TODO: make it parallel
 	$cmd = RenderCommand($args)
-	foreach ($s in $servers) {
+	$ss = $servers | select -Unique
+	foreach ($s in $ss) {
 		Write-Host "... $s"
 		if ($skyquery_nodeploy -contains $s) {
 			"... ... skipped"
