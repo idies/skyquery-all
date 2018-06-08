@@ -43,3 +43,6 @@
 [submodule "modules/footprint-python-client"]
 	path = modules/footprint-python-client
 	url = git@github.com:sciserver/footprint-python-client.git
+[submodule "modules/skyquery-python-client"]
+	path = modules/skyquery-python-client
+	url = git@github.com:sciserver/skyquery-python-client.git
