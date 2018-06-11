@@ -31,6 +31,9 @@ git checkout -B $SKYQUERY remotes/origin/$SKYQUERY --
 cd ../skyquery-skynodes
 git checkout -B $SKYQUERY remotes/origin/$SKYQUERY --
 
+cd ../skyquery-python-client
+git checkout -B $SKYQUERY remotes/origin/$SKYQUERY --
+
 cd ../spherical
 git checkout -B $SPHERICAL remotes/origin/$SPHERICAL --
 
