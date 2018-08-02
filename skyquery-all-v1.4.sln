@@ -416,6 +416,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Python", "Python", "{1E3762
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "skyquery", "modules\skyquery-python-client\skyquery.pyproj", "{C4C14216-EA77-41E8-A02F-74EE044A9E94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jhu.Graywulf.Parsing.Test", "modules\graywulf\test\Jhu.Graywulf.Parsing.Test\Jhu.Graywulf.Parsing.Test.csproj", "{E93A421B-AC8D-4E0C-B3D8-D40C006577D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1642,6 +1644,18 @@ Global
 		{C4C14216-EA77-41E8-A02F-74EE044A9E94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4C14216-EA77-41E8-A02F-74EE044A9E94}.Release|x64.ActiveCfg = Release|Any CPU
 		{C4C14216-EA77-41E8-A02F-74EE044A9E94}.Release|x86.ActiveCfg = Release|Any CPU
+		{E93A421B-AC8D-4E0C-B3D8-D40C006577D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E93A421B-AC8D-4E0C-B3D8-D40C006577D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E93A421B-AC8D-4E0C-B3D8-D40C006577D1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E93A421B-AC8D-4E0C-B3D8-D40C006577D1}.Debug|x64.Build.0 = Debug|Any CPU
+		{E93A421B-AC8D-4E0C-B3D8-D40C006577D1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E93A421B-AC8D-4E0C-B3D8-D40C006577D1}.Debug|x86.Build.0 = Debug|Any CPU
+		{E93A421B-AC8D-4E0C-B3D8-D40C006577D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E93A421B-AC8D-4E0C-B3D8-D40C006577D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E93A421B-AC8D-4E0C-B3D8-D40C006577D1}.Release|x64.ActiveCfg = Release|Any CPU
+		{E93A421B-AC8D-4E0C-B3D8-D40C006577D1}.Release|x64.Build.0 = Release|Any CPU
+		{E93A421B-AC8D-4E0C-B3D8-D40C006577D1}.Release|x86.ActiveCfg = Release|Any CPU
+		{E93A421B-AC8D-4E0C-B3D8-D40C006577D1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1795,6 +1809,7 @@ Global
 		{BAEE41E5-B1AE-4671-AA9B-82E2B02B9FC5} = {D3BA5B7E-66A6-4881-8BE5-50909394F85D}
 		{1E376286-3B1A-48FA-9A42-1EF2828718FE} = {BAEE41E5-B1AE-4671-AA9B-82E2B02B9FC5}
 		{C4C14216-EA77-41E8-A02F-74EE044A9E94} = {1E376286-3B1A-48FA-9A42-1EF2828718FE}
+		{E93A421B-AC8D-4E0C-B3D8-D40C006577D1} = {31A32854-8930-499D-9DC1-969C3B2CCE36}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A604C815-F923-4583-987F-966ED44F8F10}
